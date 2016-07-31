@@ -9,7 +9,7 @@ from re import search
 from os import system
 from optparse import OptionParser
 
-#Set your VT public API Key here
+# Set your VT public API Key here
 apikey = ""
 
 parser = OptionParser("usage: %prog -f path_to_file [options]")
@@ -36,7 +36,7 @@ if not options.apikey:
     if not apikey:
         parser.error('you must set an apikey, either in command line or in vt_scan.py line 13')
 else:
-    #We want to use by default the apikey from command line
+    # We want to use by default the apikey from command line
     apikey = options.apikey
 
 
@@ -150,6 +150,9 @@ def find_md5_in_file(path_to_file):
 
 
 def run(options):
+    # Tell the user which API key will be used
+    print("The script will use VT API key: %s" % apikey)
+
     # Change encoding with Vim if -v option used
     if options.vim:
         err = system("vim '+set fileencoding=utf-8' '+wq' %s" % options.path_to_file)
