@@ -17,10 +17,6 @@ parser.add_option("-f", "--file",
                   help="file to use",
                   action="store", default=None,
                   dest="path_to_file")
-parser.add_option("-t", "--time",
-                  help="sleep time during requests",
-                  action="store", default="15",
-                  dest="sleep")
 parser.add_option("-v", "--vim",
                   help="use to change encoding with Vim",
                   action="store_true", default=False,
@@ -79,10 +75,10 @@ def run_vt_analyse(md5s_list):
             answer_list = search_on_vt(md5_request)
         except ValueError:
             answer_list = None
-            print("### Error, VT refuse to answer, you should consider to set more time between each request with the option -s")
+            print("### Error, VT refuse to answer, the script will retry in 30sec.")
             sleep(30)
         except HTTPError:
-            print("Your apikey %s seem to be refuse by VirusTotal" % apikey)
+            print("Your apikey %s seem to be refuse by VirusTotal." % apikey)
             exit()
 
     # Analyse the answer
@@ -98,7 +94,7 @@ def analyse_answer(answer, md5s_list):
     if answer.get("response_code", 0) == 0:
         md5 = answer.get("resource", "error")
         filename = get_filename_for_md5(md5, md5s_list)
-        print("VirusTotal seems to not know file: %s with md5:%s" % (filename, md5))
+        print("VirusTotal seems to not know file: %s with md5:%s." % (filename, md5))
 
     else:
         # Print answer
@@ -159,11 +155,13 @@ def run(options):
         err = system("vim '+set fileencoding=utf-8' '+wq' %s" % options.path_to_file)
         if err != 0:
             print("There is an error while using Vim to force the file encoding to utf-8.")
+        else:
+            print("Vim successfully chnages the file encoding to utf-8.")
 
     # Detect the logFile type
     with open(options.path_to_file, 'r') as f:
         file_type = get_file_type(f.readline())
-        print("The input file is detected as a %s log" % file_type)
+        print("The input file is detected as a %s log." % file_type)
 
     # Find the md5s in the file
     md5s_list = find_md5_in_file(options.path_to_file)
@@ -173,16 +171,19 @@ def run(options):
           % options.path_to_file
         )
         exit()
-    print("Found %s different md5s in %s" % (len(md5s_list), options.path_to_file))
-    print("The analysis should take about %s min" % int(len(md5s_list) / 16 + 1))
+    print("Found %s different md5s in %s." % (len(md5s_list), options.path_to_file))
+    print("The analysis should take about %s min." % int(len(md5s_list) / 16 + 1))
 
     # Search on VT for each md5 by group of 4
     while len(md5s_list) >= 4:
         run_vt_analyse(md5s_list[0:4])
         md5s_list = md5s_list[4:]
-        sleep(int(options.sleep))
+
+        # The VirusTotal public API allow 4 request each minute,
+        # therefore we should wait 15sec between each request.
+        sleep(15)
     run_vt_analyse(md5s_list)
 
-    print("### End of analysis")
+    print("### End of analysis.")
 
 run(options)
