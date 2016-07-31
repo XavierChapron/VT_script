@@ -1,0 +1,546 @@
+﻿OTL logfile created on: 30/07/2016 12:26:10 - Run 1
+OTL by OldTimer - Version 3.2.69.0     Folder = C:\Users\Xavier\Downloads
+64bit- Professional Service Pack 1 (Version = 6.1.7601) - Type = NTWorkstation
+Internet Explorer (Version = 8.0.7601.17514)
+Locale: 0000040c | Country: France | Language: FRA | Date Format: dd/MM/yyyy
+
+4,00 Gb Total Physical Memory | 1,00 Gb Available Physical Memory | 24,98% Memory free
+8,00 Gb Paging File | 5,45 Gb Available in Paging File | 68,20% Paging File free
+Paging file location(s): ?:\pagefile.sys [binary data]
+
+%SystemDrive% = C: | %SystemRoot% = C:\Windows | %ProgramFiles% = C:\Program Files (x86)
+Drive C: | 24,90 Gb Total Space | 10,85 Gb Free Space | 43,58% Space Free | Partition Type: NTFS
+
+Computer Name: XAVIER-WIN7 | User Name: Xavier | Logged in as Administrator.
+Boot Mode: Normal | Scan Mode: Current user | Include 64bit Scans
+Company Name Whitelist: Off | Skip Microsoft Files: Off | No Company Name Whitelist: On | File Age = 30 Days
+
+[color=#E56717]========== Processes (SafeList) ==========[/color]
+
+PRC - [2016/07/30 12:24:54 | 000,602,112 | ---- | M] (OldTimer Tools) -- C:\Users\Xavier\Downloads\OTL.exe
+PRC - [2016/06/24 04:20:32 | 000,392,136 | ---- | M] (Mozilla Corporation) -- C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+PRC - [2012/07/09 00:40:10 | 000,104,912 | ---- | M] (Microsoft Corporation) -- C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe
+
+
+[color=#E56717]========== Modules (No Company Name) ==========[/color]
+
+
+[color=#E56717]========== Services (SafeList) ==========[/color]
+
+SRV:[b]64bit:[/b] - [2016/04/18 15:35:56 | 001,788,832 | ---- | M] (Oracle Corporation) [Auto | Running] -- C:\Windows\SysNative\VBoxService.exe -- (VBoxService)
+SRV:[b]64bit:[/b] - [2009/07/14 03:41:27 | 001,011,712 | ---- | M] (Microsoft Corporation) [Auto | Running] -- C:\Program Files\Windows Defender\mpsvc.dll -- (WinDefend)
+SRV:[b]64bit:[/b] - [2009/07/14 03:40:01 | 000,193,536 | ---- | M] (Microsoft Corporation) [On_Demand | Stopped] -- C:\Windows\SysNative\appmgmts.dll -- (AppMgmt)
+SRV - [2016/06/24 04:20:53 | 000,146,888 | ---- | M] (Mozilla Foundation) [On_Demand | Stopped] -- C:\Program Files (x86)\Mozilla Maintenance Service\maintenanceservice.exe -- (MozillaMaintenance)
+SRV - [2012/07/09 00:40:10 | 000,104,912 | ---- | M] (Microsoft Corporation) [Auto | Running] -- C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe -- (clr_optimization_v4.0.30319_32)
+SRV - [2009/06/10 23:23:09 | 000,066,384 | ---- | M] (Microsoft Corporation) [Disabled | Stopped] -- C:\Windows\Microsoft.NET\Framework\v2.0.50727\mscorsvw.exe -- (clr_optimization_v2.0.50727_32)
+
+
+[color=#E56717]========== Driver Services (SafeList) ==========[/color]
+
+DRV:[b]64bit:[/b] - [2016/04/18 15:36:06 | 000,164,344 | ---- | M] (Oracle Corporation) [Kernel | Boot | Running] -- C:\Windows\SysNative\drivers\VBoxGuest.sys -- (VBoxGuest)
+DRV:[b]64bit:[/b] - [2016/04/18 15:36:04 | 000,149,376 | ---- | M] (Oracle Corporation) [Kernel | On_Demand | Running] -- C:\Windows\SysNative\drivers\VBoxVideo.sys -- (VBoxVideo)
+DRV:[b]64bit:[/b] - [2016/04/18 15:35:50 | 000,128,992 | ---- | M] (Oracle Corporation) [Kernel | On_Demand | Running] -- C:\Windows\SysNative\drivers\VBoxMouse.sys -- (VBoxMouse)
+DRV:[b]64bit:[/b] - [2016/04/18 15:35:46 | 000,291,136 | ---- | M] (Oracle Corporation) [File_System | System | Running] -- C:\Windows\SysNative\drivers\VBoxSF.sys -- (VBoxSF)
+DRV:[b]64bit:[/b] - [2010/11/21 05:24:33 | 000,059,392 | ---- | M] (Microsoft Corporation) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\TsUsbFlt.sys -- (TsUsbFlt)
+DRV:[b]64bit:[/b] - [2010/11/21 05:23:48 | 000,071,168 | ---- | M] (Microsoft Corporation) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\dmvsc.sys -- (dmvsc)
+DRV:[b]64bit:[/b] - [2010/11/21 05:23:47 | 000,107,904 | ---- | M] (Advanced Micro Devices) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\amdsata.sys -- (amdsata)
+DRV:[b]64bit:[/b] - [2010/11/21 05:23:47 | 000,078,720 | ---- | M] (Hewlett-Packard Company) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\HpSAMD.sys -- (HpSAMD)
+DRV:[b]64bit:[/b] - [2010/11/21 05:23:47 | 000,031,232 | ---- | M] (Microsoft Corporation) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\TsUsbGD.sys -- (TsUsbGD)
+DRV:[b]64bit:[/b] - [2010/11/21 05:23:47 | 000,027,008 | ---- | M] (Advanced Micro Devices) [Kernel | Boot | Running] -- C:\Windows\SysNative\drivers\amdxata.sys -- (amdxata)
+DRV:[b]64bit:[/b] - [2009/07/14 03:52:20 | 000,194,128 | ---- | M] (AMD Technologies Inc.) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\amdsbs.sys -- (amdsbs)
+DRV:[b]64bit:[/b] - [2009/07/14 03:48:04 | 000,065,600 | ---- | M] (LSI Corporation) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\lsi_sas2.sys -- (LSI_SAS2)
+DRV:[b]64bit:[/b] - [2009/07/14 03:47:48 | 000,023,104 | ---- | M] (Microsoft Corporation) [Recognizer | Boot | Unknown] -- C:\Windows\SysNative\drivers\fs_rec.sys -- (Fs_Rec)
+DRV:[b]64bit:[/b] - [2009/07/14 03:45:55 | 000,024,656 | ---- | M] (Promise Technology) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\stexstor.sys -- (stexstor)
+DRV:[b]64bit:[/b] - [2009/06/10 22:34:33 | 003,286,016 | ---- | M] (Broadcom Corporation) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\evbda.sys -- (ebdrv)
+DRV:[b]64bit:[/b] - [2009/06/10 22:34:28 | 000,468,480 | ---- | M] (Broadcom Corporation) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\bxvbda.sys -- (b06bdrv)
+DRV:[b]64bit:[/b] - [2009/06/10 22:34:23 | 000,270,848 | ---- | M] (Broadcom Corporation) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\b57nd60a.sys -- (b57nd60a)
+DRV:[b]64bit:[/b] - [2009/06/10 22:31:59 | 000,031,232 | ---- | M] (Hauppauge Computer Works, Inc.) [Kernel | On_Demand | Stopped] -- C:\Windows\SysNative\drivers\hcw85cir.sys -- (hcw85cir)
+DRV - [2009/07/14 03:19:10 | 000,019,008 | ---- | M] (Microsoft Corporation) [File_System | On_Demand | Stopped] -- C:\Windows\SysWOW64\drivers\wimmount.sys -- (WIMMount)
+
+
+[color=#E56717]========== Standard Registry (SafeList) ==========[/color]
+
+
+[color=#E56717]========== Internet Explorer ==========[/color]
+
+IE:[b]64bit:[/b] - HKLM\..\SearchScopes,DefaultScope = {0633EE93-D776-472f-A0FF-E1416B8B2E3A}
+IE:[b]64bit:[/b] - HKLM\..\SearchScopes\{0633EE93-D776-472f-A0FF-E1416B8B2E3A}: "URL" = http://www.bing.com/search?q={searchTerms}&FORM=IE8SRC
+IE - HKLM\SOFTWARE\Microsoft\Internet Explorer\Main,Local Page = C:\Windows\SysWOW64\blank.htm
+IE - HKLM\..\SearchScopes,DefaultScope = {0633EE93-D776-472f-A0FF-E1416B8B2E3A}
+IE - HKLM\..\SearchScopes\{0633EE93-D776-472f-A0FF-E1416B8B2E3A}: "URL" = http://www.bing.com/search?q={searchTerms}&FORM=IE8SRC
+
+IE - HKCU\SOFTWARE\Microsoft\Internet Explorer\Main,Start Page Redirect Cache = http://www.msn.com/fr-fr/?ocid=iehp
+IE - HKCU\SOFTWARE\Microsoft\Internet Explorer\Main,Start Page Redirect Cache AcceptLangs = fr
+IE - HKCU\SOFTWARE\Microsoft\Internet Explorer\Main,Start Page Redirect Cache_TIMESTAMP = 26 FD 03 D1 2C E0 D1 01  [binary data]
+IE - HKCU\..\SearchScopes,DefaultScope = {0633EE93-D776-472f-A0FF-E1416B8B2E3A}
+IE - HKCU\..\SearchScopes\{0633EE93-D776-472f-A0FF-E1416B8B2E3A}: "URL" = http://www.bing.com/search?q={searchTerms}&src=IE-SearchBox&FORM=IE8SRC
+IE - HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings: "ProxyEnable" = 0
+
+[color=#E56717]========== FireFox ==========[/color]
+
+FF - prefs.js..browser.search.countryCode: "FR"
+FF - prefs.js..browser.search.region: "FR"
+FF - prefs.js..extensions.enabledAddons: %7B972ce4c6-7e08-4474-a285-3208198ce6fd%7D:47.0.1
+FF - user.js - File not found
+
+
+FF - HKEY_LOCAL_MACHINE\software\mozilla\Mozilla Firefox 47.0.1\extensions\\Components: C:\Program Files (x86)\Mozilla Firefox\components
+FF - HKEY_LOCAL_MACHINE\software\mozilla\Mozilla Firefox 47.0.1\extensions\\Plugins: C:\Program Files (x86)\Mozilla Firefox\plugins
+
+[2016/07/19 22:49:33 | 000,000,000 | ---D | M] (No name found) -- C:\Users\Xavier\AppData\Roaming\mozilla\Extensions
+[2016/07/30 12:29:25 | 000,000,000 | ---D | M] (No name found) -- C:\Users\Xavier\AppData\Roaming\mozilla\Firefox\Profiles\r5euxs79.default\extensions
+[2016/07/30 12:29:25 | 000,006,260 | ---- | M] () (No name found) -- C:\Users\Xavier\AppData\Roaming\mozilla\firefox\profiles\r5euxs79.default\features\{b9e2a039-7d0c-4ff6-9c3c-7d10f7eec75a}\e10srollout@mozilla.org.xpi
+[2016/07/30 12:29:25 | 000,686,164 | ---- | M] () (No name found) -- C:\Users\Xavier\AppData\Roaming\mozilla\firefox\profiles\r5euxs79.default\features\{b9e2a039-7d0c-4ff6-9c3c-7d10f7eec75a}\firefox@getpocket.com.xpi
+[2016/07/30 12:29:25 | 001,696,657 | ---- | M] () (No name found) -- C:\Users\Xavier\AppData\Roaming\mozilla\firefox\profiles\r5euxs79.default\features\{b9e2a039-7d0c-4ff6-9c3c-7d10f7eec75a}\loop@mozilla.org.xpi
+[2016/07/19 22:48:57 | 000,000,000 | ---D | M] (No name found) -- C:\Program Files (x86)\Mozilla Firefox\browser\extensions
+
+O1 HOSTS File: ([2009/06/10 23:00:26 | 000,000,824 | ---- | M]) - C:\Windows\SysNative\drivers\etc\hosts
+O4:[b]64bit:[/b] - HKLM..\Run: [VBoxTray] C:\Windows\SysNative\VBoxTray.exe (Oracle Corporation)
+O6 - HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer: NoActiveDesktop = 1
+O6 - HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer: NoActiveDesktopChanges = 1
+O6 - HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\System: ConsentPromptBehaviorAdmin = 5
+O6 - HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\System: ConsentPromptBehaviorUser = 3
+O13[b]64bit:[/b] - gopher Prefix: missing
+O13 - gopher Prefix: missing
+O17 - HKLM\System\CCS\Services\Tcpip\Parameters: DhcpNameServer = 10.0.2.3
+O17 - HKLM\System\CCS\Services\Tcpip\Parameters\Interfaces\{FF7089AF-3B8F-40B8-A097-11C252B0DBA0}: DhcpNameServer = 10.0.2.3
+O20:[b]64bit:[/b] - HKLM Winlogon: Shell - (explorer.exe) - C:\Windows\explorer.exe (Microsoft Corporation)
+O20:[b]64bit:[/b] - HKLM Winlogon: UserInit - (C:\Windows\system32\userinit.exe) - C:\Windows\SysNative\userinit.exe (Microsoft Corporation)
+O20 - HKLM Winlogon: Shell - (explorer.exe) - C:\Windows\SysWow64\explorer.exe (Microsoft Corporation)
+O20 - HKLM Winlogon: UserInit - (userinit.exe) - C:\Windows\SysWow64\userinit.exe (Microsoft Corporation)
+O21:[b]64bit:[/b] - SSODL: WebCheck - {E6FB5E20-DE35-11CF-9C87-00AA005127ED} - No CLSID value found.
+O21 - SSODL: WebCheck - {E6FB5E20-DE35-11CF-9C87-00AA005127ED} - No CLSID value found.
+O32 - HKLM CDRom: AutoRun - 1
+O33 - MountPoints2\{ed690aed-4c1a-11e6-8b0b-806e6f6e6963}\Shell - "" = AutoRun
+O33 - MountPoints2\{ed690aed-4c1a-11e6-8b0b-806e6f6e6963}\Shell\AutoRun\command - "" = D:\VBoxWindowsAdditions.exe
+O34 - HKLM BootExecute: (autocheck autochk *)
+O35:[b]64bit:[/b] - HKLM\..comfile [open] -- "%1" %*
+O35:[b]64bit:[/b] - HKLM\..exefile [open] -- "%1" %*
+O35 - HKLM\..comfile [open] -- "%1" %*
+O35 - HKLM\..exefile [open] -- "%1" %*
+O37:[b]64bit:[/b] - HKLM\...com [@ = comfile] -- "%1" %*
+O37:[b]64bit:[/b] - HKLM\...exe [@ = exefile] -- "%1" %*
+O37 - HKLM\...com [@ = comfile] -- "%1" %*
+O37 - HKLM\...exe [@ = exefile] -- "%1" %*
+O38 - SubSystems\\Windows: (ServerDll=winsrv:UserServerDllInitialization,3)
+O38 - SubSystems\\Windows: (ServerDll=winsrv:ConServerDllInitialization,2)
+O38 - SubSystems\\Windows: (ServerDll=sxssrv,4)
+
+NetSvcs:[b]64bit:[/b] AppMgmt - C:\Windows\SysNative\appmgmts.dll (Microsoft Corporation)
+
+
+SafeBootMin:[b]64bit:[/b] AppMgmt - C:\Windows\SysNative\appmgmts.dll (Microsoft Corporation)
+SafeBootMin:[b]64bit:[/b] Base - Driver Group
+SafeBootMin:[b]64bit:[/b] Boot Bus Extender - Driver Group
+SafeBootMin:[b]64bit:[/b] Boot file system - Driver Group
+SafeBootMin:[b]64bit:[/b] File system - Driver Group
+SafeBootMin:[b]64bit:[/b] Filter - Driver Group
+SafeBootMin:[b]64bit:[/b] HelpSvc - Service
+SafeBootMin:[b]64bit:[/b] PCI Configuration - Driver Group
+SafeBootMin:[b]64bit:[/b] PNP Filter - Driver Group
+SafeBootMin:[b]64bit:[/b] Primary disk - Driver Group
+SafeBootMin:[b]64bit:[/b] sacsvr - Service
+SafeBootMin:[b]64bit:[/b] SCSI Class - Driver Group
+SafeBootMin:[b]64bit:[/b] System Bus Extender - Driver Group
+SafeBootMin:[b]64bit:[/b] vmms - Service
+SafeBootMin:[b]64bit:[/b] WinDefend - C:\Program Files\Windows Defender\mpsvc.dll (Microsoft Corporation)
+SafeBootMin:[b]64bit:[/b] WudfRd - Driver
+SafeBootMin:[b]64bit:[/b] {36FC9E60-C465-11CF-8056-444553540000} - Universal Serial Bus controllers
+SafeBootMin:[b]64bit:[/b] {4D36E965-E325-11CE-BFC1-08002BE10318} - CD-ROM Drive
+SafeBootMin:[b]64bit:[/b] {4D36E967-E325-11CE-BFC1-08002BE10318} - DiskDrive
+SafeBootMin:[b]64bit:[/b] {4D36E969-E325-11CE-BFC1-08002BE10318} - Standard floppy disk controller
+SafeBootMin:[b]64bit:[/b] {4D36E96A-E325-11CE-BFC1-08002BE10318} - Hdc
+SafeBootMin:[b]64bit:[/b] {4D36E96B-E325-11CE-BFC1-08002BE10318} - Keyboard
+SafeBootMin:[b]64bit:[/b] {4D36E96F-E325-11CE-BFC1-08002BE10318} - Mouse
+SafeBootMin:[b]64bit:[/b] {4D36E977-E325-11CE-BFC1-08002BE10318} - PCMCIA Adapters
+SafeBootMin:[b]64bit:[/b] {4D36E97B-E325-11CE-BFC1-08002BE10318} - SCSIAdapter
+SafeBootMin:[b]64bit:[/b] {4D36E97D-E325-11CE-BFC1-08002BE10318} - System
+SafeBootMin:[b]64bit:[/b] {4D36E980-E325-11CE-BFC1-08002BE10318} - Floppy disk drive
+SafeBootMin:[b]64bit:[/b] {533C5B84-EC70-11D2-9505-00C04F79DEAF} - Volume shadow copy
+SafeBootMin:[b]64bit:[/b] {6BDD1FC1-810F-11D0-BEC7-08002BE2092F} - IEEE 1394 Bus host controllers
+SafeBootMin:[b]64bit:[/b] {71A27CDD-812A-11D0-BEC7-08002BE2092F} - Volume
+SafeBootMin:[b]64bit:[/b] {745A17A0-74D3-11D0-B6FE-00A0C90F57DA} - Human Interface Devices
+SafeBootMin:[b]64bit:[/b] {D48179BE-EC20-11D1-B6B8-00C04FA372A7} - SBP2 IEEE 1394 Devices
+SafeBootMin:[b]64bit:[/b] {D94EE5D8-D189-4994-83D2-F68D7D41B0E6} - SecurityDevices
+SafeBootMin: Base - Driver Group
+SafeBootMin: Boot Bus Extender - Driver Group
+SafeBootMin: Boot file system - Driver Group
+SafeBootMin: File system - Driver Group
+SafeBootMin: Filter - Driver Group
+SafeBootMin: HelpSvc - Service
+SafeBootMin: PCI Configuration - Driver Group
+SafeBootMin: PNP Filter - Driver Group
+SafeBootMin: Primary disk - Driver Group
+SafeBootMin: sacsvr - Service
+SafeBootMin: SCSI Class - Driver Group
+SafeBootMin: System Bus Extender - Driver Group
+SafeBootMin: vmms - Service
+SafeBootMin: WudfRd - Driver
+SafeBootMin: {36FC9E60-C465-11CF-8056-444553540000} - Universal Serial Bus controllers
+SafeBootMin: {4D36E965-E325-11CE-BFC1-08002BE10318} - CD-ROM Drive
+SafeBootMin: {4D36E967-E325-11CE-BFC1-08002BE10318} - DiskDrive
+SafeBootMin: {4D36E969-E325-11CE-BFC1-08002BE10318} - Standard floppy disk controller
+SafeBootMin: {4D36E96A-E325-11CE-BFC1-08002BE10318} - Hdc
+SafeBootMin: {4D36E96B-E325-11CE-BFC1-08002BE10318} - Keyboard
+SafeBootMin: {4D36E96F-E325-11CE-BFC1-08002BE10318} - Mouse
+SafeBootMin: {4D36E977-E325-11CE-BFC1-08002BE10318} - PCMCIA Adapters
+SafeBootMin: {4D36E97B-E325-11CE-BFC1-08002BE10318} - SCSIAdapter
+SafeBootMin: {4D36E97D-E325-11CE-BFC1-08002BE10318} - System
+SafeBootMin: {4D36E980-E325-11CE-BFC1-08002BE10318} - Floppy disk drive
+SafeBootMin: {533C5B84-EC70-11D2-9505-00C04F79DEAF} - Volume shadow copy
+SafeBootMin: {6BDD1FC1-810F-11D0-BEC7-08002BE2092F} - IEEE 1394 Bus host controllers
+SafeBootMin: {71A27CDD-812A-11D0-BEC7-08002BE2092F} - Volume
+SafeBootMin: {745A17A0-74D3-11D0-B6FE-00A0C90F57DA} - Human Interface Devices
+SafeBootMin: {D48179BE-EC20-11D1-B6B8-00C04FA372A7} - SBP2 IEEE 1394 Devices
+SafeBootMin: {D94EE5D8-D189-4994-83D2-F68D7D41B0E6} - SecurityDevices
+
+SafeBootNet:[b]64bit:[/b] AppMgmt - C:\Windows\SysNative\appmgmts.dll (Microsoft Corporation)
+SafeBootNet:[b]64bit:[/b] Base - Driver Group
+SafeBootNet:[b]64bit:[/b] Boot Bus Extender - Driver Group
+SafeBootNet:[b]64bit:[/b] Boot file system - Driver Group
+SafeBootNet:[b]64bit:[/b] File system - Driver Group
+SafeBootNet:[b]64bit:[/b] Filter - Driver Group
+SafeBootNet:[b]64bit:[/b] HelpSvc - Service
+SafeBootNet:[b]64bit:[/b] Messenger - Service
+SafeBootNet:[b]64bit:[/b] NDIS Wrapper - Driver Group
+SafeBootNet:[b]64bit:[/b] NetBIOSGroup - Driver Group
+SafeBootNet:[b]64bit:[/b] NetDDEGroup - Driver Group
+SafeBootNet:[b]64bit:[/b] Network - Driver Group
+SafeBootNet:[b]64bit:[/b] NetworkProvider - Driver Group
+SafeBootNet:[b]64bit:[/b] PCI Configuration - Driver Group
+SafeBootNet:[b]64bit:[/b] PNP Filter - Driver Group
+SafeBootNet:[b]64bit:[/b] PNP_TDI - Driver Group
+SafeBootNet:[b]64bit:[/b] Primary disk - Driver Group
+SafeBootNet:[b]64bit:[/b] rdsessmgr - Service
+SafeBootNet:[b]64bit:[/b] sacsvr - Service
+SafeBootNet:[b]64bit:[/b] SCSI Class - Driver Group
+SafeBootNet:[b]64bit:[/b] Streams Drivers - Driver Group
+SafeBootNet:[b]64bit:[/b] System Bus Extender - Driver Group
+SafeBootNet:[b]64bit:[/b] TDI - Driver Group
+SafeBootNet:[b]64bit:[/b] vmms - Service
+SafeBootNet:[b]64bit:[/b] WinDefend - C:\Program Files\Windows Defender\mpsvc.dll (Microsoft Corporation)
+SafeBootNet:[b]64bit:[/b] WudfRd - Driver
+SafeBootNet:[b]64bit:[/b] WudfUsbccidDriver - Driver
+SafeBootNet:[b]64bit:[/b] {36FC9E60-C465-11CF-8056-444553540000} - Universal Serial Bus controllers
+SafeBootNet:[b]64bit:[/b] {4D36E965-E325-11CE-BFC1-08002BE10318} - CD-ROM Drive
+SafeBootNet:[b]64bit:[/b] {4D36E967-E325-11CE-BFC1-08002BE10318} - DiskDrive
+SafeBootNet:[b]64bit:[/b] {4D36E969-E325-11CE-BFC1-08002BE10318} - Standard floppy disk controller
+SafeBootNet:[b]64bit:[/b] {4D36E96A-E325-11CE-BFC1-08002BE10318} - Hdc
+SafeBootNet:[b]64bit:[/b] {4D36E96B-E325-11CE-BFC1-08002BE10318} - Keyboard
+SafeBootNet:[b]64bit:[/b] {4D36E96F-E325-11CE-BFC1-08002BE10318} - Mouse
+SafeBootNet:[b]64bit:[/b] {4D36E972-E325-11CE-BFC1-08002BE10318} - Net
+SafeBootNet:[b]64bit:[/b] {4D36E973-E325-11CE-BFC1-08002BE10318} - NetClient
+SafeBootNet:[b]64bit:[/b] {4D36E974-E325-11CE-BFC1-08002BE10318} - NetService
+SafeBootNet:[b]64bit:[/b] {4D36E975-E325-11CE-BFC1-08002BE10318} - NetTrans
+SafeBootNet:[b]64bit:[/b] {4D36E977-E325-11CE-BFC1-08002BE10318} - PCMCIA Adapters
+SafeBootNet:[b]64bit:[/b] {4D36E97B-E325-11CE-BFC1-08002BE10318} - SCSIAdapter
+SafeBootNet:[b]64bit:[/b] {4D36E97D-E325-11CE-BFC1-08002BE10318} - System
+SafeBootNet:[b]64bit:[/b] {4D36E980-E325-11CE-BFC1-08002BE10318} - Floppy disk drive
+SafeBootNet:[b]64bit:[/b] {50DD5230-BA8A-11D1-BF5D-0000F805F530} - Smart card readers
+SafeBootNet:[b]64bit:[/b] {533C5B84-EC70-11D2-9505-00C04F79DEAF} - Volume shadow copy
+SafeBootNet:[b]64bit:[/b] {6BDD1FC1-810F-11D0-BEC7-08002BE2092F} - IEEE 1394 Bus host controllers
+SafeBootNet:[b]64bit:[/b] {71A27CDD-812A-11D0-BEC7-08002BE2092F} - Volume
+SafeBootNet:[b]64bit:[/b] {745A17A0-74D3-11D0-B6FE-00A0C90F57DA} - Human Interface Devices
+SafeBootNet:[b]64bit:[/b] {D48179BE-EC20-11D1-B6B8-00C04FA372A7} - SBP2 IEEE 1394 Devices
+SafeBootNet:[b]64bit:[/b] {D94EE5D8-D189-4994-83D2-F68D7D41B0E6} - SecurityDevices
+SafeBootNet: Base - Driver Group
+SafeBootNet: Boot Bus Extender - Driver Group
+SafeBootNet: Boot file system - Driver Group
+SafeBootNet: File system - Driver Group
+SafeBootNet: Filter - Driver Group
+SafeBootNet: HelpSvc - Service
+SafeBootNet: Messenger - Service
+SafeBootNet: NDIS Wrapper - Driver Group
+SafeBootNet: NetBIOSGroup - Driver Group
+SafeBootNet: NetDDEGroup - Driver Group
+SafeBootNet: Network - Driver Group
+SafeBootNet: NetworkProvider - Driver Group
+SafeBootNet: PCI Configuration - Driver Group
+SafeBootNet: PNP Filter - Driver Group
+SafeBootNet: PNP_TDI - Driver Group
+SafeBootNet: Primary disk - Driver Group
+SafeBootNet: rdsessmgr - Service
+SafeBootNet: sacsvr - Service
+SafeBootNet: SCSI Class - Driver Group
+SafeBootNet: Streams Drivers - Driver Group
+SafeBootNet: System Bus Extender - Driver Group
+SafeBootNet: TDI - Driver Group
+SafeBootNet: vmms - Service
+SafeBootNet: WudfRd - Driver
+SafeBootNet: WudfUsbccidDriver - Driver
+SafeBootNet: {36FC9E60-C465-11CF-8056-444553540000} - Universal Serial Bus controllers
+SafeBootNet: {4D36E965-E325-11CE-BFC1-08002BE10318} - CD-ROM Drive
+SafeBootNet: {4D36E967-E325-11CE-BFC1-08002BE10318} - DiskDrive
+SafeBootNet: {4D36E969-E325-11CE-BFC1-08002BE10318} - Standard floppy disk controller
+SafeBootNet: {4D36E96A-E325-11CE-BFC1-08002BE10318} - Hdc
+SafeBootNet: {4D36E96B-E325-11CE-BFC1-08002BE10318} - Keyboard
+SafeBootNet: {4D36E96F-E325-11CE-BFC1-08002BE10318} - Mouse
+SafeBootNet: {4D36E972-E325-11CE-BFC1-08002BE10318} - Net
+SafeBootNet: {4D36E973-E325-11CE-BFC1-08002BE10318} - NetClient
+SafeBootNet: {4D36E974-E325-11CE-BFC1-08002BE10318} - NetService
+SafeBootNet: {4D36E975-E325-11CE-BFC1-08002BE10318} - NetTrans
+SafeBootNet: {4D36E977-E325-11CE-BFC1-08002BE10318} - PCMCIA Adapters
+SafeBootNet: {4D36E97B-E325-11CE-BFC1-08002BE10318} - SCSIAdapter
+SafeBootNet: {4D36E97D-E325-11CE-BFC1-08002BE10318} - System
+SafeBootNet: {4D36E980-E325-11CE-BFC1-08002BE10318} - Floppy disk drive
+SafeBootNet: {50DD5230-BA8A-11D1-BF5D-0000F805F530} - Smart card readers
+SafeBootNet: {533C5B84-EC70-11D2-9505-00C04F79DEAF} - Volume shadow copy
+SafeBootNet: {6BDD1FC1-810F-11D0-BEC7-08002BE2092F} - IEEE 1394 Bus host controllers
+SafeBootNet: {71A27CDD-812A-11D0-BEC7-08002BE2092F} - Volume
+SafeBootNet: {745A17A0-74D3-11D0-B6FE-00A0C90F57DA} - Human Interface Devices
+SafeBootNet: {D48179BE-EC20-11D1-B6B8-00C04FA372A7} - SBP2 IEEE 1394 Devices
+SafeBootNet: {D94EE5D8-D189-4994-83D2-F68D7D41B0E6} - SecurityDevices
+
+ActiveX:[b]64bit:[/b] {1AD147D0-BE0E-3D6C-AC11-64F6DC4163F1} - .NET Framework
+ActiveX:[b]64bit:[/b] {22d6f312-b0f6-11d0-94ab-0080c74c7e95} - Microsoft Windows Media Player 12.0
+ActiveX:[b]64bit:[/b] {2C7339CF-2B09-4501-B3F3-F3508C9228ED} - %SystemRoot%\system32\regsvr32.exe /s /n /i:/UserInstall %SystemRoot%\system32\themeui.dll
+ActiveX:[b]64bit:[/b] {3af36230-a269-11d1-b5bf-0000f8051515} - Offline Browsing Pack
+ActiveX:[b]64bit:[/b] {44BBA840-CC51-11CF-AAFA-00AA00B6015C} - "%ProgramFiles%\Windows Mail\WinMail.exe" OCInstallUserConfigOE
+ActiveX:[b]64bit:[/b] {44BBA855-CC51-11CF-AAFA-00AA00B6015F} - DirectDrawEx
+ActiveX:[b]64bit:[/b] {45ea75a0-a269-11d1-b5bf-0000f8051515} - Internet Explorer Help
+ActiveX:[b]64bit:[/b] {4f645220-306d-11d2-995d-00c04f98bbc9} - Microsoft Windows Script 5.6
+ActiveX:[b]64bit:[/b] {5fd399c0-a70a-11d1-9948-00c04f98bbc9} - Internet Explorer Setup Tools
+ActiveX:[b]64bit:[/b] {630b1da0-b465-11d1-9948-00c04f98bbc9} - Browsing Enhancements
+ActiveX:[b]64bit:[/b] {6BF52A52-394A-11d3-B153-00C04F79FAA6} - Microsoft Windows Media Player
+ActiveX:[b]64bit:[/b] {6fab99d0-bab8-11d1-994a-00c04f98bbc9} - MSN Site Access
+ActiveX:[b]64bit:[/b] {7790769C-0471-11d2-AF11-00C04FA35D02} - Address Book 7
+ActiveX:[b]64bit:[/b] {89820200-ECBD-11cf-8B85-00AA005B4340} - regsvr32.exe /s /n /i:U shell32.dll
+ActiveX:[b]64bit:[/b] {89820200-ECBD-11cf-8B85-00AA005B4383} - C:\Windows\System32\ie4uinit.exe -BaseSettings
+ActiveX:[b]64bit:[/b] {89B4C1CD-B018-4511-B0A1-5476DBF70820} - C:\Windows\system32\Rundll32.exe C:\Windows\system32\mscories.dll,Install
+ActiveX:[b]64bit:[/b] {9381D8F2-0288-11D0-9501-00AA00B911A5} - Dynamic HTML Data Binding
+ActiveX:[b]64bit:[/b] {C9E9A340-D1F1-11D0-821E-444553540600} - Internet Explorer Core Fonts
+ActiveX:[b]64bit:[/b] {de5aed00-a4bf-11d1-9948-00c04f98bbc9} - HTML Help
+ActiveX:[b]64bit:[/b] {E92B03AB-B707-11d2-9CBD-0000F87A369E} - Active Directory Service Interface
+ActiveX:[b]64bit:[/b] {FEBEF00C-046D-438D-8A88-BF94A6C9E703} - .NET Framework
+ActiveX:[b]64bit:[/b] >{22d6f312-b0f6-11d0-94ab-0080c74c7e95} - %SystemRoot%\system32\unregmp2.exe /ShowWMP
+ActiveX:[b]64bit:[/b] >{26923b43-4d38-484f-9b9e-de460746276c} - C:\Windows\System32\ie4uinit.exe -UserIconConfig
+ActiveX:[b]64bit:[/b] >{60B49E34-C7CC-11D0-8953-00A0C90347FF} - "C:\Windows\System32\rundll32.exe" "C:\Windows\System32\iedkcs32.dll",BrandIEActiveSetup SIGNUP
+ActiveX: {1AD147D0-BE0E-3D6C-AC11-64F6DC4163F1} - .NET Framework
+ActiveX: {22d6f312-b0f6-11d0-94ab-0080c74c7e95} - Microsoft Windows Media Player 12.0
+ActiveX: {2C7339CF-2B09-4501-B3F3-F3508C9228ED} - %SystemRoot%\system32\regsvr32.exe /s /n /i:/UserInstall %SystemRoot%\system32\themeui.dll
+ActiveX: {3af36230-a269-11d1-b5bf-0000f8051515} - Offline Browsing Pack
+ActiveX: {44BBA840-CC51-11CF-AAFA-00AA00B6015C} - "%ProgramFiles(x86)%\Windows Mail\WinMail.exe" OCInstallUserConfigOE
+ActiveX: {44BBA855-CC51-11CF-AAFA-00AA00B6015F} - DirectDrawEx
+ActiveX: {45ea75a0-a269-11d1-b5bf-0000f8051515} - Internet Explorer Help
+ActiveX: {4f645220-306d-11d2-995d-00c04f98bbc9} - Microsoft Windows Script 5.6
+ActiveX: {5fd399c0-a70a-11d1-9948-00c04f98bbc9} - Internet Explorer Setup Tools
+ActiveX: {630b1da0-b465-11d1-9948-00c04f98bbc9} - Browsing Enhancements
+ActiveX: {6BF52A52-394A-11d3-B153-00C04F79FAA6} - Microsoft Windows Media Player
+ActiveX: {6fab99d0-bab8-11d1-994a-00c04f98bbc9} - MSN Site Access
+ActiveX: {7790769C-0471-11d2-AF11-00C04FA35D02} - Address Book 7
+ActiveX: {7C028AF8-F614-47B3-82DA-BA94E41B1089} - .NET Framework
+ActiveX: {89820200-ECBD-11cf-8B85-00AA005B4340} - regsvr32.exe /s /n /i:U shell32.dll
+ActiveX: {89820200-ECBD-11cf-8B85-00AA005B4383} - C:\Windows\SysWOW64\ie4uinit.exe -BaseSettings
+ActiveX: {89B4C1CD-B018-4511-B0A1-5476DBF70820} - C:\Windows\SysWOW64\Rundll32.exe C:\Windows\SysWOW64\mscories.dll,Install
+ActiveX: {9381D8F2-0288-11D0-9501-00AA00B911A5} - Dynamic HTML Data Binding
+ActiveX: {C6BAF60B-6E91-453F-BFF9-D3789CFEFCDD} - .NET Framework
+ActiveX: {C9E9A340-D1F1-11D0-821E-444553540600} - Internet Explorer Core Fonts
+ActiveX: {de5aed00-a4bf-11d1-9948-00c04f98bbc9} - HTML Help
+ActiveX: {E92B03AB-B707-11d2-9CBD-0000F87A369E} - Active Directory Service Interface
+ActiveX: >{22d6f312-b0f6-11d0-94ab-0080c74c7e95} - %SystemRoot%\system32\unregmp2.exe /ShowWMP
+ActiveX: >{26923b43-4d38-484f-9b9e-de460746276c} - C:\Windows\SysWOW64\ie4uinit.exe -UserIconConfig
+ActiveX: >{60B49E34-C7CC-11D0-8953-00A0C90347FF} - "C:\Windows\SysWOW64\rundll32.exe" "C:\Windows\SysWOW64\iedkcs32.dll",BrandIEActiveSetup SIGNUP
+
+Drivers32:[b]64bit:[/b] msacm.l3acm - C:\Windows\System32\l3codeca.acm (Fraunhofer Institut Integrierte Schaltungen IIS)
+Drivers32: msacm.l3acm - C:\Windows\SysWOW64\l3codeca.acm (Fraunhofer Institut Integrierte Schaltungen IIS)
+Drivers32: vidc.cvid - C:\Windows\SysWow64\iccvid.dll (Radius Inc.)
+
+CREATERESTOREPOINT
+Restore point Set: OTL Restore Point
+
+[color=#E56717]========== Files/Folders - Created Within 30 Days ==========[/color]
+
+[2016/07/19 22:54:00 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Local\Deployment
+[2016/07/19 22:54:00 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Local\Apps
+[2016/07/19 22:51:20 | 000,000,000 | ---D | C] -- C:\Program Files (x86)\ZebHelpProcess
+[2016/07/19 22:49:29 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Roaming\Mozilla
+[2016/07/19 22:49:29 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Local\Mozilla
+[2016/07/19 22:48:59 | 000,000,000 | ---D | C] -- C:\Program Files (x86)\Mozilla Maintenance Service
+[2016/07/19 22:48:54 | 000,000,000 | ---D | C] -- C:\Program Files (x86)\Mozilla Firefox
+[2016/07/17 15:55:40 | 000,000,000 | ---D | C] -- C:\Program Files (x86)\Microsoft.NET
+[2016/07/17 15:55:28 | 000,000,000 | -HSD | C] -- C:\Windows\Installer
+[2016/07/17 15:35:08 | 000,000,000 | ---D | C] -- C:\Windows\Panther
+[2016/07/17 15:11:01 | 000,058,336 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wuauclt.exe
+[2016/07/17 15:11:01 | 000,044,512 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wups2.dll
+[2016/07/17 15:11:00 | 002,620,928 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wucltux.dll
+[2016/07/17 15:10:56 | 000,700,384 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wuapi.dll
+[2016/07/17 15:10:56 | 000,581,600 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysWow64\wuapi.dll
+[2016/07/17 15:10:56 | 000,097,792 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wudriver.dll
+[2016/07/17 15:10:56 | 000,092,672 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysWow64\wudriver.dll
+[2016/07/17 15:10:56 | 000,038,880 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wups.dll
+[2016/07/17 15:10:56 | 000,036,320 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysWow64\wups.dll
+[2016/07/17 15:10:52 | 000,198,600 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wuwebv.dll
+[2016/07/17 15:10:52 | 000,179,656 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysWow64\wuwebv.dll
+[2016/07/17 15:10:52 | 000,036,864 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysNative\wuapp.exe
+[2016/07/17 15:10:52 | 000,033,792 | ---- | C] (Microsoft Corporation) -- C:\Windows\SysWow64\wuapp.exe
+[2016/07/17 14:55:42 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Oracle VM VirtualBox Guest Additions
+[2016/07/17 14:55:02 | 000,000,000 | ---D | C] -- C:\Program Files\Oracle
+[2016/07/17 14:54:00 | 000,000,000 | ---D | C] -- C:\Windows\SoftwareDistribution
+[2016/07/17 14:53:41 | 000,000,000 | R--D | C] -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+[2016/07/17 14:53:41 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Searches
+[2016/07/17 14:53:41 | 000,000,000 | R--D | C] -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Administrative Tools
+[2016/07/17 14:53:41 | 000,000,000 | -H-D | C] -- C:\Users\Xavier\Application Data\Microsoft\Internet Explorer\Quick Launch\User Pinned
+[2016/07/17 14:53:33 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Roaming\Identities
+[2016/07/17 14:53:32 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Contacts
+[2016/07/17 14:53:31 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Local\VirtualStore
+[2016/07/17 14:53:26 | 000,000,000 | --SD | C] -- C:\Users\Xavier\AppData\Roaming\Microsoft
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Videos
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Saved Games
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Pictures
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Music
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Maintenance
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Links
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Favorites
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Downloads
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Documents
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\Desktop
+[2016/07/17 14:53:26 | 000,000,000 | R--D | C] -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessories
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Voisinage réseau
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Voisinage d'impression
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\AppData\Local\Temporary Internet Files
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\SendTo
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Recent
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Modèles
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Documents\Mes vidéos
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Documents\Mes images
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Mes documents
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Menu Démarrer
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Documents\Ma musique
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Local Settings
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\AppData\Local\Historique
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Cookies
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\Application Data
+[2016/07/17 14:53:26 | 000,000,000 | -HSD | C] -- C:\Users\Xavier\AppData\Local\Application Data
+[2016/07/17 14:53:26 | 000,000,000 | -H-D | C] -- C:\Users\Xavier\AppData
+[2016/07/17 14:53:26 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Local\Temp
+[2016/07/17 14:53:26 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Local\Microsoft
+[2016/07/17 14:53:26 | 000,000,000 | ---D | C] -- C:\Users\Xavier\AppData\Roaming\Media Center Programs
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\Recovery
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\ProgramData\Modèles
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\Users\Public\Documents\Mes vidéos
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\Users\Public\Documents\Mes images
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\ProgramData\Menu Démarrer
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\Users\Public\Documents\Ma musique
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\Program Files\Fichiers communs
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\ProgramData\Favoris
+[2016/07/17 14:52:58 | 000,000,000 | -HSD | C] -- C:\ProgramData\Bureau
+[2016/07/17 14:35:50 | 000,000,000 | ---D | C] -- C:\Windows\Prefetch
+[2016/07/17 14:35:26 | 000,000,000 | -HSD | C] -- C:\System Volume Information
+
+[color=#E56717]========== Files - Modified Within 30 Days ==========[/color]
+
+[2016/07/30 12:25:09 | 001,667,292 | ---- | M] () -- C:\Windows\SysNative\PerfStringBackup.INI
+[2016/07/30 12:25:09 | 000,747,154 | ---- | M] () -- C:\Windows\SysNative\perfh00C.dat
+[2016/07/30 12:25:09 | 000,653,724 | ---- | M] () -- C:\Windows\SysNative\perfh009.dat
+[2016/07/30 12:25:09 | 000,149,646 | ---- | M] () -- C:\Windows\SysNative\perfc00C.dat
+[2016/07/30 12:25:09 | 000,121,596 | ---- | M] () -- C:\Windows\SysNative\perfc009.dat
+[2016/07/30 12:22:47 | 000,033,248 | -H-- | M] () -- C:\Windows\SysNative\7B296FB0-376B-497e-B012-9C450E1B7327-5P-1.C7483456-A289-439d-8115-601632D005A0
+[2016/07/30 12:22:47 | 000,033,248 | -H-- | M] () -- C:\Windows\SysNative\7B296FB0-376B-497e-B012-9C450E1B7327-5P-0.C7483456-A289-439d-8115-601632D005A0
+[2016/07/30 12:22:02 | 000,000,783 | ---- | M] () -- C:\Users\Xavier\Desktop\ZHPDiag.lnk
+[2016/07/30 12:18:56 | 000,067,584 | --S- | M] () -- C:\Windows\bootstat.dat
+[2016/07/19 22:58:33 | 000,013,030 | ---- | M] () -- C:\PDOXUSRS.NET
+[2016/07/19 22:49:01 | 000,001,147 | ---- | M] () -- C:\Users\Public\Desktop\Mozilla Firefox.lnk
+[2016/07/17 15:58:05 | 001,642,544 | ---- | M] () -- C:\Windows\SysWow64\PerfStringBackup.INI
+[2016/07/17 15:12:01 | 000,001,453 | ---- | M] () -- C:\Users\Xavier\Application Data\Microsoft\Internet Explorer\Quick Launch\Launch Internet Explorer Browser.lnk
+[2016/07/17 14:38:24 | 000,274,464 | ---- | M] () -- C:\Windows\SysNative\FNTCACHE.DAT
+[2016/07/17 14:37:32 | 000,206,497 | ---- | M] () -- C:\Windows\SysWow64\license.rtf
+[2016/07/17 14:37:32 | 000,206,497 | ---- | M] () -- C:\Windows\SysNative\license.rtf
+
+[color=#E56717]========== Files Created - No Company Name ==========[/color]
+
+[2016/07/30 12:22:02 | 000,000,783 | ---- | C] () -- C:\Users\Xavier\Desktop\ZHPDiag.lnk
+[2016/07/19 22:55:29 | 000,013,030 | ---- | C] () -- C:\PDOXUSRS.NET
+[2016/07/19 22:49:01 | 000,001,159 | ---- | C] () -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Mozilla Firefox.lnk
+[2016/07/19 22:49:01 | 000,001,147 | ---- | C] () -- C:\Users\Public\Desktop\Mozilla Firefox.lnk
+[2016/07/17 15:56:29 | 001,642,544 | ---- | C] () -- C:\Windows\SysWow64\PerfStringBackup.INI
+[2016/07/17 15:12:01 | 000,001,453 | ---- | C] () -- C:\Users\Xavier\Application Data\Microsoft\Internet Explorer\Quick Launch\Launch Internet Explorer Browser.lnk
+[2016/07/17 14:53:47 | 000,001,425 | ---- | C] () -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Internet Explorer (64-bit).lnk
+[2016/07/17 14:53:43 | 000,001,459 | ---- | C] () -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Internet Explorer.lnk
+[2016/07/17 14:53:26 | 000,000,290 | ---- | C] () -- C:\Users\Xavier\Application Data\Microsoft\Internet Explorer\Quick Launch\Shows Desktop.lnk
+[2016/07/17 14:53:26 | 000,000,272 | ---- | C] () -- C:\Users\Xavier\Application Data\Microsoft\Internet Explorer\Quick Launch\Window Switcher.lnk
+[2016/07/17 14:37:24 | 000,001,345 | ---- | C] () -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Media Center.lnk
+[2016/07/17 14:37:20 | 000,001,326 | ---- | C] () -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Windows DVD Maker.lnk
+
+[color=#E56717]========== ZeroAccess Check ==========[/color]
+
+[2009/07/14 06:55:00 | 000,000,227 | RHS- | M] () -- C:\Windows\assembly\Desktop.ini
+
+[HKEY_CURRENT_USER\Software\Classes\clsid\{42aedc87-2188-41fd-b9a3-0c966feabec1}\InProcServer32] /64
+
+[HKEY_CURRENT_USER\Software\Classes\Wow6432node\clsid\{42aedc87-2188-41fd-b9a3-0c966feabec1}\InProcServer32]
+
+[HKEY_CURRENT_USER\Software\Classes\clsid\{fbeb8a05-beee-4442-804e-409d6c4515e9}\InProcServer32] /64
+
+[HKEY_CURRENT_USER\Software\Classes\Wow6432node\clsid\{fbeb8a05-beee-4442-804e-409d6c4515e9}\InProcServer32]
+
+[HKEY_LOCAL_MACHINE\Software\Classes\clsid\{42aedc87-2188-41fd-b9a3-0c966feabec1}\InProcServer32] /64
+"" = C:\Windows\SysNative\shell32.dll -- [2010/11/21 05:23:55 | 014,174,208 | ---- | M] (Microsoft Corporation)
+"ThreadingModel" = Apartment
+
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Classes\clsid\{42aedc87-2188-41fd-b9a3-0c966feabec1}\InProcServer32]
+"" = %SystemRoot%\system32\shell32.dll -- [2010/11/21 05:24:02 | 012,872,192 | ---- | M] (Microsoft Corporation)
+"ThreadingModel" = Apartment
+
+[HKEY_LOCAL_MACHINE\Software\Classes\clsid\{5839FCA9-774D-42A1-ACDA-D6A79037F57F}\InProcServer32] /64
+"" = C:\Windows\SysNative\wbem\fastprox.dll -- [2009/07/14 03:40:51 | 000,909,312 | ---- | M] (Microsoft Corporation)
+"ThreadingModel" = Free
+
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Classes\clsid\{5839FCA9-774D-42A1-ACDA-D6A79037F57F}\InProcServer32]
+"" = %systemroot%\system32\wbem\fastprox.dll -- [2010/11/21 05:24:25 | 000,606,208 | ---- | M] (Microsoft Corporation)
+"ThreadingModel" = Free
+
+[HKEY_LOCAL_MACHINE\Software\Classes\clsid\{F3130CDB-AA52-4C3A-AB32-85FFC23AF9C1}\InProcServer32] /64
+"" = C:\Windows\SysNative\wbem\wbemess.dll -- [2009/07/14 03:41:56 | 000,505,856 | ---- | M] (Microsoft Corporation)
+"ThreadingModel" = Both
+
+[HKEY_LOCAL_MACHINE\Software\Wow6432Node\Classes\clsid\{F3130CDB-AA52-4C3A-AB32-85FFC23AF9C1}\InProcServer32]
+
+[color=#E56717]========== Custom Scans ==========[/color]
+
+[color=#A23BEC]< %ALLUSERSPROFILE%\Application Data\*. >[/color]
+
+[color=#A23BEC]< %ALLUSERSPROFILE%\Application Data\*.exe /s >[/color]
+
+[color=#A23BEC]< %APPDATA%\*. >[/color]
+[2016/07/17 14:53:33 | 000,000,000 | ---D | M] -- C:\Users\Xavier\AppData\Roaming\Identities
+[2011/04/12 11:28:08 | 000,000,000 | ---D | M] -- C:\Users\Xavier\AppData\Roaming\Media Center Programs
+[2016/07/19 22:49:01 | 000,000,000 | --SD | M] -- C:\Users\Xavier\AppData\Roaming\Microsoft
+[2016/07/19 22:49:33 | 000,000,000 | ---D | M] -- C:\Users\Xavier\AppData\Roaming\Mozilla
+[2016/07/30 12:24:31 | 000,000,000 | ---D | M] -- C:\Users\Xavier\AppData\Roaming\ZHP
+
+[color=#A23BEC]< %APPDATA%\*.exe /s >[/color]
+[2016/07/30 12:21:55 | 002,233,856 | ---- | M] () -- C:\Users\Xavier\AppData\Roaming\ZHP\ZHPDiag3.exe
+
+[color=#A23BEC]< %SYSTEMDRIVE%\*.exe >[/color]
+
+[color=#A23BEC]< %systemroot%\*. /mp /s >[/color]
+
+[color=#A23BEC]< %systemroot%\system32\*.dll /lockedfiles >[/color]
+
+[color=#A23BEC]< %systemroot%\Tasks\*.job /lockedfiles >[/color]
+
+[color=#A23BEC]< %systemroot%\system32\drivers\*.sys /lockedfiles >[/color]
+
+[color=#A23BEC]< %systemroot%\System32\config\*.sav >[/color]
+
+[color=#A23BEC]< MD5 for: EXPLORER.EXE  >[/color]
+[2010/11/21 05:24:25 | 002,616,320 | ---- | M] (Microsoft Corporation) MD5=40D777B7A95E00593EB1568C68514493 -- C:\Windows\SysWOW64\explorer.exe
+[2010/11/21 05:24:25 | 002,616,320 | ---- | M] (Microsoft Corporation) MD5=40D777B7A95E00593EB1568C68514493 -- C:\Windows\winsxs\wow64_microsoft-windows-explorer_31bf3856ad364e35_6.1.7601.17514_none_ba2f56d3c4bcbafb\explorer.exe
+[2010/11/21 05:24:11 | 002,872,320 | ---- | M] (Microsoft Corporation) MD5=AC4C51EB24AA95B77F705AB159189E24 -- C:\Windows\explorer.exe
+[2010/11/21 05:24:11 | 002,872,320 | ---- | M] (Microsoft Corporation) MD5=AC4C51EB24AA95B77F705AB159189E24 -- C:\Windows\winsxs\amd64_microsoft-windows-explorer_31bf3856ad364e35_6.1.7601.17514_none_afdaac81905bf900\explorer.exe
+
+[color=#A23BEC]< MD5 for: SERVICES.EXE  >[/color]
+[2009/07/14 03:39:37 | 000,328,704 | ---- | M] (Microsoft Corporation) MD5=24ACB7E5BE595468E3B9AA488B9B4FCB -- C:\Windows\SysNative\services.exe
+[2009/07/14 03:39:37 | 000,328,704 | ---- | M] (Microsoft Corporation) MD5=24ACB7E5BE595468E3B9AA488B9B4FCB -- C:\Windows\winsxs\amd64_microsoft-windows-s..s-servicecontroller_31bf3856ad364e35_6.1.7600.16385_none_2b54b20ee6fa07b1\services.exe
+
+[color=#A23BEC]< MD5 for: WININIT.EXE  >[/color]
+[2009/07/14 03:39:52 | 000,129,024 | ---- | M] (Microsoft Corporation) MD5=94355C28C1970635A31B3FE52EB7CEBA -- C:\Windows\SysNative\wininit.exe
+[2009/07/14 03:39:52 | 000,129,024 | ---- | M] (Microsoft Corporation) MD5=94355C28C1970635A31B3FE52EB7CEBA -- C:\Windows\winsxs\amd64_microsoft-windows-wininit_31bf3856ad364e35_6.1.7600.16385_none_8ce7aa761e01ad49\wininit.exe
+[2009/07/14 03:14:45 | 000,096,256 | ---- | M] (Microsoft Corporation) MD5=B5C5DCAD3899512020D135600129D665 -- C:\Windows\SysWOW64\wininit.exe
+[2009/07/14 03:14:45 | 000,096,256 | ---- | M] (Microsoft Corporation) MD5=B5C5DCAD3899512020D135600129D665 -- C:\Windows\winsxs\x86_microsoft-windows-wininit_31bf3856ad364e35_6.1.7600.16385_none_30c90ef265a43c13\wininit.exe
+
+[color=#A23BEC]< MD5 for: WINLOGON.EXE  >[/color]
+[2010/11/21 05:24:29 | 000,390,656 | ---- | M] (Microsoft Corporation) MD5=1151B1BAA6F350B1DB6598E0FEA7C457 -- C:\Windows\SysNative\winlogon.exe
+[2010/11/21 05:24:29 | 000,390,656 | ---- | M] (Microsoft Corporation) MD5=1151B1BAA6F350B1DB6598E0FEA7C457 -- C:\Windows\winsxs\amd64_microsoft-windows-winlogon_31bf3856ad364e35_6.1.7601.17514_none_cde90685eb910636\winlogon.exe
+
+< End of report >

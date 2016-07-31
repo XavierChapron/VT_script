@@ -1,0 +1,440 @@
+﻿Résultats d'analyse de  Farbar Recovery Scan Tool (FRST) (x64) Version: 27-07-2016
+Exécuté par Xavier (administrateur) sur XAVIER-WIN7 (30-07-2016 12:37:49)
+Exécuté depuis C:\Users\Xavier\Downloads
+Profils chargés: Xavier (Profils disponibles: Xavier)
+Platform: Windows 7 Professional Service Pack 1 (X64) Langue: Français (France)
+Internet Explorer Version 8 (Navigateur par défaut: FF)
+Mode d'amorçage: Normal
+Tutoriel pour Farbar Recovery Scan Tool: http://www.geekstogo.com/forum/topic/335081-frst-tutorial-how-to-use-farbar-recovery-scan-tool/
+
+==================== Processus (Avec liste blanche) =================
+
+(Si un élément est inclus dans le fichier fixlist.txt, le processus sera arrêté. Le fichier ne sera pas déplacé.)
+
+(Oracle Corporation) C:\Windows\System32\VBoxService.exe
+(Oracle Corporation) C:\Windows\System32\VBoxTray.exe
+(Microsoft Corporation) C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe
+(Microsoft Corporation) C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorsvw.exe
+
+
+==================== Registre (Avec liste blanche) ===========================
+
+(Si un élément est inclus dans le fichier fixlist.txt, l'élément de Registre sera restauré à la valeur par défaut ou supprimé. Le fichier ne sera pas déplacé.)
+
+HKLM\...\Run: [VBoxTray] => C:\Windows\system32\VBoxTray.exe [1657376 2016-04-18] (Oracle Corporation)
+HKU\S-1-5-21-668496029-3281124509-2471520827-1000\...\MountPoints2: {ed690aed-4c1a-11e6-8b0b-806e6f6e6963} - D:\VBoxWindowsAdditions.exe
+
+==================== Internet (Avec liste blanche) ====================
+
+(Si un élément est inclus dans le fichier fixlist.txt, s'il s'agit d'un élément du Registre, il sera supprimé ou restauré à la valeur par défaut.)
+
+Tcpip\Parameters: [DhcpNameServer] 10.0.2.3
+Tcpip\..\Interfaces\{FF7089AF-3B8F-40B8-A097-11C252B0DBA0}: [DhcpNameServer] 10.0.2.3
+
+Internet Explorer:
+==================
+Filter: deflate - {8f6b0360-b80d-11d0-a9b3-006097942311} - C:\Windows\system32\urlmon.dll [2010-11-21] (Microsoft Corporation)
+Filter-x32: deflate - {8f6b0360-b80d-11d0-a9b3-006097942311} - C:\Windows\SysWOW64\urlmon.dll [2010-11-21] (Microsoft Corporation)
+Filter: gzip - {8f6b0360-b80d-11d0-a9b3-006097942311} - C:\Windows\system32\urlmon.dll [2010-11-21] (Microsoft Corporation)
+Filter-x32: gzip - {8f6b0360-b80d-11d0-a9b3-006097942311} - C:\Windows\SysWOW64\urlmon.dll [2010-11-21] (Microsoft Corporation)
+
+FireFox:
+========
+FF ProfilePath: C:\Users\Xavier\AppData\Roaming\Mozilla\Firefox\Profiles\r5euxs79.default
+
+==================== Services (Avec liste blanche) ========================
+
+(Si un élément est inclus dans le fichier fixlist.txt, il sera supprimé du Registre. Le fichier ne sera pas déplacé, sauf s'il est inscrit séparément.)
+
+R2 VBoxService; C:\Windows\System32\VBoxService.exe [1788832 2016-04-18] (Oracle Corporation)
+R2 WinDefend; C:\Program Files\Windows Defender\mpsvc.dll [1011712 2009-07-14] (Microsoft Corporation)
+
+===================== Pilotes (Avec liste blanche) ==========================
+
+(Si un élément est inclus dans le fichier fixlist.txt, il sera supprimé du Registre. Le fichier ne sera pas déplacé, sauf s'il est inscrit séparément.)
+
+S3 ebdrv; C:\Windows\system32\drivers\evbda.sys [3286016 2009-06-10] (Broadcom Corporation)
+R0 VBoxGuest; C:\Windows\System32\DRIVERS\VBoxGuest.sys [164344 2016-04-18] (Oracle Corporation)
+R3 VBoxMouse; C:\Windows\System32\DRIVERS\VBoxMouse.sys [128992 2016-04-18] (Oracle Corporation)
+R1 VBoxSF; C:\Windows\System32\drivers\VBoxSF.sys [291136 2016-04-18] (Oracle Corporation)
+R3 VBoxVideo; C:\Windows\System32\DRIVERS\VBoxVideo.sys [149376 2016-04-18] (Oracle Corporation)
+
+========================== MD5 Pilotes =======================
+
+C:\Windows\system32\drivers\1394ohci.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\ACPI.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\acpipmi.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\adp94xx.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\adpahci.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\adpu320.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\afd.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\agp440.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\aliide.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\amdide.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\amdk8.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\amdppm.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\amdsata.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\amdsbs.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\amdxata.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\appid.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\arc.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\arcsas.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\asyncmac.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\atapi.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\bxvbda.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\b57nd60a.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\Beep.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\blbdrive.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\bowser.sys 91CE0D3DC57DD377E690A2D324022B08
+C:\Windows\system32\drivers\BrFiltLo.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\BrFiltUp.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\Brserid.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\BrSerWdm.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\BrUsbMdm.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\BrUsbSer.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\bthmodem.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\cdfs.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\cdrom.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\circlass.sys ==> Le MD5 est légitime
+C:\Windows\System32\CLFS.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\CmBatt.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\cmdide.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\cng.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\compbatt.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\CompositeBus.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\crcdisk.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\csc.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\dfsc.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\discache.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\disk.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\dmvsc.sys 5DB085A8A6600BE6401F2B24EECB5415
+C:\Windows\System32\drivers\drmkaud.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\dxgkrnl.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\E1G6032E.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\evbda.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\elxstor.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\errdev.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\exfat.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\fastfat.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\fdc.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\fileinfo.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\filetrace.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\flpydisk.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\fltmgr.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\FsDepends.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\Fs_Rec.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\fvevol.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\gagp30kx.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\hcw85cir.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\HdAudio.sys 975761C778E33CD22498059B91E7373A
+C:\Windows\System32\DRIVERS\HDAudBus.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\HidBatt.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\hidbth.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\hidir.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\hidusb.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\HpSAMD.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\HTTP.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\hwpolicy.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\i8042prt.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\iaStorV.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\iirsp.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\intelide.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\intelppm.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\ipfltdrv.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\IPMIDrv.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\ipnat.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\irenum.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\isapnp.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\msiscsi.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\kbdclass.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\kbdhid.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\ksecdd.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\ksecpkg.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\ksthunk.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\lltdio.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\lsi_fc.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\lsi_sas.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\lsi_sas2.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\lsi_scsi.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\luafv.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\megasas.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\MegaSR.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\modem.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\monitor.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\mouclass.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\mouhid.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\mountmgr.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\mpio.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\mpsdrv.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\mrxdav.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\mrxsmb.sys FAF015B07E3A2874A790A39B7D2C579F
+C:\Windows\System32\DRIVERS\mrxsmb10.sys 08E2345DF129082BCDFFDC1440F9C00D
+C:\Windows\System32\DRIVERS\mrxsmb20.sys 108D87409C5812EF47D81E22843E8C9D
+C:\Windows\System32\drivers\msahci.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\msdsm.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\Msfs.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\mshidkmdf.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\msisadrv.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\MSKSSRV.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\MSPCLOCK.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\MSPQM.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\MsRPC.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\mssmbios.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\MSTEE.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\MTConfig.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\mup.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\nwifi.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\ndis.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\ndiscap.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\ndistapi.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\ndisuio.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\ndiswan.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\NDProxy.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\netbios.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\netbt.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\nfrd960.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\Npfs.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\nsiproxy.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\Ntfs.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\Null.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\nvraid.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\nvstor.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\nv_agp.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\ohci1394.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\parport.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\partmgr.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\pci.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\pciide.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\pcmcia.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\pcw.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\peauth.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\raspptp.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\processr.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\pacer.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\ql2300.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\ql40xx.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\qwavedrv.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\rasacd.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\AgileVpn.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\rasl2tp.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\raspppoe.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\rassstp.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\rdbss.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\rdpbus.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\RDPCDD.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\rdpdr.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\rdpencdd.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\rdprefmp.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\RDPWD.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\rdyboost.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\rspndr.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\vms3cap.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\sbp2port.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\scfilter.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\secdrv.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\serenum.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\serial.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\sermouse.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\sffdisk.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\sffp_mmc.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\sffp_sd.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\sfloppy.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\SiSRaid2.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\sisraid4.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\smb.sys ==> Le MD5 est légitime
+C:\Windows\System32\Drivers\spldr.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\srv.sys 2098B8556D1CEC2ACA9A29CD479E3692
+C:\Windows\System32\DRIVERS\srv2.sys D0F73A42040F21F92FD314B42AC5C9E7
+C:\Windows\System32\DRIVERS\srvnet.sys 2BA8F3250828CCDB4204ECF2C6F40B6A
+C:\Windows\system32\drivers\stexstor.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\vmstorfl.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\storvsc.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\swenum.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\tcpip.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\tcpip.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\tcpipreg.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\tdpipe.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\tdtcp.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\tdx.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\termdd.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\tssecsrv.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\tsusbflt.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\TsUsbGD.sys 9CC2CCAE8A84820EAECB886D477CBCB8
+C:\Windows\System32\DRIVERS\tunnel.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\uagp35.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\udfs.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\uliagpkx.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\umbus.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\umpass.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\usbccgp.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\usbcir.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\usbehci.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\usbhub.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\usbohci.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\usbprint.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\USBSTOR.SYS ==> Le MD5 est légitime
+C:\Windows\system32\drivers\usbuhci.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\VBoxGuest.sys 813D197FC0ECEE2A1F19F2816836CAFC
+C:\Windows\System32\DRIVERS\VBoxMouse.sys A19AE8FE351D095C6F9F6F01F40A3186
+C:\Windows\System32\drivers\VBoxSF.sys 28AEFD5D3F51F3EDA2361E2E36431EEB
+C:\Windows\System32\DRIVERS\VBoxVideo.sys 3A9C8837DC5EE8445DC5C0E7BD0CB2BE
+C:\Windows\System32\drivers\vdrvroot.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\vgapnp.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\vga.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\vhdmp.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\viaide.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\vmbus.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\VMBusHID.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\volmgr.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\volmgrx.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\volsnap.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\vsmraid.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\vwifibus.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\wacompen.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\wanarp.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\wanarp.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\wd.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\Wdf01000.sys ==> Le MD5 est légitime
+C:\Windows\System32\DRIVERS\wfplwf.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\wimmount.sys ==> Le MD5 est légitime
+C:\Windows\SysWOW64\drivers\wimmount.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\wmiacpi.sys ==> Le MD5 est légitime
+C:\Windows\system32\drivers\ws2ifsl.sys ==> Le MD5 est légitime
+C:\Windows\System32\drivers\WudfPf.sys ==> Le MD5 est légitime
+
+==================== NetSvcs (Avec liste blanche) ===================
+
+(Si un élément est inclus dans le fichier fixlist.txt, il sera supprimé du Registre. Le fichier ne sera pas déplacé, sauf s'il est inscrit séparément.)
+
+
+==================== Un mois - Créés - fichiers et dossiers ========
+
+(Si un élément est inclus dans le fichier fixlist.txt, le fichier/dossier sera déplacé.)
+
+2016-07-30 12:37 - 2016-07-30 12:37 - 00087622 _____ C:\Users\Xavier\Desktop\OTL.Txt
+2016-07-30 12:37 - 2016-07-30 12:37 - 00019868 _____ C:\Users\Xavier\Downloads\FRST.txt
+2016-07-30 12:37 - 2016-07-30 12:37 - 00000000 ____D C:\FRST
+2016-07-30 12:36 - 2016-07-30 12:36 - 00087622 _____ C:\Users\Xavier\Downloads\OTL.Txt
+2016-07-30 12:36 - 2016-07-30 12:36 - 00020220 _____ C:\Users\Xavier\Downloads\Extras.Txt
+2016-07-30 12:26 - 2016-07-30 12:27 - 02394112 _____ (Farbar) C:\Users\Xavier\Downloads\FRST64.exe
+2016-07-30 12:24 - 2016-07-30 12:24 - 00602112 _____ (OldTimer Tools) C:\Users\Xavier\Downloads\OTL.exe
+2016-07-30 12:24 - 2016-07-30 12:24 - 00044655 _____ C:\Users\Xavier\Desktop\ZHPDiag.txt
+2016-07-30 12:22 - 2016-07-30 12:24 - 00000000 ____D C:\Users\Xavier\AppData\Roaming\ZHP
+2016-07-30 12:22 - 2016-07-30 12:22 - 00000783 _____ C:\Users\Xavier\Desktop\ZHPDiag.lnk
+2016-07-30 12:21 - 2016-07-30 12:21 - 02233856 _____ C:\Users\Xavier\Downloads\ZHPDiag3.exe
+2016-07-19 22:55 - 2016-07-19 22:58 - 00013030 _____ C:\PDOXUSRS.NET
+2016-07-19 22:54 - 2016-07-19 22:54 - 00000000 ____D C:\Users\Xavier\AppData\Local\Deployment
+2016-07-19 22:54 - 2016-07-19 22:54 - 00000000 ____D C:\Users\Xavier\AppData\Local\Apps\2.0
+2016-07-19 22:51 - 1999-11-12 05:11 - 00183808 _____ C:\Windows\SysWOW64\BDEADMIN.CPL
+2016-07-19 22:51 - 1999-01-20 05:01 - 00210032 _____ C:\Windows\SysWOW64\DBCLIENT.DLL
+2016-07-19 22:49 - 2016-07-30 12:25 - 00000000 ____D C:\Users\Xavier\AppData\Local\Mozilla
+2016-07-19 22:49 - 2016-07-19 22:49 - 00001159 _____ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Mozilla Firefox.lnk
+2016-07-19 22:49 - 2016-07-19 22:49 - 00001147 _____ C:\Users\Public\Desktop\Mozilla Firefox.lnk
+2016-07-19 22:49 - 2016-07-19 22:49 - 00000000 ____D C:\Users\Xavier\AppData\Roaming\Mozilla
+2016-07-19 22:48 - 2016-07-19 22:49 - 00000000 ____D C:\Program Files (x86)\Mozilla Maintenance Service
+2016-07-19 22:48 - 2016-07-19 22:49 - 00000000 ____D C:\Program Files (x86)\Mozilla Firefox
+2016-07-17 20:45 - 2016-07-17 20:45 - 00057560 _____ C:\Users\Xavier\AppData\Local\GDIPFONTCACHEV1.DAT
+2016-07-17 15:56 - 2016-07-17 15:58 - 01642544 _____ C:\Windows\SysWOW64\PerfStringBackup.INI
+2016-07-17 15:35 - 2016-07-17 14:53 - 00000000 ____D C:\Windows\Panther
+2016-07-17 15:11 - 2014-05-14 18:23 - 02477536 _____ (Microsoft Corporation) C:\Windows\system32\wuaueng.dll
+2016-07-17 15:11 - 2014-05-14 18:23 - 00058336 _____ (Microsoft Corporation) C:\Windows\system32\wuauclt.exe
+2016-07-17 15:11 - 2014-05-14 18:23 - 00044512 _____ (Microsoft Corporation) C:\Windows\system32\wups2.dll
+2016-07-17 15:11 - 2014-05-14 18:21 - 02620928 _____ (Microsoft Corporation) C:\Windows\system32\wucltux.dll
+2016-07-17 15:10 - 2014-05-14 18:23 - 00700384 _____ (Microsoft Corporation) C:\Windows\system32\wuapi.dll
+2016-07-17 15:10 - 2014-05-14 18:23 - 00581600 _____ (Microsoft Corporation) C:\Windows\SysWOW64\wuapi.dll
+2016-07-17 15:10 - 2014-05-14 18:23 - 00038880 _____ (Microsoft Corporation) C:\Windows\system32\wups.dll
+2016-07-17 15:10 - 2014-05-14 18:23 - 00036320 _____ (Microsoft Corporation) C:\Windows\SysWOW64\wups.dll
+2016-07-17 15:10 - 2014-05-14 18:20 - 00097792 _____ (Microsoft Corporation) C:\Windows\system32\wudriver.dll
+2016-07-17 15:10 - 2014-05-14 18:17 - 00092672 _____ (Microsoft Corporation) C:\Windows\SysWOW64\wudriver.dll
+2016-07-17 15:10 - 2014-05-14 09:23 - 00198600 _____ (Microsoft Corporation) C:\Windows\system32\wuwebv.dll
+2016-07-17 15:10 - 2014-05-14 09:23 - 00179656 _____ (Microsoft Corporation) C:\Windows\SysWOW64\wuwebv.dll
+2016-07-17 15:10 - 2014-05-14 09:20 - 00036864 _____ (Microsoft Corporation) C:\Windows\system32\wuapp.exe
+2016-07-17 15:10 - 2014-05-14 09:17 - 00033792 _____ (Microsoft Corporation) C:\Windows\SysWOW64\wuapp.exe
+2016-07-17 14:55 - 2016-07-17 14:55 - 00000000 ____D C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Oracle VM VirtualBox Guest Additions
+2016-07-17 14:55 - 2016-07-17 14:55 - 00000000 ____D C:\Program Files\Oracle
+2016-07-17 14:53 - 2016-07-17 14:53 - 00001459 _____ C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Internet Explorer.lnk
+2016-07-17 14:53 - 2016-07-17 14:53 - 00001425 _____ C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Internet Explorer (64-bit).lnk
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000020 ___SH C:\Users\Xavier\ntuser.ini
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Voisinage réseau
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Voisinage d'impression
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Modèles
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Mes documents
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Menu Démarrer
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Documents\Mes vidéos
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Documents\Mes images
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\Documents\Ma musique
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programmes
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 _SHDL C:\Users\Xavier\AppData\Local\Historique
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 ____D C:\Users\Xavier\AppData\Local\VirtualStore
+2016-07-17 14:53 - 2016-07-17 14:53 - 00000000 ____D C:\Users\Xavier
+2016-07-17 14:53 - 2011-04-12 11:28 - 00000000 ____D C:\Users\Xavier\AppData\Roaming\Media Center Programs
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Public\Documents\Mes vidéos
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Public\Documents\Mes images
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Public\Documents\Ma musique
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Voisinage réseau
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Voisinage d'impression
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Modèles
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Mes documents
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Menu Démarrer
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Documents\Mes vidéos
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Documents\Mes images
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\Documents\Ma musique
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programmes
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default\AppData\Local\Historique
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default User\Documents\Mes vidéos
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default User\Documents\Mes images
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default User\Documents\Ma musique
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default User\AppData\Roaming\Microsoft\Windows\Start Menu\Programmes
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Users\Default User\AppData\Local\Historique
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\ProgramData\Modèles
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\ProgramData\Microsoft\Windows\Start Menu\Programmes
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\ProgramData\Menu Démarrer
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\ProgramData\Favoris
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\ProgramData\Bureau
+2016-07-17 14:52 - 2016-07-17 14:52 - 00000000 _SHDL C:\Program Files\Fichiers communs
+2016-07-17 14:37 - 2016-07-17 14:37 - 00001345 _____ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Media Center.lnk
+2016-07-17 14:37 - 2016-07-17 14:37 - 00001326 _____ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Windows DVD Maker.lnk
+
+==================== Un mois - Modifiés - fichiers et dossiers ========
+
+(Si un élément est inclus dans le fichier fixlist.txt, le fichier/dossier sera déplacé.)
+
+2016-07-30 12:25 - 2011-04-12 11:16 - 00747154 _____ C:\Windows\system32\perfh00C.dat
+2016-07-30 12:25 - 2011-04-12 11:16 - 00149646 _____ C:\Windows\system32\perfc00C.dat
+2016-07-30 12:25 - 2009-07-14 07:13 - 01667292 _____ C:\Windows\system32\PerfStringBackup.INI
+2016-07-30 12:25 - 2009-07-14 05:20 - 00000000 ____D C:\Windows\inf
+2016-07-30 12:22 - 2009-07-14 06:45 - 00033248 ____H C:\Windows\system32\7B296FB0-376B-497e-B012-9C450E1B7327-5P-1.C7483456-A289-439d-8115-601632D005A0
+2016-07-30 12:22 - 2009-07-14 06:45 - 00033248 ____H C:\Windows\system32\7B296FB0-376B-497e-B012-9C450E1B7327-5P-0.C7483456-A289-439d-8115-601632D005A0
+2016-07-30 12:19 - 2009-07-14 07:08 - 00000006 ____H C:\Windows\Tasks\SA.DAT
+2016-07-17 15:34 - 2009-07-14 07:32 - 00028672 _____ C:\Windows\system32\config\BCD-Template
+2016-07-17 14:52 - 2009-07-14 05:20 - 00000000 ____D C:\Program Files\Windows NT
+2016-07-17 14:51 - 2009-07-14 05:20 - 00000000 ____D C:\Windows\rescache
+2016-07-17 14:38 - 2009-07-14 06:45 - 00274464 _____ C:\Windows\system32\FNTCACHE.DAT
+2016-07-17 14:37 - 2009-07-14 05:20 - 00000000 ____D C:\Windows\system32\sysprep
+2016-07-17 14:35 - 2011-04-12 11:28 - 00000000 ____D C:\Windows\CSC
+
+==================== Bamital & volsnap =================
+
+(Il n'y a pas de correction automatique pour les fichiers qui ne satisfont pas à la vérification.)
+
+C:\Windows\system32\winlogon.exe => Le fichier est signé numériquement
+C:\Windows\system32\wininit.exe => Le fichier est signé numériquement
+C:\Windows\SysWOW64\wininit.exe => Le fichier est signé numériquement
+C:\Windows\explorer.exe => Le fichier est signé numériquement
+C:\Windows\SysWOW64\explorer.exe => Le fichier est signé numériquement
+C:\Windows\system32\svchost.exe => Le fichier est signé numériquement
+C:\Windows\SysWOW64\svchost.exe => Le fichier est signé numériquement
+C:\Windows\system32\services.exe => Le fichier est signé numériquement
+C:\Windows\system32\User32.dll => Le fichier est signé numériquement
+C:\Windows\SysWOW64\User32.dll => Le fichier est signé numériquement
+C:\Windows\system32\userinit.exe => Le fichier est signé numériquement
+C:\Windows\SysWOW64\userinit.exe => Le fichier est signé numériquement
+C:\Windows\system32\rpcss.dll => Le fichier est signé numériquement
+C:\Windows\system32\dnsapi.dll => Le fichier est signé numériquement
+C:\Windows\SysWOW64\dnsapi.dll => Le fichier est signé numériquement
+C:\Windows\system32\Drivers\volsnap.sys => Le fichier est signé numériquement
+
+
+LastRegBack: 2016-07-17 14:35
+
+==================== Fin de FRST.txt ============================

@@ -1,0 +1,387 @@
+~ ZHPDiag v2016.7.29.119 Par Nicolas Coolman (2016/07/29)
+~ Démarré par Xavier (Administrator)  (2016/07/30 12:22:28)
+~ Site: https://www.nicolascoolman.com
+~ Facebook: https://www.facebook.com/nicolascoolman1
+~ Etat de la version:  Version OK
+~ Mode: Scanner
+~ Rapport: C:\Users\Xavier\Desktop\ZHPDiag.txt
+~ Rapport: C:\Users\Xavier\AppData\Roaming\ZHP\ZHPDiag.txt
+~ UAC: Activate
+~ Démarrage du système: Normal (Normal boot)
+Windows 7 Professional, 64-bit Service Pack 1 (Build 7601)
+
+---\\ Navigateurs Internet (2) - 0s
+MFIE: Mozilla Firefox 47.0.1 (x86 fr)
+MSIE: Internet Explorer v8.0.7601.17514
+
+---\\ Informations sur les produits Windows (4) - 4s
+~ Windows Server License Manager Script : OK
+~ Licence Script File Génération : OK
+Windows Automatic Updates : OK
+Windows Activation Technologies : OK
+
+---\\ Informations sur le système (6) - 0s
+~ Operating System: Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+~ Operating System:  64-bit
+~ Boot mode: Normal (Normal boot)
+Total RAM: 4193.848 MB (56% free)
+System Restore: Activé (Enable)
+System drive C: has 11 GB () free of 25 GB  =>Alerte espace disque inférieur à 20 Go
+
+---\\ Mode de connexion au système (3) - 0s
+~ Computer Name: XAVIER-WIN7
+~ User Name: Xavier
+~ Logged in as Administrator
+
+---\\ Enumération des unités disques (1) - 0s
+~ Drive C: has 11 GB free of 25 GB  (System)
+
+---\\ Etat du Centre de Sécurité Windows (10) - 0s
+[HKLM\SOFTWARE\Microsoft\Security Center\Svc] AntiSpywareOverride: OK
+[HKLM\SOFTWARE\Microsoft\Security Center\Svc] AntiVirusOverride: OK
+[HKLM\SOFTWARE\Microsoft\Security Center\Svc] FirewallOverride: OK
+[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer] NoActiveDesktopChanges: Modified
+[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system] EnableLUA: OK
+[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Hidden\NOHIDDEN] CheckedValue: Modified
+[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Hidden\SHOWALL] CheckedValue: OK
+[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Associations] Application: OK
+[HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon] Shell: OK
+[HKLM\SYSTEM\CurrentControlSet\Services\COMSysApp] Type: OK
+
+---\\ Recherche particulière de fichiers génériques (26) - 11s
+[MD5.AC4C51EB24AA95B77F705AB159189E24] - 21/11/2010 - (.Microsoft Corporation - Explorateur Windows.) -- C:\Windows\Explorer.exe [2872320]  =>.Microsoft Corporation
+[MD5.DD81D91FF3B0763C392422865C9AC12E] - 14/07/2009 - (.Microsoft Corporation - Processus hôte Windows (Rundll32).) -- C:\Windows\System32\rundll32.exe [45568]  =>.Microsoft Corporation
+[MD5.94355C28C1970635A31B3FE52EB7CEBA] - 14/07/2009 - (.Microsoft Corporation - Application de démarrage de Windows.) -- C:\Windows\System32\Wininit.exe [129024]  =>.Microsoft Corporation
+[MD5.F6C5302E1F4813D552F41A0AC82455E5] - 21/11/2010 - (.Microsoft Corporation - Extensions Internet pour Win32.) -- C:\Windows\System32\wininet.dll [1188864]  =>.Microsoft Corporation
+[MD5.1151B1BAA6F350B1DB6598E0FEA7C457] - 21/11/2010 - (.Microsoft Corporation - Application d’ouverture de session Windows.) -- C:\Windows\System32\Winlogon.exe [390656]  =>.Microsoft Corporation
+[MD5.067FA52BFB59A56110A12312EF9AF243] - 21/11/2010 - (.Microsoft Corporation - Bibliothèque de licences.) -- C:\Windows\System32\sppcomapi.dll [232448]  =>.Microsoft Corporation
+[MD5.A52B6CC24063CC83C78C0E6F24DEEC01] - 21/11/2010 - (.Microsoft Corporation - DNS DLL de l’API Client.) -- C:\Windows\System32\dnsapi.dll [357888]  =>.Microsoft Corporation
+[MD5.59DF156711A76BCB993253EC6C9BBF41] - 21/11/2010 - (.Microsoft Corporation - DNS DLL de l’API Client.) -- C:\Windows\Syswow64\dnsapi.dll [270336]  =>.Microsoft Corporation
+[MD5.0D57D091E06BB1E58E72E5D08479FDDF] - 12/04/2011 - (.Microsoft Corporation - DLL client de l’API uilisateur de Windows m.) -- C:\Windows\System32\fr-FR\user32.dll.mui [20480]  =>.Microsoft Corporation
+[MD5.D31DC7A16DEA4A9BAF179F3D6FBDB38C] - 21/11/2010 - (.Microsoft Corporation - Ancillary Function Driver for WinSock.) -- C:\Windows\System32\drivers\AFD.sys [499712]  =>.Microsoft Corporation
+[MD5.02062C0B390B7729EDC9E69C680A6F3C] - 14/07/2009 - (.Microsoft Corporation - ATAPI IDE Miniport Driver.) -- C:\Windows\System32\drivers\atapi.sys [24128]  =>.Microsoft Windows®
+[MD5.B8BD2BB284668C84865658C77574381A] - 14/07/2009 - (.Microsoft Corporation - CD-ROM File System Driver.) -- C:\Windows\System32\drivers\Cdfs.sys [92160]  =>.Microsoft Corporation
+[MD5.F036CE71586E93D94DAB220D7BDF4416] - 21/11/2010 - (.Microsoft Corporation - SCSI CD-ROM Driver.) -- C:\Windows\System32\drivers\Cdrom.sys [147456]  =>.Microsoft Corporation
+[MD5.9BB2EF44EAA163B29C4A4587887A0FE4] - 21/11/2010 - (.Microsoft Corporation - DFS Namespace Client Driver.) -- C:\Windows\System32\drivers\DfsC.sys [102400]  =>.Microsoft Corporation
+[MD5.97BFED39B6B79EB12CDDBFEED51F56BB] - 21/11/2010 - (.Microsoft Corporation - High Definition Audio Bus Driver.) -- C:\Windows\System32\drivers\HDAudBus.sys [122368]  =>.Microsoft Corporation
+[MD5.FA55C73D4AFFA7EE23AC4BE53B4592D3] - 14/07/2009 - (.Microsoft Corporation - Pilote de port i8042.) -- C:\Windows\System32\drivers\i8042prt.sys [105472]  =>.Microsoft Corporation
+[MD5.AF9B39A7E7B6CAA203B3862582E9F2D0] - 14/07/2009 - (.Microsoft Corporation - IP Network Address Translator.) -- C:\Windows\System32\drivers\IpNat.sys [116224]  =>.Microsoft Corporation
+[MD5.FAF015B07E3A2874A790A39B7D2C579F] - 21/11/2010 - (.Microsoft Corporation - Windows NT SMB Minirdr.) -- C:\Windows\System32\drivers\MRxSmb.sys [158208]  =>.Microsoft Corporation
+[MD5.09594D1089C523423B32A4229263F068] - 21/11/2010 - (.Microsoft Corporation - MBT Transport driver.) -- C:\Windows\System32\drivers\netBT.sys [261632]  =>.Microsoft Corporation
+[MD5.05D78AA5CB5F3F5C31160BDB955D0B7C] - 21/11/2010 - (.Microsoft Corporation - Pilote du système de fichiers NT.) -- C:\Windows\System32\drivers\ntfs.sys [1659776]  =>.Microsoft Windows®
+[MD5.0086431C29C35BE1DBC43F52CC273887] - 14/07/2009 - (.Microsoft Corporation - Pilote de port parallèle.) -- C:\Windows\System32\drivers\Parport.sys [97280]  =>.Microsoft Corporation
+[MD5.471815800AE33E6F1C32FB1B97C490CA] - 21/11/2010 - (.Microsoft Corporation - RAS L2TP mini-port/call-manager driver.) -- C:\Windows\System32\drivers\Rasl2tp.sys [129536]  =>.Microsoft Corporation
+[MD5.1B6163C503398B23FF8B939C67747683] - 21/11/2010 - (.Microsoft Corporation - Microsoft RDP Device redirector.) -- C:\Windows\System32\drivers\rdpdr.sys [165888]  =>.Microsoft Corporation
+[MD5.548260A7B8654E024DC30BF8A7C5BAA4] - 14/07/2009 - (.Microsoft Corporation - SMB Transport driver.) -- C:\Windows\System32\drivers\smb.sys [93184]  =>.Microsoft Corporation
+[MD5.DDAD5A7AB24D8B65F8D724F5C20FD806] - 21/11/2010 - (.Microsoft Corporation - TDI Translation Driver.) -- C:\Windows\System32\drivers\tdx.sys [119296]  =>.Microsoft Corporation
+[MD5.0D08D2F3B3FF84E433346669B5E0F639] - 21/11/2010 - (.Microsoft Corporation - Pilote de cliché instantané du volume.) -- C:\Windows\System32\drivers\volsnap.sys [295808]  =>.Microsoft Windows®
+
+---\\ Liste des services NT non Microsoft et non désactivés (1) - 2s
+O23 - Service: VirtualBox Guest Additions Service (VBoxService) . (.Oracle Corporation - VirtualBox Guest Additions Service.) - C:\Windows\System32\VBoxService.exe  =>.Oracle Corporation
+
+---\\ Services non Microsoft (SR=Démarré,SS=Stoppé) (3) - 17s
+
+SS - Demand [24/06/2016] [  146888]  Mozilla Maintenance Service (MozillaMaintenance) . (.Mozilla Foundation.) - C:\Program Files (x86)\Mozilla Maintenance Service\maintenanceservice.exe  =>.Mozilla Corporation®
+SR - Auto   [18/04/2016] [ 1788832]  VirtualBox Guest Additions Service (VBoxService) . (.Oracle Corporation.) - C:\Windows\System32\VBoxService.exe  =>.Oracle Corporation
+
+---\\ Processus lancés (5) - 0s
+[MD5.D129A1DF4D875B171F37C1154799EF3B] - (.Oracle Corporation - VirtualBox Guest Additions Service.) -- C:\Windows\System32\VBoxService.exe [1788832] [PID.656]  =>.Oracle Corporation®
+[MD5.2F53766E5A9FF10114094A34579D7466] - (.Oracle Corporation - VirtualBox Guest Additions Tray Application.) -- C:\Windows\System32\VBoxTray.exe [1657376] [PID.1840]  =>.Oracle Corporation®
+[MD5.8FE11A6B735F7C904E1DC0EF7EA79B78] - (.Mozilla Corporation - Firefox.) -- C:\Program Files (x86)\Mozilla Firefox\firefox.exe [392136] [PID.2140]  =>.Mozilla Corporation®
+[MD5.10BB8AE1443C08239724F0043CED33F0] - (.Nicolas Coolman - ZHPDiag.) -- C:\Users\Xavier\Downloads\ZHPDiag3.exe [2233856] [PID.3040]  =>.Nicolas Coolman
+[MD5.B26A9CDC001C94AA5316CA70899493A6] - (.Mozilla Corporation - Plugin Container for Firefox.) -- C:\Program Files (x86)\Mozilla Firefox\plugin-container.exe [277960] [PID.2780]  =>.Mozilla Corporation®
+
+---\\ Internet Explorer,Démarrage,Recherche,URLSearchHook (17) - 0s
+R0 - HKCU\SOFTWARE\Microsoft\Internet Explorer\Main,Start Page = http://go.microsoft.com/
+R0 - HKLM\SOFTWARE\Microsoft\Internet Explorer\Main,Start Page = http://go.microsoft.com/
+R0 - HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main,Start Page = http://go.microsoft.com/
+R1 - HKCU\SOFTWARE\Microsoft\Internet Explorer\Main,Search Page = http://go.microsoft.com/
+R1 - HKLM\SOFTWARE\Microsoft\Internet Explorer\Main,Search Page = http://go.microsoft.com/
+R1 - HKLM\SOFTWARE\Microsoft\Internet Explorer\Main,Default_Page_URL = http://go.microsoft.com/
+R1 - HKLM\SOFTWARE\Microsoft\Internet Explorer\Main,Extensions Off Page = about:noadd-ons
+R1 - HKLM\SOFTWARE\Microsoft\Internet Explorer\Main,Security Risk Page = about:securityrisk
+R1 - HKLM\SOFTWARE\Microsoft\Internet Explorer\Main,Default_Search_URL = http://go.microsoft.com/
+R1 - HKLM\SOFTWARE\Microsoft\Internet Explorer\AboutURLs,Tabs = res://ieframe.dll/tabswelcome.htm
+R1 - HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\AboutURLs,Tabs = res://ieframe.dll/tabswelcome.htm
+R1 - HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main,Search Page = http://go.microsoft.com/
+R1 - HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main,Default_Page_URL = http://go.microsoft.com/
+R1 - HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main,Default_Search_URL = http://go.microsoft.com/
+R1 - HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main,Extensions Off Page = about:noadd-ons
+R1 - HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main,Security Risk Page = about:securityrisk
+R3 - URLSearchHook: (no name) - {CFBFAE00-17A6-11D0-99CB-00C04FD64497} Orphan  =>.Microsoft Internet Explorer
+
+---\\ Internet Explorer,Proxy Management (4) - 0s
+R5 - HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings,ProxyEnable = 0
+R5 - HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings,MigrateProxy = 1
+R5 - HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings,EnableHttp1_1 = 1
+R5 - HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings,AutoConfigProxy = wininet.dll
+
+---\\ Internet Explorer,IniFiles, Autoloading programs (3) - 0s
+F2 - REG:system.ini: UserInit=userinit.exe (.Microsoft Corporation.)  =>.Microsoft Corporation
+F2 - REG:system.ini: Shell=C:\Windows\explorer.exe (.Microsoft Corporation.)  =>.Microsoft Corporation
+F2 - REG:system.ini: VMApplet=C:\Windows\SysWOW64\SystemPropertiesPerformance.exe (.Microsoft Corporation.)  =>.Microsoft Corporation
+
+---\\ Etude du fichier hosts (1) - 0s
+~ Le fichier hôte est sain (The hosts file is clean) (21)
+
+---\\ Applications lancées au démarrage du système (5) - 1s
+O4 - HKLM\..\Run: [VBoxTray] . (.Oracle Corporation - VirtualBox Guest Additions Tray Application.) -- C:\Windows\System32\VBoxTray.exe  =>.Oracle Corporation®
+O4 - HKUS\S-1-5-19\..\Run: [Sidebar] . (.Microsoft Corporation - Gadgets du Bureau Windows.) -- C:\Program Files\Windows Sidebar\sidebar.exe  =>.Microsoft Corporation
+O4 - HKUS\S-1-5-20\..\Run: [Sidebar] . (.Microsoft Corporation - Gadgets du Bureau Windows.) -- C:\Program Files\Windows Sidebar\sidebar.exe  =>.Microsoft Corporation
+O4 - HKUS\S-1-5-19\..\RunOnce: [mctadmin] . (.Microsoft Corporation - MCTAdmin.) -- C:\Windows\System32\mctadmin.exe  =>.Microsoft Corporation
+O4 - HKUS\S-1-5-20\..\RunOnce: [mctadmin] . (.Microsoft Corporation - MCTAdmin.) -- C:\Windows\System32\mctadmin.exe  =>.Microsoft Corporation
+
+---\\ Raccourcis Global Startup (7) - 5s
+O4 - GS\Desktop [Administrateur]: ZHPDiag.lnk . (.Nicolas Coolman - ZHPDiag.) C:\Users\Xavier\AppData\Roaming\ZHP\ZHPDiag3.exe  =>.Nicolas Coolman
+O4 - GS\TaskBar [Administrateur]: Mozilla Firefox.lnk . (.Mozilla Corporation - Firefox.) C:\Program Files (x86)\Mozilla Firefox\firefox.exe  =>.Mozilla Corporation®
+O4 - GS\Desktop [Xavier]: ZHPDiag.lnk . (.Nicolas Coolman - ZHPDiag.) C:\Users\Xavier\AppData\Roaming\ZHP\ZHPDiag3.exe  =>.Nicolas Coolman
+O4 - GS\TaskBar [Xavier]: Mozilla Firefox.lnk . (.Mozilla Corporation - Firefox.) C:\Program Files (x86)\Mozilla Firefox\firefox.exe  =>.Mozilla Corporation®
+O4 - GS\CommonDesktop [Public]: Mozilla Firefox.lnk . (.Mozilla Corporation - Firefox.) C:\Program Files (x86)\Mozilla Firefox\firefox.exe  =>.Mozilla Corporation®
+O4 - GS\CommonDesktop [Public]: ZHP.lnk . (.Nicolas Coolman - ZHPDiag Setup.) C:\Program Files (x86)\ZebHelpProcess\ZHPHep.exe  =>.Nicolas Coolman
+O4 - GS\SystemTools [Public]: Task Scheduler.lnk . (...) C:\Windows\system32\taskschd.msc
+
+---\\ Modification Domaine/Adresses DNS (4) - 0s
+O17 - HKLM\System\CCS\Services\Tcpip\Parameters: DhcpDomain = numericable.fr
+O17 - HKLM\System\CCS\Services\Tcpip\Parameters: DhcpNameServer = 10.0.2.3
+O17 - HKLM\System\CCS\Services\Tcpip\..\{FF7089AF-3B8F-40B8-A097-11C252B0DBA0}: DhcpNameServer = 10.0.2.3
+O17 - HKLM\System\CCS\Services\Tcpip\..\{FF7089AF-3B8F-40B8-A097-11C252B0DBA0}: DhcpDomain = numericable.fr
+
+---\\ Protocole additionnel (22) - 0s
+O18 - Handler: about [64Bits] - {3050F406-98B5-11CF-BB82-00AA00BDCE0B} . (.Microsoft Corporation - Visionneuse HTML Microsoft (R).) -- C:\Windows\SysWOW64\mshtml.dll  =>.Microsoft Corporation
+O18 - Handler: cdl [64Bits] - {3dd53d40-7b8b-11D0-b013-00aa0059ce02} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Handler: dvd [64Bits] - {12D51199-0DB5-46FE-A120-47A3D7D937CC} . (.Microsoft Corporation - Contrôle ActiveX pour le flux vidéo.) -- C:\Windows\SysWOW64\MSVidCtl.dll  =>.Microsoft Corporation
+O18 - Handler: file [64Bits] - {79eac9e7-baf9-11ce-8c82-00aa004ba90b} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Handler: ftp [64Bits] - {79eac9e3-baf9-11ce-8c82-00aa004ba90b} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Handler: http [64Bits] - {79eac9e2-baf9-11ce-8c82-00aa004ba90b} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Handler: https [64Bits] - {79eac9e5-baf9-11ce-8c82-00aa004ba90b} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Handler: its [64Bits] - {9D148291-B9C8-11D0-A4CC-0000F80149F6} . (.Microsoft Corporation - Microsoft® InfoTech Storage System Library.) -- C:\Windows\System32\itss.dll  =>.Microsoft Corporation
+O18 - Handler: javascript [64Bits] - {3050F3B2-98B5-11CF-BB82-00AA00BDCE0B} . (.Microsoft Corporation - Visionneuse HTML Microsoft (R).) -- C:\Windows\SysWOW64\mshtml.dll  =>.Microsoft Corporation
+O18 - Handler: local [64Bits] - {79eac9e7-baf9-11ce-8c82-00aa004ba90b} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Handler: mailto [64Bits] - {3050f3DA-98B5-11CF-BB82-00AA00BDCE0B} . (.Microsoft Corporation - Visionneuse HTML Microsoft (R).) -- C:\Windows\SysWOW64\mshtml.dll  =>.Microsoft Corporation
+O18 - Handler: mhtml [64Bits] - {05300401-BCBC-11d0-85E3-00C04FD85AB4} . (.Microsoft Corporation - Microsoft Internet Messaging API Resources.) -- C:\Windows\System32\inetcomm.dll  =>.Microsoft Corporation
+O18 - Handler: mk [64Bits] - {79eac9e6-baf9-11ce-8c82-00aa004ba90b} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Handler: ms-its [64Bits] - {9D148291-B9C8-11D0-A4CC-0000F80149F6} . (.Microsoft Corporation - Microsoft® InfoTech Storage System Library.) -- C:\Windows\System32\itss.dll  =>.Microsoft Corporation
+O18 - Handler: res [64Bits] - {3050F3BC-98B5-11CF-BB82-00AA00BDCE0B} . (.Microsoft Corporation - Visionneuse HTML Microsoft (R).) -- C:\Windows\SysWOW64\mshtml.dll  =>.Microsoft Corporation
+O18 - Handler: tv [64Bits] - {CBD30858-AF45-11D2-B6D6-00C04FBBDE6E} . (.Microsoft Corporation - Contrôle ActiveX pour le flux vidéo.) -- C:\Windows\SysWOW64\MSVidCtl.dll  =>.Microsoft Corporation
+O18 - Handler: vbscript [64Bits] - {3050F3B2-98B5-11CF-BB82-00AA00BDCE0B} . (.Microsoft Corporation - Visionneuse HTML Microsoft (R).) -- C:\Windows\SysWOW64\mshtml.dll  =>.Microsoft Corporation
+O18 - Filter: application/octet-stream [64Bits] - {1E66F26B-79EE-11D2-8710-00C04F79ED0D} . (.Microsoft Corporation - Microsoft .NET Runtime Execution Engine.) -- C:\Windows\System32\mscoree.dll  =>.Microsoft Corporation®
+O18 - Filter: application/x-complus [64Bits] - {1E66F26B-79EE-11D2-8710-00C04F79ED0D} . (.Microsoft Corporation - Microsoft .NET Runtime Execution Engine.) -- C:\Windows\System32\mscoree.dll  =>.Microsoft Corporation®
+O18 - Filter: application/x-msdownload [64Bits] - {1E66F26B-79EE-11D2-8710-00C04F79ED0D} . (.Microsoft Corporation - Microsoft .NET Runtime Execution Engine.) -- C:\Windows\System32\mscoree.dll  =>.Microsoft Corporation®
+O18 - Filter: deflate [64Bits] - {8f6b0360-b80d-11d0-a9b3-006097942311} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+O18 - Filter: gzip [64Bits] - {8f6b0360-b80d-11d0-a9b3-006097942311} . (.Microsoft Corporation - Extensions OLE32 pour Win32.) -- C:\Windows\SysWOW64\urlmon.dll  =>.Microsoft Corporation
+
+---\\ Logiciels installés (5) - 3s
+O42 - Logiciel: Mozilla Firefox 47.0.1 (x86 fr) - (.Mozilla.) [HKLM][64Bits] -- Mozilla Firefox 47.0.1 (x86 fr)  =>.Mozilla Corporation®
+O42 - Logiciel: Mozilla Maintenance Service - (.Mozilla.) [HKLM][64Bits] -- MozillaMaintenanceService  =>.Mozilla
+O42 - Logiciel: Oracle VM VirtualBox Guest Additions 5.0.18 - (.Oracle Corporation.) [HKLM][64Bits] -- Oracle VM VirtualBox Guest Additions  =>.Oracle Corporation®
+
+---\\ HKCU & HKLM Software Keys (12) - 3s
+HKLM\SOFTWARE\Wow6432Node\Borland
+HKLM\SOFTWARE\Wow6432Node\Intel
+HKLM\SOFTWARE\Wow6432Node\Mozilla
+HKLM\SOFTWARE\Wow6432Node\mozilla.org
+HKLM\SOFTWARE\Wow6432Node\ODBC
+HKLM\SOFTWARE\Wow6432Node\Oracle
+HKLM\SOFTWARE\Wow6432Node\RegisteredApplications
+HKCU\SOFTWARE\AppDataLow
+HKCU\SOFTWARE\Borland
+HKCU\SOFTWARE\Mozilla
+HKCU\SOFTWARE\Wow6432Node
+
+---\\ Contenu des dossiers Programmes (78) - 7s
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files\Common Files
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\DVD Maker
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\Program Files\Fichiers communs
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\Internet Explorer
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files\MSBuild
+O43 - CFD: 17/07/2016 - [] D -- C:\Program Files\Oracle  =>.Oracle Corporation®
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files\Reference Assemblies
+O43 - CFD: 14/07/2009 - [0] HD -- C:\Program Files\Uninstall Information
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\Windows Defender
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\Windows Journal
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\Windows Mail
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\Windows Media Player
+O43 - CFD: 17/07/2016 - [] D -- C:\Program Files\Windows NT
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\Windows Photo Viewer  =>.Microsoft Corporation®
+O43 - CFD: 21/11/2010 - [] D -- C:\Program Files\Windows Portable Devices
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files\Windows Sidebar
+O43 - CFD: 19/07/2016 - [] D -- C:\Program Files (x86)\Common Files
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Internet Explorer
+O43 - CFD: 17/07/2016 - [] D -- C:\Program Files (x86)\Microsoft.NET
+O43 - CFD: 19/07/2016 - [] D -- C:\Program Files (x86)\Mozilla Firefox  =>.Mozilla Corporation®
+O43 - CFD: 19/07/2016 - [] D -- C:\Program Files (x86)\Mozilla Maintenance Service  =>.Mozilla Corporation®
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files (x86)\MSBuild
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files (x86)\Reference Assemblies
+O43 - CFD: 14/07/2009 - [0] HD -- C:\Program Files (x86)\Uninstall Information
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Windows Defender
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Windows Mail
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Windows Media Player
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files (x86)\Windows NT
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Windows Photo Viewer  =>.Microsoft Corporation®
+O43 - CFD: 21/11/2010 - [] D -- C:\Program Files (x86)\Windows Portable Devices
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Windows Sidebar
+O43 - CFD: 17/07/2016 - [] RD -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories
+O43 - CFD: 17/07/2016 - [] RD -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools
+O43 - CFD: 12/04/2011 - [] RD -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Games
+O43 - CFD: 14/07/2009 - [] RD -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Maintenance
+O43 - CFD: 14/07/2009 - [] RD -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+O43 - CFD: 12/04/2011 - [0] RHD -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Tablet PC
+O43 - CFD: 19/07/2016 - [] D -- C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ZHP
+O43 - CFD: 14/07/2009 - [0] SHD -- C:\ProgramData\Application Data
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\ProgramData\Bureau
+O43 - CFD: 14/07/2009 - [0] SHD -- C:\ProgramData\Desktop
+O43 - CFD: 14/07/2009 - [0] SHD -- C:\ProgramData\Documents
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\ProgramData\Favoris
+O43 - CFD: 14/07/2009 - [0] SHD -- C:\ProgramData\Favorites
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\ProgramData\Menu Démarrer
+O43 - CFD: 17/07/2016 - [] SD -- C:\ProgramData\Microsoft
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\ProgramData\Modèles
+O43 - CFD: 14/07/2009 - [0] SHD -- C:\ProgramData\Start Menu
+O43 - CFD: 14/07/2009 - [0] SHD -- C:\ProgramData\Templates
+O43 - CFD: 19/07/2016 - [] D -- C:\Program Files (x86)\Common Files\Borland Shared
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Common Files\microsoft shared
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files (x86)\Common Files\Services
+O43 - CFD: 14/07/2009 - [] D -- C:\Program Files (x86)\Common Files\SpeechEngines
+O43 - CFD: 12/04/2011 - [] D -- C:\Program Files (x86)\Common Files\System
+O43 - CFD: 17/07/2016 - [] D -- C:\Users\Xavier\AppData\Roaming\Identities
+O43 - CFD: 12/04/2011 - [0] D -- C:\Users\Xavier\AppData\Roaming\Media Center Programs
+O43 - CFD: 19/07/2016 - [] SD -- C:\Users\Xavier\AppData\Roaming\Microsoft
+O43 - CFD: 19/07/2016 - [] D -- C:\Users\Xavier\AppData\Roaming\Mozilla
+O43 - CFD: 30/07/2016 - [] D -- C:\Users\Xavier\AppData\Roaming\ZHP
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\Users\Xavier\AppData\Local\Application Data
+O43 - CFD: 19/07/2016 - [] D -- C:\Users\Xavier\AppData\Local\Apps
+O43 - CFD: 19/07/2016 - [0] D -- C:\Users\Xavier\AppData\Local\Deployment
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\Users\Xavier\AppData\Local\Historique
+O43 - CFD: 17/07/2016 - [] D -- C:\Users\Xavier\AppData\Local\Microsoft
+O43 - CFD: 19/07/2016 - [] D -- C:\Users\Xavier\AppData\Local\Mozilla
+O43 - CFD: 30/07/2016 - [] D -- C:\Users\Xavier\AppData\Local\Temp
+O43 - CFD: 17/07/2016 - [0] SHD -- C:\Users\Xavier\AppData\Local\Temporary Internet Files
+O43 - CFD: 17/07/2016 - [0] D -- C:\Users\Xavier\AppData\Local\VirtualStore
+O43 - CFD: 14/07/2009 - [] RD -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessories
+O43 - CFD: 17/07/2016 - [] RD -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Administrative Tools
+O43 - CFD: 19/07/2016 - [] D -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Analyse MD5
+O43 - CFD: 14/07/2009 - [] RD -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Maintenance
+O43 - CFD: 17/07/2016 - [] D -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Oracle VM VirtualBox Guest Additions
+O43 - CFD: 17/07/2016 - [] RD -- C:\Users\Xavier\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+O43 - CFD: 0 - [0] D -- C:\Windows\System32\Config\systemprofile\AppData\Local\Apps
+O43 - CFD: 14/07/2009 - [] D -- C:\Windows\System32\Config\systemprofile\AppData\Local\Microsoft
+
+---\\ ShellIconOverlayIdentifiers (SIOI) (2) - 0s
+O106 - SIOI: Enhanced Storage Icon Overlay Handler Class [EnhancedStorageShell] - {D9144DCD-E998-4ECA-AB6A-DCD83CCBA16D}. (.Microsoft Corporation - DLL d’extension d’environnement de stockage.) -- C:\Windows\System32\EhStorShell.dll  =>.Microsoft Corporation
+O106 - SIOI: Sharing Overlay (Private) [SharingPrivate] - {08244EE6-92F0-47f2-9FC9-929BAA2E7235}. (.Microsoft Corporation - Extensions de l’interpréteur de commandes p.) -- C:\Windows\System32\ntshrui.dll  =>.Microsoft Corporation
+
+---\\ Liste des pilotes du système (46) - 6s
+O58 - SDL:2009/07/14 03:52:21 A . (.Adaptec, Inc. - Adaptec Windows SAS/SATA Storport Driver.) -- C:\Windows\System32\drivers\adp94xx.sys   [491088]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:52:21 A . (.Adaptec, Inc. - Adaptec Windows SATA Storport Driver.) -- C:\Windows\System32\drivers\adpahci.sys   [339536]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:52:21 A . (.Adaptec, Inc. - Adaptec StorPort Ultra320 SCSI Driver (X64).) -- C:\Windows\System32\drivers\adpu320.sys   [182864]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:52:21 A . (.Acer Laboratories Inc. - ALi mini IDE Driver.) -- C:\Windows\System32\drivers\aliide.sys   [15440]  =>.Microsoft Windows®
+O58 - SDL:2010/11/21 05:23:47 A . (.Advanced Micro Devices - AHCI 1.2 Device Driver.) -- C:\Windows\System32\drivers\amdsata.sys   [107904]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:52:20 A . (.AMD Technologies Inc. - AMD Technology AHCI Compatible Controller D.) -- C:\Windows\System32\drivers\amdsbs.sys   [194128]  =>.Microsoft Windows®
+O58 - SDL:2010/11/21 05:23:47 A . (.Advanced Micro Devices - Storage Filter Driver.) -- C:\Windows\System32\drivers\amdxata.sys   [27008]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:52:21 A . (.Adaptec, Inc. - Adaptec RAID Storport Driver.) -- C:\Windows\System32\drivers\arc.sys   [87632]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:52:21 A . (.Adaptec, Inc. - Adaptec SAS RAID WS03 Driver.) -- C:\Windows\System32\drivers\arcsas.sys   [97856]  =>.Microsoft Windows®
+O58 - SDL:2009/06/10 22:34:23 A . (.Broadcom Corporation - Broadcom NetXtreme Gigabit Ethernet NDIS6.x.) -- C:\Windows\System32\drivers\b57nd60a.sys   [270848]  =>.Broadcom Corporation
+O58 - SDL:2009/06/10 22:41:06 A . (.Brother Industries, Ltd. - Windows ME USB Mass-Storage Bulk-Only Lower.) -- C:\Windows\System32\drivers\BrFiltLo.sys   [18432]  =>.Brother Industries, Ltd.
+O58 - SDL:2009/06/10 22:41:06 A . (.Brother Industries, Ltd. - Windows ME USB Mass-Storage Bulk-Only Upper.) -- C:\Windows\System32\drivers\BrFiltUp.sys   [8704]  =>.Brother Industries, Ltd.
+O58 - SDL:2009/07/14 03:19:07 A . (.Brother Industries Ltd. - Pilote Brother Série I/F (WDM).) -- C:\Windows\System32\drivers\BrSerId.sys   [286720]  =>.Brother Industries Ltd.
+O58 - SDL:2009/06/10 22:41:10 A . (.Brother Industries Ltd. - Brother Serial driver (WDM version).) -- C:\Windows\System32\drivers\BrSerWdm.sys   [47104]  =>.Brother Industries Ltd.
+O58 - SDL:2009/06/10 22:41:10 A . (.Brother Industries Ltd. - Brother USB MDM Driver.) -- C:\Windows\System32\drivers\BrUsbMdm.sys   [14976]  =>.Brother Industries Ltd.
+O58 - SDL:2009/06/10 22:41:10 A . (.Brother Industries Ltd. - Brother USB Serial Driver.) -- C:\Windows\System32\drivers\BrUsbSer.sys   [14720]  =>.Brother Industries Ltd.
+O58 - SDL:2009/06/10 22:34:28 A . (.Broadcom Corporation - Broadcom NetXtreme II GigE VBD.) -- C:\Windows\System32\drivers\bxvbda.sys   [468480]  =>.Broadcom Corporation
+O58 - SDL:2009/07/14 03:52:31 A . (.CMD Technology, Inc. - CMD PCI IDE Bus Driver.) -- C:\Windows\System32\drivers\cmdide.sys   [17488]  =>.Microsoft Windows®
+O58 - SDL:2009/06/10 22:35:09 A . (.Intel Corporation - Intel(R) PRO/1000 Adapter NDIS 6 deserializ.) -- C:\Windows\System32\drivers\E1G6032E.sys   [145792]  =>.Intel Corporation
+O58 - SDL:2009/07/14 03:47:48 A . (.Emulex - Storport Miniport Driver for LightPulse HBA.) -- C:\Windows\System32\drivers\elxstor.sys   [530496]  =>.Microsoft Windows®
+O58 - SDL:2009/06/10 22:34:33 A . (.Broadcom Corporation - Broadcom NetXtreme II 10 GigE VBD.) -- C:\Windows\System32\drivers\evbda.sys   [3286016]  =>.Broadcom Corporation
+O58 - SDL:2009/06/10 22:31:59 A . (.Hauppauge Computer Works, Inc. - Hauppauge WinTV 885 Consumer IR Driver for.) -- C:\Windows\System32\drivers\hcw85cir.sys   [31232]  =>.Hauppauge Computer Works, Inc.
+O58 - SDL:2010/11/21 05:23:47 A . (.Hewlett-Packard Company - Smart Array SAS/SATA Controller Media Drive.) -- C:\Windows\System32\drivers\HpSAMD.sys   [78720]  =>.Microsoft Windows®
+O58 - SDL:2010/11/21 05:23:47 A . (.Intel Corporation - Intel Matrix Storage Manager driver - x64.) -- C:\Windows\System32\drivers\iaStorV.sys   [410496]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:04 A . (.Intel Corp./ICP vortex GmbH - Intel/ICP Raid Storport Driver.) -- C:\Windows\System32\drivers\iirsp.sys   [44112]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:04 A . (.LSI Corporation - LSI Fusion-MPT FC Driver (StorPort).) -- C:\Windows\System32\drivers\lsi_fc.sys   [114752]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:04 A . (.LSI Corporation - LSI Fusion-MPT SAS Driver (StorPort).) -- C:\Windows\System32\drivers\lsi_sas.sys   [106560]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:04 A . (.LSI Corporation - LSI SAS Gen2 Driver (StorPort).) -- C:\Windows\System32\drivers\lsi_sas2.sys   [65600]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:04 A . (.LSI Corporation - LSI Fusion-MPT SCSI Driver (StorPort).) -- C:\Windows\System32\drivers\lsi_scsi.sys   [115776]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:04 A . (.LSI Corporation - MEGASAS RAID Controller Driver for Windows.) -- C:\Windows\System32\drivers\megasas.sys   [35392]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:04 A . (.LSI Corporation, Inc. - LSI MegaRAID Software RAID Driver.) -- C:\Windows\System32\drivers\MegaSR.sys   [284736]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:48:26 A . (.IBM Corporation - IBM ServeRAID Controller Driver.) -- C:\Windows\System32\drivers\nfrd960.sys   [51264]  =>.Microsoft Windows®
+O58 - SDL:2010/11/21 05:23:47 A . (.NVIDIA Corporation - NVIDIA® nForce(TM) RAID Driver.) -- C:\Windows\System32\drivers\nvraid.sys   [148352]  =>.Microsoft Windows®
+O58 - SDL:2010/11/21 05:23:47 A . (.NVIDIA Corporation - NVIDIA® nForce(TM) Sata Performance Driver.) -- C:\Windows\System32\drivers\nvstor.sys   [166272]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:45:46 A . (.QLogic Corporation - QLogic Fibre Channel Stor Miniport Driver.) -- C:\Windows\System32\drivers\ql2300.sys   [1524816]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:45:45 A . (.QLogic Corporation - QLogic iSCSI Storport Miniport Driver.) -- C:\Windows\System32\drivers\ql40xx.sys   [128592]  =>.Microsoft Windows®
+O58 - SDL:2009/06/10 22:37:19 A . (.Macrovision Corporation, Macrovision Europe Limited, - Macrovision SECURITY Driver.) -- C:\Windows\System32\drivers\secdrv.sys   [23040]  =>.Macrovision Corporation, Macrovision Europe Limited,
+O58 - SDL:2009/07/14 03:45:45 A . (.Silicon Integrated Systems Corp. - SiS RAID Stor Miniport Driver.) -- C:\Windows\System32\drivers\sisraid2.sys   [43584]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:45:46 A . (.Silicon Integrated Systems - SiS AHCI Stor-Miniport Driver.) -- C:\Windows\System32\drivers\sisraid4.sys   [80464]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:45:55 A . (.Promise Technology - Promise  SuperTrak EX Series Driver for Win.) -- C:\Windows\System32\drivers\stexstor.sys   [24656]  =>.Microsoft Windows®
+O58 - SDL:2016/04/18 15:36:06 A . (.Oracle Corporation - VirtualBox Guest Driver.) -- C:\Windows\System32\drivers\VBoxGuest.sys   [164344]  =>.Oracle Corporation®
+O58 - SDL:2016/04/18 15:35:50 A . (.Oracle Corporation - VirtualBox Mouse Filter.) -- C:\Windows\System32\drivers\VBoxMouse.sys   [128992]  =>.Oracle Corporation®
+O58 - SDL:2016/04/18 15:35:46 A . (.Oracle Corporation - VirtualBox Shared Folders Minirdr.) -- C:\Windows\System32\drivers\VBoxSF.sys   [291136]  =>.Oracle Corporation®
+O58 - SDL:2016/04/18 15:36:04 A . (.Oracle Corporation - VirtualBox Video Driver.) -- C:\Windows\System32\drivers\VBoxVideo.sys   [149376]  =>.Oracle Corporation®
+O58 - SDL:2009/07/14 03:45:55 A . (.VIA Technologies, Inc. - VIA Generic PCI IDE Bus Driver.) -- C:\Windows\System32\drivers\viaide.sys   [17488]  =>.Microsoft Windows®
+O58 - SDL:2009/07/14 03:45:55 A . (.VIA Technologies Inc.,Ltd - VIA RAID DRIVER FOR AMD-X86-64.) -- C:\Windows\System32\drivers\vsmraid.sys   [161872]  =>.Microsoft Windows®
+
+---\\ Associations Shell Spawning (11) - 0s
+O67 - Shell Spawning: <.bat> <batfile>[HKLM\..\open\Command] (...) -- "%1" %*
+O67 - Shell Spawning: <.cpl> <cplfile>[HKLM\..\cplopen\Command] (.Microsoft Corporation - Windows Control Panel.) -- C:\Windows\System32\control.exe  =>.Microsoft Corporation
+O67 - Shell Spawning: <.cmd> <cmdfile>[HKLM\..\open\Command] (...) -- "%1" %*
+O67 - Shell Spawning: <.com> <comfile>[HKLM\..\open\Command] (...) -- "%1" %*
+O67 - Shell Spawning: <.evt> <evtfile>[HKLM\..\open\Command] (.Microsoft Corporation - Lanceur du composant logiciel enfichable Ob.) -- C:\Windows\System32\eventvwr.exe  =>.Microsoft Corporation
+O67 - Shell Spawning: <.exe> <exefile>[HKLM\..\open\Command] (...) -- "%1" %*
+O67 - Shell Spawning: <.html> <htmlfile>[HKLM\..\open\Command] (.Microsoft Corporation - Internet Explorer.) -- C:\Program Files (x86)\Internet Explorer\iexplore.exe  =>.Microsoft Corporation®
+O67 - Shell Spawning: <.js> <JSFile>[HKLM\..\open\Command] (.Microsoft Corporation - Microsoft ® Windows Based Script Host.) -- C:\Windows\System32\wscript.exe  =>.Microsoft Corporation
+O67 - Shell Spawning: <.reg> <regfile>[HKLM\..\open\Command] (.Microsoft Corporation - Éditeur du Registre.) -- C:\Windows\regedit.exe  =>.Microsoft Corporation
+O67 - Shell Spawning: <.scr> <scrfile>[HKLM\..\open\Command] (...) -- "%1" /S
+O67 - Shell Spawning: <.html> <FirefoxHTML>[HKCU\..\open\Command] (.Mozilla Corporation - Firefox.) -- C:\Program Files (x86)\Mozilla Firefox\firefox.exe  =>.Mozilla Corporation®
+
+---\\ Menu de démarrage Internet (8) - 0s
+O68 - StartMenuInternet: <FIREFOX.EXE> <Mozilla Firefox>[HKLM\..\Shell\open\Command] (.Mozilla Corporation - Firefox.) -- C:\Program Files (x86)\Mozilla Firefox\firefox.exe   =>.Mozilla Corporation®
+O68 - StartMenuInternet: <IEXPLORE.EXE> <Internet Explorer>[HKLM\..\Shell\open\Command] (.Microsoft Corporation - Internet Explorer.) -- C:\Program Files (x86)\Internet Explorer\iexplore.exe   =>.Microsoft Corporation®
+O68 - StartMenuInternet: <FIREFOX.EXE> <Mozilla Firefox>[HKLM\..\InstallInfo\ShowIconsCommand] (.Mozilla Corporation - Firefox Helper.) -- C:\Program Files (x86)\Mozilla Firefox\uninstall\helper.exe  =>.Mozilla Corporation
+O68 - StartMenuInternet: <IEXPLORE.EXE> <Internet Explorer>[HKLM\..\InstallInfo\ShowIconsCommand] (.Microsoft Corporation - Utilitaire d’initialisation d’Internet Expl.) -- C:\Windows\System32\ie4uinit.exe  =>.Microsoft Corporation
+O68 - StartMenuInternet: <FIREFOX.EXE> <Mozilla Firefox>[HKLM\..\InstallInfo\ReinstallCommand] (.Mozilla Corporation - Firefox Helper.) -- C:\Program Files (x86)\Mozilla Firefox\uninstall\helper.exe  =>.Mozilla Corporation
+O68 - StartMenuInternet: <IEXPLORE.EXE> <Internet Explorer>[HKLM\..\InstallInfo\ReinstallCommand] (.Microsoft Corporation - Utilitaire d’initialisation d’Internet Expl.) -- C:\Windows\System32\ie4uinit.exe  =>.Microsoft Corporation
+O68 - StartMenuInternet: <FIREFOX.EXE> <Mozilla Firefox>[HKLM\..\InstallInfo\HideIconsCommand] (.Mozilla Corporation - Firefox Helper.) -- C:\Program Files (x86)\Mozilla Firefox\uninstall\helper.exe  =>.Mozilla Corporation
+O68 - StartMenuInternet: <IEXPLORE.EXE> <Internet Explorer>[HKLM\..\InstallInfo\HideIconsCommand] (.Microsoft Corporation - Utilitaire d’initialisation d’Internet Expl.) -- C:\Windows\System32\ie4uinit.exe  =>.Microsoft Corporation
+
+---\\ Recherche d'infection sur les navigateurs (2) - 3s
+O69 - SBI: SearchScopes [HKCU] {0633EE93-D776-472f-A0FF-E1416B8B2E3A} [DefaultScope] - (Bing) - http://www.bing.com/
+O69 - SBI: SearchScopes [HKLM] {0633EE93-D776-472f-A0FF-E1416B8B2E3A} [DefaultScope] - (@ieframe.dll,-12512) - http://www.bing.com/
+
+---\\ Enumère les services démarrés par Svchost (33) - 4s
+O83 - Search Svchost Services: AeLookupSvc (AeLookupSvc) . (.Microsoft Corporation - Service Expérience d’application.) -- C:\Windows\System32\aelupsvc.dll   [72192]  =>.Microsoft Corporation
+O83 - Search Svchost Services: CertPropSvc (CertPropSvc) . (.Microsoft Corporation - Service de propagation de certificats de ca.) -- C:\Windows\System32\certprop.dll   [80384]  =>.Microsoft Corporation
+O83 - Search Svchost Services: SCPolicySvc (SCPolicySvc) . (.Microsoft Corporation - Service de propagation de certificats de ca.) -- C:\Windows\System32\certprop.dll   [80384]  =>.Microsoft Corporation
+O83 - Search Svchost Services: lanmanserver (lanmanserver) . (.Microsoft Corporation - DLL du service Serveur.) -- C:\Windows\system32\srvsvc.dll   [236032]  =>.Microsoft Corporation
+O83 - Search Svchost Services: gpsvc (gpsvc) . (.Microsoft Corporation - Client de stratégie de groupe.) -- C:\Windows\System32\gpsvc.dll   [777728]  =>.Microsoft Corporation
+O83 - Search Svchost Services: IKEEXT (IKEEXT) . (.Microsoft Corporation - Extension IKE.) -- C:\Windows\System32\ikeext.dll   [853504]  =>.Microsoft Corporation
+O83 - Search Svchost Services: AudioSrv (AudioSrv) . (.Microsoft Corporation - Service Audio Windows.) -- C:\Windows\System32\Audiosrv.dll   [679424]  =>.Microsoft Corporation
+O83 - Search Svchost Services: Rasauto (Rasauto) . (.Microsoft Corporation - Gestionnaire de numérotation automatique d’.) -- C:\Windows\System32\rasauto.dll   [99328]  =>.Microsoft Corporation
+O83 - Search Svchost Services: Rasman (Rasman) . (.Microsoft Corporation - Gestionnaire de connexions d’accès distant.) -- C:\Windows\System32\rasmans.dll   [344064]  =>.Microsoft Corporation
+O83 - Search Svchost Services: Remoteaccess (Remoteaccess) . (.Microsoft Corporation - Gestionnaire d’interface dynamique.) -- C:\Windows\System32\mprdim.dll   [97792]  =>.Microsoft Corporation
+O83 - Search Svchost Services: SENS (SENS) . (.Microsoft Corporation - Service de notification d’événements systèm.) -- C:\Windows\System32\Sens.dll   [64512]  =>.Microsoft Corporation
+O83 - Search Svchost Services: Sharedaccess (Sharedaccess) . (.Microsoft Corporation - Composants de l’application d’assistance à.) -- C:\Windows\System32\ipnathlp.dll   [359424]  =>.Microsoft Corporation
+O83 - Search Svchost Services: Tapisrv (Tapisrv) . (.Microsoft Corporation - Serveur de téléphonie Microsoft® Windows(TM.) -- C:\Windows\System32\tapisrv.dll   [316928]  =>.Microsoft Corporation
+O83 - Search Svchost Services: TermService (TermService) . (.Microsoft Corporation - Gestionnaire des connexions distantes du se.) -- C:\Windows\System32\termsrv.dll   [680960]  =>.Microsoft Corporation
+O83 - Search Svchost Services: wuauserv (wuauserv) . (.Microsoft Corporation - Agent de mise à jour automatique Windows Up.) -- C:\Windows\system32\wuaueng.dll   [2477536]  =>.Microsoft Windows Component Publisher®
+O83 - Search Svchost Services: BITS (BITS) . (.Microsoft Corporation - Service de transfert intelligent en arrière.) -- C:\Windows\System32\qmgr.dll   [849920]  =>.Microsoft Corporation
+O83 - Search Svchost Services: ShellHWDetection (ShellHWDetection) . (.Microsoft Corporation - Dll des services Windows Shell.) -- C:\Windows\System32\shsvcs.dll   [370688]  =>.Microsoft Corporation
+O83 - Search Svchost Services: iphlpsvc (iphlpsvc) . (.Microsoft Corporation - Service offrant une connectivité IPv6 sur u.) -- C:\Windows\System32\iphlpsvc.dll   [569344]  =>.Microsoft Corporation
+O83 - Search Svchost Services: seclogon (seclogon) . (.Microsoft Corporation - DLL de service d’ouverture de session secon.) -- C:\Windows\system32\seclogon.dll   [30720]  =>.Microsoft Corporation
+O83 - Search Svchost Services: AppInfo (AppInfo) . (.Microsoft Corporation - Service Informations d’application.) -- C:\Windows\System32\appinfo.dll   [70656]  =>.Microsoft Corporation
+O83 - Search Svchost Services: msiscsi (msiscsi) . (.Microsoft Corporation - Service de découverte iSCSI.) -- C:\Windows\system32\iscsiexe.dll   [156672]  =>.Microsoft Corporation
+O83 - Search Svchost Services: MMCSS (MMCSS) . (.Microsoft Corporation - Service Planificateur de classes multimédia.) -- C:\Windows\system32\mmcss.dll   [67584]  =>.Microsoft Corporation
+O83 - Search Svchost Services: winmgmt (winmgmt) . (.Microsoft Corporation - WMI.) -- C:\Windows\system32\wbem\WMIsvc.dll   [242688]  =>.Microsoft Corporation
+O83 - Search Svchost Services: SessionEnv (SessionEnv) . (.Microsoft Corporation - Service Configuration des services Bureau à.) -- C:\Windows\System32\SessEnv.dll   [121856]  =>.Microsoft Corporation
+O83 - Search Svchost Services: browser (browser) . (.Microsoft Corporation - DLL du service Explorateur d’ordinateurs.) -- C:\Windows\System32\browser.dll   [136192]  =>.Microsoft Corporation
+O83 - Search Svchost Services: EapHost (EapHost) . (.Microsoft Corporation - Service EAPHost Microsoft.) -- C:\Windows\System32\eapsvc.dll   [111104]  =>.Microsoft Corporation
+O83 - Search Svchost Services: schedule (schedule) . (.Microsoft Corporation - Service du Planificateur de tâches.) -- C:\Windows\system32\schedsvc.dll   [1110016]  =>.Microsoft Corporation
+O83 - Search Svchost Services: hkmsvc (hkmsvc) . (.Microsoft Corporation - Service Gestion des clés.) -- C:\Windows\system32\kmsvc.dll   [90624]  =>.Microsoft Corporation
+O83 - Search Svchost Services: wercplsupport (wercplsupport) . (.Microsoft Corporation - Rapports et solutions aux problèmes.) -- C:\Windows\System32\wercplsupport.dll   [84480]  =>.Microsoft Corporation
+O83 - Search Svchost Services: ProfSvc (ProfSvc) . (.Microsoft Corporation - ProfSvc.) -- C:\Windows\system32\profsvc.dll   [209920]  =>.Microsoft Corporation
+O83 - Search Svchost Services: Themes (Themes) . (.Microsoft Corporation - DLL du service des thèmes Windows Shell.) -- C:\Windows\system32\themeservice.dll   [44544]  =>.Microsoft Corporation
+O83 - Search Svchost Services: BDESVC (BDESVC) . (.Microsoft Corporation - Service BDE.) -- C:\Windows\System32\bdesvc.dll   [100864]  =>.Microsoft Corporation
+O83 - Search Svchost Services: AppMgmt (AppMgmt) . (.Microsoft Corporation - Service Installation de logiciels.) -- C:\Windows\System32\appmgmts.dll   [193536]  =>.Microsoft Corporation
+
+---\\ Scan Additionnel (0) - 0s
+
+---\\ Récapitulatif des éléments trouvés sur votre station (0) - 0s
+
+~ End of the scan, 6836 items in 00h01mn46s (352)
