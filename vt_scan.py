@@ -3,7 +3,7 @@
 
 from json import loads
 from urllib import urlencode
-from urllib2 import Request, urlopen, HTTPError
+from urllib2 import Request, urlopen, HTTPError, URLError
 from time import sleep
 from re import search
 from os import system
@@ -61,6 +61,9 @@ def run_vt_analyse(md5s_list, apikey):
             sleep(30)
         except HTTPError:
             output("Your apikey %s seem to be refuse by VirusTotal." % apikey)
+            exit()
+        except URLError:
+            output("You should check your internet connexion")
             exit()
 
     # Analyse the answer
