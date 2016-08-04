@@ -6,7 +6,7 @@ from urllib import urlencode
 from urllib2 import Request, urlopen, HTTPError, URLError
 from time import sleep
 from re import search
-from os import system
+from os import system, remove
 from optparse import OptionParser
 
 parser = OptionParser("usage: %prog -f path_to_file [options]")
@@ -165,7 +165,7 @@ def run(options):
         apikey = options.apikey
 
     # Remove the old output file
-    system("rm -f output.txt")
+    remove("output.txt")
 
     # Tell the user which API key will be used
     output("The script will use VT API key: '%s'" % apikey)
