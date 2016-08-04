@@ -3,7 +3,7 @@
 
 from json import loads
 from urllib import urlencode
-from urllib2 import Request, urlopen, HTTPError
+from urllib2 import Request, urlopen, HTTPError, URLError
 from time import sleep
 from re import search
 from os import system
@@ -79,6 +79,9 @@ def run_vt_analyse(md5s_list):
             sleep(30)
         except HTTPError:
             print("Your apikey %s seem to be refuse by VirusTotal." % apikey)
+            exit()
+        except URLError:
+            print("You should check your Internet connexion")
             exit()
 
     # Analyse the answer
@@ -159,7 +162,7 @@ def run(options):
         if err != 0:
             print("There is an error while using Vim to force the file encoding to utf-8.")
         else:
-            print("Vim successfully chnages the file encoding to utf-8.")
+            print("Vim successfully changes the file encoding to utf-8.")
 
     # Detect the logFile type
     with open(options.path_to_file, 'r') as f:
