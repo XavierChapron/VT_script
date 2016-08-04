@@ -9,35 +9,17 @@ from re import search
 from os import system
 from optparse import OptionParser
 
-# Set your VT public API Key here
-apikey = ""
-
 parser = OptionParser("usage: %prog -f path_to_file [options]")
 parser.add_option("-f", "--file",
                   help="file to use",
                   action="store", default=None,
                   dest="path_to_file")
-parser.add_option("-v", "--vim",
-                  help="use to change encoding with Vim",
-                  action="store_true", default=False,
-                  dest="vim")
 parser.add_option("-k", "--key",
                   help="use to set your VT api key",
                   action="store", default='',
                   dest="apikey")
 
 (options, args) = parser.parse_args()
-
-if not options.path_to_file:
-    parser.error('you must use "-f file_to_path"')
-
-
-if not options.apikey:
-    if not apikey:
-        parser.error('you must set an apikey, either in command line or in vt_scan.py line 13')
-else:
-    # We want to use by default the apikey from command line
-    apikey = options.apikey
 
 
 def get_file_type(first_line):
@@ -51,7 +33,7 @@ def get_file_type(first_line):
     return "RAW"
 
 
-def search_on_vt(md5s):
+def search_on_vt(md5s, apikey):
     "Create a VT API request and return the answer"
     url = "https://www.virustotal.com/vtapi/v2/file/report"
     parameters = {"resource": md5s, "apikey": apikey}
@@ -61,7 +43,7 @@ def search_on_vt(md5s):
     return loads(response.read())
 
 
-def run_vt_analyse(md5s_list):
+def run_vt_analyse(md5s_list, apikey):
     # Format the md5s_list for the request
     md5_request = ""
     for md5 in md5s_list:
@@ -72,13 +54,13 @@ def run_vt_analyse(md5s_list):
     answer_list = None
     while answer_list is None:
         try:
-            answer_list = search_on_vt(md5_request)
+            answer_list = search_on_vt(md5_request, apikey)
         except ValueError:
             answer_list = None
-            print("### Error, VT refuse to answer, the script will retry in 30sec.")
+            output("### Error, VT refuse to answer, the script will retry in 30sec.")
             sleep(30)
         except HTTPError:
-            print("Your apikey %s seem to be refuse by VirusTotal." % apikey)
+            output("Your apikey %s seem to be refuse by VirusTotal." % apikey)
             exit()
 
     # Analyse the answer
@@ -94,16 +76,16 @@ def analyse_answer(answer, md5s_list):
     if answer.get("response_code", 0) == 0:
         md5 = answer.get("resource", "error")
         filename = get_filename_for_md5(md5, md5s_list)
-        print("VirusTotal seems to not know file: %s with md5:%s." % (filename, md5))
+        output("VirusTotal seems to not know file: %s with md5:%s." % (filename, md5))
 
     else:
-        # Print answer
+        # output answer
         md5 = answer.get(u"md5", None).lower()
         filename = get_filename_for_md5(md5, md5s_list)
         positives = answer.get("positives", None)
         total = answer.get("total", None)
         url = "https://www.virustotal.com/latest-scan/" + md5
-        print("%s/%s for %s, more info at %s" % (positives, total, filename, url))
+        output("%s/%s for %s, more info at %s" % (positives, total, filename, url))
 
 
 def get_filename_for_md5(md5, md5s_list):
@@ -148,45 +130,69 @@ def find_md5_in_file(path_to_file):
 
     return md5s_list
 
+def output(message):
+    system("echo %s >> output.txt" % message)
+    print(message)
+
 
 def run(options):
-    # Tell the user which API key will be used
-    print("The script will use VT API key: %s" % apikey)
 
-    # Change encoding with Vim if -v option used
-    if options.vim:
-        err = system("vim '+set fileencoding=utf-8' '+wq' %s" % options.path_to_file)
-        if err != 0:
-            print("There is an error while using Vim to force the file encoding to utf-8.")
-        else:
-            print("Vim successfully chnages the file encoding to utf-8.")
+    if not options.path_to_file:
+        try:
+            with open("input.txt", 'r') as f:
+                if f.readline():
+                    options.path_to_file = "input.txt"
+        except IOError:
+            output('you must use an input file, save it as input.txt or use -f option in command line')
+            parser.error('you must use an input file, save it as input.txt or use -f option in command line')
+
+
+    if not options.apikey:
+        try:
+            with open("apikey.txt", 'r') as f:
+                apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
+            if not apikey:
+                output('you must use an apikey, set it in apikey.txt or use -k option in command line')
+                parser.error('you must use an apikey, set it in apikey.txt or use -k option in command line')
+        except IOError:
+            output('you must use an apikey, set it in apikey.txt or use -k option in command line')
+            parser.error('you must use an apikey, set it in apikey.txt or use -k option in command line')
+    else:
+        # We want to use by default the apikey from command line
+        apikey = options.apikey
+
+    # Remove the old output file
+    system("rm -f output.txt")
+
+    # Tell the user which API key will be used
+    output("The script will use VT API key: '%s'" % apikey)
 
     # Detect the logFile type
     with open(options.path_to_file, 'r') as f:
         file_type = get_file_type(f.readline())
-        print("The input file is detected as a %s log." % file_type)
+        output("The input file is detected as a %s log." % file_type)
 
     # Find the md5s in the file
     md5s_list = find_md5_in_file(options.path_to_file)
     if len(md5s_list) == 0:
-        print(
-          "Found 0 md5 in %s, if there is md5, you should consider using the -v option or convert the log file encoding to 'utf-8'."
+        output(
+          "Found 0 md5 in %s, if there is md5, convert the log file encoding to 'utf-8'."
           % options.path_to_file
         )
         exit()
-    print("Found %s different md5s in %s." % (len(md5s_list), options.path_to_file))
-    print("The analysis should take about %s min." % int(len(md5s_list) / 16 + 1))
+    output("Found %s different md5s in %s." % (len(md5s_list), options.path_to_file))
+    output("The analysis should take about %s min." % int(len(md5s_list) / 16 + 1))
 
     # Search on VT for each md5 by group of 4
     while len(md5s_list) >= 4:
-        run_vt_analyse(md5s_list[0:4])
+        run_vt_analyse(md5s_list[0:4], apikey)
         md5s_list = md5s_list[4:]
 
         # The VirusTotal public API allow 4 request each minute,
         # therefore we should wait 15sec between each request.
         sleep(15)
-    run_vt_analyse(md5s_list)
+    run_vt_analyse(md5s_list, apikey)
 
-    print("### End of analysis.")
+    output("### End of analysis.")
 
 run(options)
