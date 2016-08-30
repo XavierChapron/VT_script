@@ -8,6 +8,8 @@ from time import sleep
 from re import search
 from os import system, remove
 from optparse import OptionParser
+from shutil import copyfile
+from os.path import dirname, join
 
 parser = OptionParser("usage: %prog -f path_to_file [options]")
 parser.add_option("-f", "--file",
@@ -61,10 +63,10 @@ def run_vt_analyse(md5s_list, apikey):
             sleep(30)
         except HTTPError:
             output("Your apikey %s seem to be refuse by VirusTotal." % apikey)
-            exit()
+            exit_program()
         except URLError:
             output("You should check your internet connexion")
-            exit()
+            exit_program()
 
     # Analyse the answer
     if len(md5s_list) == 1:
@@ -137,8 +139,14 @@ def output(message):
     system("echo %s >> output.txt" % message)
     print(message)
 
+def exit_program():
+    raw_input("Press enter to exit.")
+    exit()
 
 def run(options):
+
+    # Remove the old output file
+    system("echo %s > output.txt" % "VT_Scan:")
 
     if not options.path_to_file:
         try:
@@ -164,11 +172,12 @@ def run(options):
         # We want to use by default the apikey from command line
         apikey = options.apikey
 
-    # Remove the old output file
-    remove("output.txt")
-
     # Tell the user which API key will be used
     output("The script will use VT API key: '%s'" % apikey)
+
+    # Remove issues with \n at the end of the filename
+    options.path_to_file = options.path_to_file.replace("\n","")
+    output("The input file is %s" % options.path_to_file)
 
     # Detect the logFile type
     with open(options.path_to_file, 'r') as f:
@@ -182,7 +191,7 @@ def run(options):
           "Found 0 md5 in %s, if there is md5, convert the log file encoding to 'utf-8'."
           % options.path_to_file
         )
-        exit()
+        exit_program()
     output("Found %s different md5s in %s." % (len(md5s_list), options.path_to_file))
     output("The analysis should take about %s min." % int(len(md5s_list) / 16 + 1))
 
@@ -197,5 +206,16 @@ def run(options):
     run_vt_analyse(md5s_list, apikey)
 
     output("### End of analysis.")
+
+    save = raw_input("Do you want to save the log, if no the program will stop. [y/N] ")
+    if save == "y":
+        default_filename = "output.txt"
+        filename = raw_input("Enter a file name, the default is %s: " % default_filename)
+        if filename:
+            copyfile("output.txt", join(dirname(options.path_to_file), filename))
+            remove("output.txt")
+        exit_program()
+    remove("output.txt")
+    exit_program()
 
 run(options)
