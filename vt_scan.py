@@ -211,30 +211,30 @@ def run(options):
     run_vt_analyse(md5s_list, apikey, results)
 
 
-    log_path = join(gettempdir(), "vt_scan.txt")
+    log_path = join(gettempdir(), "vt_scan.html")
     with open(log_path, 'w') as f:
-        f.write("VT_Scan by Chapi:\n")
-        f.write("The script will use VT API key: '%s'\n" % apikey)
-        f.write("The input file is %s\n" % options.path_to_file)
-        f.write("The input file is detected as a %s log.\n" % file_type)
-        f.write("Found %s different md5s in %s.\n" % (len(md5s_list), options.path_to_file))
+        f.write("VT_Scan by Chapi:</br>")
+        f.write("The script will use VT API key: '%s'</br>" % apikey)
+        f.write("The input file is %s</br>" % options.path_to_file)
+        f.write("The input file is detected as a %s log.</br>" % file_type)
+        f.write("Found %s different md5s in %s.</br>" % (len(md5s_list), options.path_to_file))
 
         if results["positives"]:
-            f.write("\n--- VirusTotal nonzero detections ---\n")
+            f.write("</br>--- VirusTotal nonzero detections ---</br>")
             for result in results["positives"]:
-                f.write("%s/%s for %s, more info at %s\n" % result)
+                f.write('%s/%s for %s, more info <a href=%s target="_blank">here</a></br>' % result)
 
         if results["unknows"]:
-            f.write("\n--- VirusTotal unknow files ---\n")
+            f.write("</br>--- VirusTotal unknow files ---</br>")
             for result in results["unknows"]:
-                f.write("%s with md5:%s.\n" % result)
+                f.write("%s with md5:%s.</br>" % result)
 
         if results["negatives"]:
-            f.write("\n--- VirusTotal negative results ---\n")
+            f.write("</br>--- VirusTotal negative results ---</br>")
             for result in results["negatives"]:
-                f.write("%s/%s for %s, more info at %s\n" % result)
+                f.write('%s/%s for %s, more info <a href=%s target="_blank">here</a></br>' % result)
 
-        f.write("\n\n###End of analysis.")
+        f.write("</br></br>###End of analysis.")
 
     print("### End of analysis.")
 
