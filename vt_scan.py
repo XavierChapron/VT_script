@@ -156,6 +156,51 @@ def find_md5_in_file(path_to_file, file_type):
     return md5s_list
 
 
+def get_input_filename(path_to_file, log_path):
+    if not path_to_file:
+        try:
+            with open("input.txt", 'r') as f:
+                if f.readline():
+                    return "input.txt"
+        except IOError:
+            print('you must use an input file, save it as input.txt or use -f option in command line')
+            system("echo %s > %s" % ('you must use an input file, save it as input.txt or use -f option in command line', log_path))
+            exit()
+    else:
+        # We want to use by default the input file from command line
+        return path_to_file.replace("\n","")
+
+
+def get_apikey(apikey, options_apikey, log_path):
+    if not options_apikey:
+        if not apikey:
+            try:
+                with open("apikey.txt", 'r') as f:
+                    return f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
+                if not apikey:
+                    print('you must use an apikey, set it in apikey.txt or use -k option in command line')
+                    system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
+                    exit()
+            except IOError:
+                print('you must use an apikey, set it in apikey.txt or use -k option in command line')
+                system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
+                exit()
+        return apikey
+    else:
+        # We want to use by default the apikey from command line
+        return options.apikey
+
+
+def convert_file_with_vim(path_to_file):
+    err = system("vim '+set fileencoding=utf-8' '+wq' %s" % path_to_file)
+    if err != 0:
+        print("There is an error while using Vim to force the file encoding to utf-8.")
+        return False
+    else:
+        print("Vim successfully changes the file encoding to utf-8.")
+        return True
+
+
 def run(options):
 
     # Set your VT public API Key here
@@ -165,53 +210,17 @@ def run(options):
     log_path = join(gettempdir(), "vt_scan.html")
 
     # Get the input file
-    if not options.path_to_file:
-        try:
-            with open("input.txt", 'r') as f:
-                if f.readline():
-                    path_to_file = "input.txt"
-        except IOError:
-            print('you must use an input file, save it as input.txt or use -f option in command line')
-            system("echo %s > %s" % ('you must use an input file, save it as input.txt or use -f option in command line', log_path))
-            exit()
-    else:
-        # We want to use by default the input file from command line
-        path_to_file = options.path_to_file.replace("\n","")
+    path_to_file = get_input_filename(options.path_to_file, log_path)
+    print("The input file is %s" % path_to_file)
 
     # Get the apikey
-    if not options.apikey:
-        if not apikey:
-            try:
-                with open("apikey.txt", 'r') as f:
-                    apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
-                if not apikey:
-                    print('you must use an apikey, set it in apikey.txt or use -k option in command line')
-                    system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
-                    exit()
-            except IOError:
-                print('you must use an apikey, set it in apikey.txt or use -k option in command line')
-                system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
-                exit()
-    else:
-        # We want to use by default the apikey from command line
-        apikey = options.apikey
+    apikey = get_apikey(apikey, options.apikey, log_path)
+    print("The script will use VT API key: '%s'" % apikey)
 
     # Change encoding with Vim if -v option used
     # Not working easily on Windows
     if options.vim:
-        err = system("vim '+set fileencoding=utf-8' '+wq' %s" % path_to_file)
-        if err != 0:
-            print("There is an error while using Vim to force the file encoding to utf-8.")
-            vim_success = False
-        else:
-            print("Vim successfully changes the file encoding to utf-8.")
-            vim_success = True
-
-    # Tell the user which API key will be used
-    print("The script will use VT API key: '%s'" % apikey)
-
-    # Remove issues with \n at the end of the filename
-    print("The input file is %s" % path_to_file)
+        vim_success = convert_file_with_vim(path_to_file)
 
     # Detect the logFile type
     with open(path_to_file, 'r') as f:
