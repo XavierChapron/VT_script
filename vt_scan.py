@@ -59,8 +59,8 @@ def run_vt_analyse(md5s_list, apikey, results):
             answer_list = search_on_vt(md5_request, apikey)
         except ValueError:
             answer_list = None
-            print("### Error, VT refuse to answer, the script will retry in 30sec.")
-            sleep(30)
+            print("### Error, VT refuse to answer, the script will retry in 10sec.")
+            sleep(10)
         except HTTPError:
             print("Your apikey %s seem to be refuse by VirusTotal." % apikey)
             exit_program()
@@ -200,14 +200,7 @@ def run(options):
 
     results = {"unknows": [], "negatives": [], "positives": []}
 
-    # Search on VT for each md5 by group of 4
-    while len(md5s_list) >= 4:
-        run_vt_analyse(md5s_list[0:4], apikey, results)
-        md5s_list = md5s_list[4:]
-
-        # The VirusTotal public API allow 4 request each minute,
-        # therefore we should wait 15sec between each request.
-        sleep(15)
+    # Search on VT for each md5
     run_vt_analyse(md5s_list, apikey, results)
 
 
