@@ -176,13 +176,13 @@ def get_apikey(apikey, options_apikey, log_path):
         if not apikey:
             try:
                 with open("apikey.txt", 'r') as f:
-                    return f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
+                    apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
                 if not apikey:
-                    print('you must use an apikey, set it in apikey.txt or use -k option in command line')
+                    print('you must use an apikey, set it in apikey.txt or line 207 of vt_scan.py or use -k option in command line')
                     system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
                     exit()
             except IOError:
-                print('you must use an apikey, set it in apikey.txt or use -k option in command line')
+                print('you must use an apikey, set it in apikey.txt or line 207 of vt_scan.py or use -k option in command line')
                 system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
                 exit()
         return apikey
@@ -250,9 +250,9 @@ def run(options):
         f.write("The input file is <b>%s</b></br>" % path_to_file)
         if options.vim:
             if vim_success:
-                f.write("Vim successfully changes the file encoding to utf-8.")
+                f.write("Vim successfully changes the file encoding to utf-8.</br>")
             else:
-                f.write("There is an error while using Vim to force the file encoding to utf-8.")
+                f.write("There is an error while using Vim to force the file encoding to utf-8.</br>")
         f.write("The input file is detected as a <b>%s</b> log.</br>" % file_type)
         f.write("Found <b>%s different md5s</b> in %s.</br>" % (len(md5s_list), path_to_file))
 
