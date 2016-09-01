@@ -8,8 +8,9 @@ from time import sleep
 from re import search
 from os import system
 from optparse import OptionParser
-from os.path import dirname, join
+from os.path import join
 from tempfile import gettempdir
+from webbrowser import open as webopen
 
 parser = OptionParser("usage: %prog -f path_to_file [options]")
 parser.add_option("-f", "--file",
@@ -45,7 +46,7 @@ def search_on_vt(md5s, apikey):
     return loads(response.read())
 
 
-def run_vt_analyse(md5s_list, apikey, results):
+def run_vt_analyse(md5s_list, apikey, results, log_path):
     # Format the md5s_list for the request
     md5_request = ""
     for md5 in md5s_list:
@@ -63,10 +64,12 @@ def run_vt_analyse(md5s_list, apikey, results):
             sleep(10)
         except HTTPError:
             print("Your apikey %s seem to be refuse by VirusTotal." % apikey)
-            exit_program()
+            system("echo %s > %s" % (("Your apikey %s seem to be refuse by VirusTotal." % apikey), log_path))
+            exit()
         except URLError:
             print("You should check your internet connexion")
-            exit_program()
+            system("echo %s > %s" % ("You should check your internet connexion", log_path))
+            exit()
 
     # Analyse the answer
     if len(md5s_list) == 1:
@@ -81,18 +84,16 @@ def analyse_answer(answer, md5s_list, results):
     if answer.get("response_code", 0) == 0:
         md5 = answer.get("resource", "error")
         filename = get_filename_for_md5(md5, md5s_list)
-        print("VirusTotal seems to not know file: %s with md5:%s." % (filename, md5))
         results["unknows"].append((filename, md5))
 
     else:
-        # output answer
+        # store the answer
         md5 = answer.get(u"md5", None).lower()
         filename = get_filename_for_md5(md5, md5s_list)
         positives = answer.get("positives", None)
         total = answer.get("total", None)
         url = "https://www.virustotal.com/latest-scan/" + md5
-        result = (positives, total, filename, url)
-        print("%s/%s for %s, more info at %s" % result)
+        result = (positives, total, url, filename)
         if positives:
             results["positives"].append(result)
         else:
@@ -144,39 +145,40 @@ def find_md5_in_file(path_to_file, file_type):
                 md5s_list.append((md5, search_filename.group(0)[1:]))
             else:
                 md5s_list.append((md5, "'no filename'"))
-
     return md5s_list
 
-def output(message):
-    system("echo %s >> output.txt" % message)
-    print(message)
-
-def exit_program():
-    raw_input("Press enter to exit.")
-    exit()
 
 def run(options):
 
+    log_path = join(gettempdir(), "vt_scan.html")
+
+    # Get the input file
     if not options.path_to_file:
         try:
             with open("input.txt", 'r') as f:
                 if f.readline():
-                    options.path_to_file = "input.txt"
+                    path_to_file = "input.txt"
         except IOError:
             print('you must use an input file, save it as input.txt or use -f option in command line')
-            exit_program()
+            system("echo %s > %s" % ('you must use an input file, save it as input.txt or use -f option in command line', log_path))
+            exit()
+    else:
+        # We want to use by default the input file from command line
+        path_to_file = options.path_to_file.replace("\n","")
 
-
+    # Get the apikey
     if not options.apikey:
         try:
             with open("apikey.txt", 'r') as f:
                 apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
             if not apikey:
                 print('you must use an apikey, set it in apikey.txt or use -k option in command line')
-                exit_program()
+                system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
+                exit()
         except IOError:
             print('you must use an apikey, set it in apikey.txt or use -k option in command line')
-            exit_program()
+            system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
+            exit()
     else:
         # We want to use by default the apikey from command line
         apikey = options.apikey
@@ -185,57 +187,55 @@ def run(options):
     print("The script will use VT API key: '%s'" % apikey)
 
     # Remove issues with \n at the end of the filename
-    options.path_to_file = options.path_to_file.replace("\n","")
-    print("The input file is %s" % options.path_to_file)
+    print("The input file is %s" % path_to_file)
 
     # Detect the logFile type
-    with open(options.path_to_file, 'r') as f:
+    with open(path_to_file, 'r') as f:
         file_type = get_file_type(f.readline())
         print("The input file is detected as a %s log." % file_type)
 
     # Find the md5s in the file
-    md5s_list = find_md5_in_file(options.path_to_file, file_type)
+    md5s_list = find_md5_in_file(path_to_file, file_type)
     if len(md5s_list) == 0:
         print(
           "Found 0 md5 in %s, if there is md5, convert the log file encoding to 'utf-8'."
-          % options.path_to_file
+          % path_to_file
         )
-        exit_program()
-    print("Found %s different md5s in %s." % (len(md5s_list), options.path_to_file))
+        system("echo %s > %s" % (("Found 0 md5 in %s, if there is md5, convert the log file encoding to 'utf-8'."
+          % path_to_file), log_path))
+        exit()
+    print("Found %s different md5s in %s." % (len(md5s_list), path_to_file))
 
+    # Search on VT for each md5 and store the results
     results = {"unknows": [], "negatives": [], "positives": []}
+    run_vt_analyse(md5s_list, apikey, results, log_path)
 
-    # Search on VT for each md5
-    run_vt_analyse(md5s_list, apikey, results)
-
-
-    log_path = join(gettempdir(), "vt_scan.html")
+    # Create the output log
     with open(log_path, 'w') as f:
-        f.write("VT_Scan by Chapi:</br>")
-        f.write("The script will use VT API key: '%s'</br>" % apikey)
-        f.write("The input file is %s</br>" % options.path_to_file)
-        f.write("The input file is detected as a %s log.</br>" % file_type)
-        f.write("Found %s different md5s in %s.</br>" % (len(md5s_list), options.path_to_file))
+        f.write("<h2>VT_Scan by Chapi:</h2></br>")
+        f.write("The script will use VT API key: %s</br>" % apikey)
+        f.write("The input file is <b>%s</b></br>" % path_to_file)
+        f.write("The input file is detected as a <b>%s</b> log.</br>" % file_type)
+        f.write("Found <b>%s different md5s</b> in %s.</br>" % (len(md5s_list), path_to_file))
 
-        if results["positives"]:
-            f.write("</br>--- VirusTotal nonzero detections ---</br>")
-            for result in results["positives"]:
-                f.write('%s/%s for %s, more info <a href=%s target="_blank">here</a></br>' % result)
+        f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>" % len(results["positives"]))
+        for result in results["positives"]:
+            f.write('%s/%s for <a href=%s target="_blank">%s</a></br>' % result)
 
-        if results["unknows"]:
-            f.write("</br>--- VirusTotal unknow files ---</br>")
-            for result in results["unknows"]:
-                f.write("%s with md5:%s.</br>" % result)
+        f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>" % len(results["unknows"]))
+        for result in results["unknows"]:
+            f.write("%s with md5:%s.</br>" % result)
 
-        if results["negatives"]:
-            f.write("</br>--- VirusTotal negative results ---</br>")
-            for result in results["negatives"]:
-                f.write('%s/%s for %s, more info <a href=%s target="_blank">here</a></br>' % result)
 
-        f.write("</br></br>###End of analysis.")
+        f.write("<h4></br>VirusTotal negative results (%s)</br></h4>" % len(results["negatives"]))
+        for result in results["negatives"]:
+            f.write('%s/%s for <a href=%s target="_blank">%s</a></br>' % result)
+
+        f.write("</br></br>End of analysis.")
 
     print("### End of analysis.")
 
-    system("start %s" % log_path)
+    # Open the log
+    webopen(log_path)
 
 run(options)
