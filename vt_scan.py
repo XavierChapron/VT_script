@@ -12,11 +12,16 @@ from os.path import join
 from tempfile import gettempdir
 from webbrowser import open as webopen
 
+
 parser = OptionParser("usage: %prog -f path_to_file [options]")
 parser.add_option("-f", "--file",
                   help="file to use",
                   action="store", default=None,
                   dest="path_to_file")
+parser.add_option("-v", "--vim",
+                  help="use to change encoding with Vim",
+                  action="store_true", default=False,
+                  dest="vim")
 parser.add_option("-k", "--key",
                   help="use to set your VT api key",
                   action="store", default='',
@@ -150,6 +155,10 @@ def find_md5_in_file(path_to_file, file_type):
 
 def run(options):
 
+    # Set your VT public API Key here
+    apikey = ""
+
+    # Full path to the output log
     log_path = join(gettempdir(), "vt_scan.html")
 
     # Get the input file
@@ -168,20 +177,32 @@ def run(options):
 
     # Get the apikey
     if not options.apikey:
-        try:
-            with open("apikey.txt", 'r') as f:
-                apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
-            if not apikey:
+        if not apikey:
+            try:
+                with open("apikey.txt", 'r') as f:
+                    apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
+                if not apikey:
+                    print('you must use an apikey, set it in apikey.txt or use -k option in command line')
+                    system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
+                    exit()
+            except IOError:
                 print('you must use an apikey, set it in apikey.txt or use -k option in command line')
                 system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
                 exit()
-        except IOError:
-            print('you must use an apikey, set it in apikey.txt or use -k option in command line')
-            system("echo %s > %s" % ('you must use an apikey, set it in apikey.txt or use -k option in command line', log_path))
-            exit()
     else:
         # We want to use by default the apikey from command line
         apikey = options.apikey
+
+    # Change encoding with Vim if -v option used
+    # Not working easily on Windows
+    if options.vim:
+        err = system("vim '+set fileencoding=utf-8' '+wq' %s" % path_to_file)
+        if err != 0:
+            print("There is an error while using Vim to force the file encoding to utf-8.")
+            vim_success = False
+        else:
+            print("Vim successfully changes the file encoding to utf-8.")
+            vim_success = True
 
     # Tell the user which API key will be used
     print("The script will use VT API key: '%s'" % apikey)
@@ -215,6 +236,11 @@ def run(options):
         f.write("<h2>VT_Scan by Chapi:</h2></br>")
         f.write("The script will use VT API key: %s</br>" % apikey)
         f.write("The input file is <b>%s</b></br>" % path_to_file)
+        if options.vim:
+            if vim_success:
+                f.write("Vim successfully changes the file encoding to utf-8.")
+            else:
+                f.write("There is an error while using Vim to force the file encoding to utf-8.")
         f.write("The input file is detected as a <b>%s</b> log.</br>" % file_type)
         f.write("Found <b>%s different md5s</b> in %s.</br>" % (len(md5s_list), path_to_file))
 
