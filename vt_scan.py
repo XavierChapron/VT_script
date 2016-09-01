@@ -107,18 +107,24 @@ def get_filename_for_md5(md5, md5s_list):
     raise ValueError
 
 
-def find_md5_in_file(path_to_file):
+def find_md5_in_file(path_to_file, file_type):
     "Find all md5 and the name of the associated file"
     md5s_dict = {}
     md5s_list = []
     with open(path_to_file, 'r') as f:
         for line in f:
 
-            # Parse the line to find if there is a 32 hex number
-            search_md5 = search('(' + r'[0-9a-fA-F]' * 32 + ')', line)
-            if not search_md5:
-                continue
-            md5 = search_md5.group(0)
+            if file_type == "ZHPDiag":
+                search_md5 = search('MD5.(' + r'[0-9a-fA-F]' * 32 + ')', line)
+                if not search_md5:
+                    continue
+                md5 = search_md5.group(0).replace("MD5.", "")
+            else:
+                # Parse the line to find if there is a 32 hex number
+                search_md5 = search('(' + r'[0-9a-fA-F]' * 32 + ')', line)
+                if not search_md5:
+                    continue
+                md5 = search_md5.group(0)
 
             # Little hack to exclude CLSIDs
             md5_index = line.index(md5)
@@ -188,7 +194,7 @@ def run(options):
         print("The input file is detected as a %s log." % file_type)
 
     # Find the md5s in the file
-    md5s_list = find_md5_in_file(options.path_to_file)
+    md5s_list = find_md5_in_file(options.path_to_file, file_type)
     if len(md5s_list) == 0:
         print(
           "Found 0 md5 in %s, if there is md5, convert the log file encoding to 'utf-8'."
@@ -196,7 +202,6 @@ def run(options):
         )
         exit_program()
     print("Found %s different md5s in %s." % (len(md5s_list), options.path_to_file))
-    print("The analysis should take about %s min." % int(len(md5s_list) / 16 + 1))
 
     results = {"unknows": [], "negatives": [], "positives": []}
 
