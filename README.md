@@ -36,11 +36,7 @@ While this script has been created to work on a Linux distribution or on Windows
 
     2. Use -f option to choose the file you want to scan, the default is the input.txt file in the current folder.
 
-    3. Use -v option to use Vim to change encoding to utf-8.
-        That is not necessary in most of the case, but it is with OTL file that have an encoding that I don't know by default.
-        If you don't want to use Vim or just to install it, you can change the encoding of your log file with any other tool of your choice.
-
-    4. Use -k option to specify your VirusTotal API key, or the script will use the value in vt_scan.py line 207, or the value in the apikey.txt file in the current folder.
+    3. Use -k option to specify your VirusTotal API key, or the script will use the value in vt_scan.py line 207, or the value in the apikey.txt file in the current folder.
 
 2. For Windows:
     1. You can use it exactly as on Linux.
