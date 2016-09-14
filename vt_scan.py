@@ -11,6 +11,7 @@ from optparse import OptionParser
 from os.path import join
 from tempfile import gettempdir
 from webbrowser import open as webopen
+from unicodedata import normalize
 
 
 # Set your VT public API Key here
@@ -76,14 +77,12 @@ def run_vt_analyse(md5s_list, apikey, results, log_path):
             answer_list = search_on_vt(md5_request, apikey)
         except ValueError:
             answer_list = None
-            print("### Error, VT refuse to answer, the script will retry in 10sec.")
+            print("### Error, VT refuses to answer, the script will retry in 10sec.")
             sleep(10)
         except HTTPError:
             return_error_message("Your apikey %s seem to be refuse by VirusTotal." % apikey)
         except URLError:
             return_error_message("You should check your internet connexion")
-        except URLError:
-            return_error_message("You should check your Internet connexion")
 
     # Analyse the answer
     if len(md5s_list) == 1:
@@ -124,41 +123,49 @@ def get_filename_for_md5(md5, md5s_list):
 
 def find_md5_in_file(line_list, file_type):
     "Find all md5 and the name of the associated file"
+
+    parsing_dict = {
+        "ZHPDiag": ('MD5.' + r'[0-9a-fA-F]' * 32, "MD5.", r'\\[^\\\[]+\s\[', 1, -2),
+        "OTL": ('MD5=' + r'[0-9a-fA-F]' * 32, "MD5=", r'\\[^\\]+$', 1, None),
+        "FRST": (r'[0-9a-fA-F]' * 32 + '\s*$', "", r'\\[^\\]+\s', 1, -34),
+        "RAW": (r'[0-9a-fA-F]' * 32, "", r'\\[\w\-\s]+\.\w+', 1, None)
+    }
     md5s_dict = {}
     md5s_list = []
 
     for line in line_list:
+        filename = "'no filename'"
+        parsing_tupple = parsing_dict.get(file_type, parsing_dict["RAW"])
 
-        if file_type == "ZHPDiag":
-            search_md5 = search('MD5.(' + r'[0-9a-fA-F]' * 32 + ')', line)
-            if not search_md5:
-                continue
-            md5 = search_md5.group(0).replace("MD5.", "")
+        # Get md5 if md5
+        search_md5 = search(parsing_tupple[0], line)
+        if not search_md5:
+            continue
+        md5 = search_md5.group(0).replace(parsing_tupple[1], "")
+
+        # Get filename if filename
+        if file_type == "FRST":
+            search_filename = search(parsing_tupple[2] + md5, line)
         else:
-            # Parse the line to find if there is a 32 hex number
-            search_md5 = search('(' + r'[0-9a-fA-F]' * 32 + ')', line)
-            if not search_md5:
-                continue
-            md5 = search_md5.group(0)
-
-        # Little hack to exclude CLSIDs
-        md5_index = line.index(md5)
-        if md5_index > 0 and line[md5_index - 1] == "{":
-            continue
-
-        md5 = md5.lower()
-
-        if md5s_dict.get(md5, False):
-            # We doesn't want to search multiples times for the same md5
-            continue
-        md5s_dict[md5] = True
-
-        # Parse the line to find if there is a filename with format (roughly) \anything.anything
-        search_filename = search(r'\\([\w\-\s]+\.\w+)', line)
+            search_filename = search(parsing_tupple[2], line)
         if search_filename:
-            md5s_list.append((md5, search_filename.group(0)[1:]))
-        else:
-            md5s_list.append((md5, "'no filename'"))
+            filename = search_filename.group(0)[parsing_tupple[3]:parsing_tupple[4]]
+
+        # Format md5 and filename
+        md5 = md5.lower().strip()
+        filename = filename.replace("\n", "").replace("\r", "")
+        filename = unicode(filename, 'utf-8')
+        filename = normalize('NFD', filename)
+        filename = filename.encode('ascii', 'ignore')
+        filename = filename.decode("utf-8")
+
+        # Remove already existing md5
+        if md5s_dict.get(md5, False):
+            continue
+
+        # Add md5 and filename to the queue
+        md5s_dict[md5] = True
+        md5s_list.append((md5, filename))
     return md5s_list
 
 
@@ -169,9 +176,9 @@ def get_apikey(apikey, options_apikey, log_path):
                 with open("apikey.txt", 'r') as f:
                     apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
                 if not apikey:
-                    return_error_message('you must use an apikey')
+                    return_error_message('You must use an apikey')
             except IOError:
-                return_error_message('you must use an apikey')
+                return_error_message('You must use an apikey')
         return apikey
     else:
         # We want to use by default the apikey from command line
@@ -186,7 +193,6 @@ def run(options, apikey):
 
     # Get the apikey
     apikey = get_apikey(apikey, options.apikey, log_path)
-    print("The script will use VT API key: '%s'" % apikey)
 
     # Handle issues with files encoding
     # OTL logs files comes formatted in utf-16-le encoding...
@@ -222,7 +228,6 @@ def run(options, apikey):
         # Create the output log
         with open(log_path, 'w') as f:
             f.write("<h2>VT_Scan by Chapi:</h2></br>")
-            f.write("The script will use VT API key: %s</br>" % apikey)
             f.write("The input file is <b>%s</b></br>" % path_to_file)
             f.write("The input file is detected as a <b>%s</b> log.</br>" % file_type)
             f.write("Found <b>%s different md5s</b>.</br>" % len(md5s_list))
