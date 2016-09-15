@@ -1,17 +1,16 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 from json import loads
-from urllib import urlencode
-from urllib2 import Request, urlopen, HTTPError, URLError
+from urllib.parse import urlencode
+from urllib.request import urlopen
+from urllib.error import HTTPError, URLError
 from time import sleep
 from re import search
-from os import system, _exit
+from os import _exit
 from optparse import OptionParser
 from os.path import join
 from tempfile import gettempdir
 from webbrowser import open as webopen
-from unicodedata import normalize
 
 
 # Set your VT public API Key here
@@ -36,8 +35,9 @@ parser.add_option("-k", "--key",
 def return_error_message(message):
     """As this script is also use on Windows as an exe without cmd,
     I need something more than a print to inform the user ofthe exit status"""
-    print(message)
-    system("echo %s > %s" % (message, log_path))
+    with open(log_path, 'w') as f:
+        f.write('<meta charset="UTF-8">\n')
+        f.write(message)
     webopen(log_path)
     _exit(1)
 
@@ -58,9 +58,9 @@ def search_on_vt(md5s, apikey):
     url = "https://www.virustotal.com/vtapi/v2/file/report"
     parameters = {"resource": md5s, "apikey": apikey}
     data = urlencode(parameters)
-    req = Request(url, data)
-    response = urlopen(req)
-    return loads(response.read())
+    data = data.encode('ascii')
+    response = urlopen(url, data)
+    return loads(response.read().decode('utf-8'))
 
 
 def run_vt_analyse(md5s_list, apikey, results, log_path):
@@ -154,10 +154,6 @@ def find_md5_in_file(line_list, file_type):
         # Format md5 and filename
         md5 = md5.lower().strip()
         filename = filename.replace("\n", "").replace("\r", "")
-        filename = unicode(filename, 'utf-8')
-        filename = normalize('NFD', filename)
-        filename = filename.encode('ascii', 'ignore')
-        filename = filename.decode("utf-8")
 
         # Remove already existing md5
         if md5s_dict.get(md5, False):
@@ -199,12 +195,13 @@ def run(options, apikey):
     try:
         with open(path_to_file, 'r') as f:
             content = f.read()
-            if "\x00" in content:
-                content = content.decode('utf-16-le')
-                content = content.encode('utf8')
-            line_list = content.split("\n")
+    except UnicodeDecodeError:
+        with open(path_to_file, 'r', encoding='utf-16-le') as f:
+            content = f.read()
     except:
         return_error_message("Error while opening file: %s" % path_to_file)
+
+    line_list = content.split("\n")
 
     # Detect the logFile type
     file_type = get_file_type(line_list[0])
@@ -227,22 +224,23 @@ def run(options, apikey):
 
         # Create the output log
         with open(log_path, 'w') as f:
-            f.write("<h2>VT_Scan by Chapi:</h2></br>")
-            f.write("The input file is <b>%s</b></br>" % path_to_file)
-            f.write("The input file is detected as a <b>%s</b> log.</br>" % file_type)
-            f.write("Found <b>%s different md5s</b>.</br>" % len(md5s_list))
+            f.write('<meta charset="UTF-8">\n')
+            f.write("<h2>VT_Scan by Chapi:</h2></br>\n")
+            f.write("The input file is <b>%s</b></br>\n" % path_to_file)
+            f.write("The input file is detected as a <b>%s</b> log.</br>\n" % file_type)
+            f.write("Found <b>%s different md5s</b>.</br>\n" % len(md5s_list))
 
-            f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>" % len(results["positives"]))
+            f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>\n" % len(results["positives"]))
             for result in results["positives"]:
-                f.write('%s/%s for <a href=%s target="_blank">%s</a></br>' % result)
+                f.write('%s/%s for <a href=%s target="_blank">%s</a></br>\n' % result)
 
-            f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>" % len(results["unknows"]))
+            f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>\n" % len(results["unknows"]))
             for result in results["unknows"]:
-                f.write("%s with md5:%s.</br>" % result)
+                f.write("%s with md5:%s.</br>\n" % result)
 
-            f.write("<h4></br>VirusTotal negative results (%s)</br></h4>" % len(results["negatives"]))
+            f.write("<h4></br>VirusTotal negative results (%s)</br></h4>\n" % len(results["negatives"]))
             for result in results["negatives"]:
-                f.write('%s/%s for <a href=%s target="_blank">%s</a></br>' % result)
+                f.write('%s/%s for <a href=%s target="_blank">%s</a></br>\n' % result)
 
             f.write("</br></br>End of analysis.")
 

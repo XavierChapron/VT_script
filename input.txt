@@ -1,53 +1,8 @@
 ~ ZHPDiag v2016.7.29.119 Par Nicolas Coolman (2016/07/29)
 ~ Démarré par Xavier (Administrator)  (2016/07/30 12:22:28)
 ~ Site: https://www.nicolascoolman.com
-~ Facebook: https://www.facebook.com/nicolascoolman1
-~ Etat de la version:  Version OK
-~ Mode: Scanner
-~ Rapport: C:\Users\Xavier\Desktop\ZHPDiag.txt
-~ Rapport: C:\Users\Xavier\AppData\Roaming\ZHP\ZHPDiag.txt
-~ UAC: Activate
-~ Démarrage du système: Normal (Normal boot)
-Windows 7 Professional, 64-bit Service Pack 1 (Build 7601)
 
----\\ Navigateurs Internet (2) - 0s
-MFIE: Mozilla Firefox 47.0.1 (x86 fr)
-MSIE: Internet Explorer v8.0.7601.17514
-
----\\ Informations sur les produits Windows (4) - 4s
-~ Windows Server License Manager Script : OK
-~ Licence Script File Génération : OK
-Windows Automatic Updates : OK
-Windows Activation Technologies : OK
-
----\\ Informations sur le système (6) - 0s
-~ Operating System: Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
-~ Operating System:  64-bit
-~ Boot mode: Normal (Normal boot)
-Total RAM: 4193.848 MB (56% free)
-System Restore: Activé (Enable)
-System drive C: has 11 GB () free of 25 GB  =>Alerte espace disque inférieur à 20 Go
-
----\\ Mode de connexion au système (3) - 0s
-~ Computer Name: XAVIER-WIN7
-~ User Name: Xavier
-~ Logged in as Administrator
-
----\\ Enumération des unités disques (1) - 0s
-~ Drive C: has 11 GB free of 25 GB  (System)
-
----\\ Etat du Centre de Sécurité Windows (10) - 0s
-[HKLM\SOFTWARE\Microsoft\Security Center\Svc] AntiSpywareOverride: OK
-[HKLM\SOFTWARE\Microsoft\Security Center\Svc] AntiVirusOverride: OK
-[HKLM\SOFTWARE\Microsoft\Security Center\Svc] FirewallOverride: OK
-[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer] NoActiveDesktopChanges: Modified
-[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system] EnableLUA: OK
-[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Hidden\NOHIDDEN] CheckedValue: Modified
-[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Hidden\SHOWALL] CheckedValue: OK
-[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Associations] Application: OK
-[HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon] Shell: OK
-[HKLM\SYSTEM\CurrentControlSet\Services\COMSysApp] Type: OK
 
 ---\\ Recherche particulière de fichiers génériques (26) - 11s
-[MD5.AC4C51EB24AA95B77F705AB159189E24] - 21/11/2010 - (.Microsoft Corporation - Explorateur Windows.) -- C:\Windows\Explorer.exe [2872320]  =>.Microsoft Corporation
+[MD5.AC4C51EB24AA95B77F705AB159189E24] - 21/11/2010 - (.Microsoft Corporation - Explorateur Windows.) -- C:\Windows\Explào~réer.exe [2872320]  =>.Microsoft Corporation
 [MD5.DD81D91FF3B0763C392422865C9AC12E] - 14/07/2009 - (.Microsoft Corporation - Processus hôte Windows (Rundll32).) -- C:\Windows\System32\rundll32.exe [45568]  =>.Microsoft Corporation
