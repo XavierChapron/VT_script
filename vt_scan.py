@@ -106,7 +106,7 @@ def analyse_answer(answer, md5s_list, results):
         positives = answer.get("positives", None)
         total = answer.get("total", None)
         url = "https://www.virustotal.com/latest-scan/" + md5
-        result = (positives, total, url, filename)
+        result = (positives, total, url, filename, md5)
         if positives:
             results["positives"].append(result)
         else:
@@ -225,24 +225,32 @@ def run(options, apikey):
         # Create the output log
         with open(log_path, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
+            f.write('<style>\ntable, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n}\nth, td {\n    padding: 5px;\n}\n</style>\n')
+
             f.write("<h2>VT_Scan by Chapi:</h2></br>\n")
             f.write("The input file is <b>%s</b></br>\n" % path_to_file)
             f.write("The input file is detected as a <b>%s</b> log.</br>\n" % file_type)
             f.write("Found <b>%s different md5s</b>.</br>\n" % len(md5s_list))
 
             f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>\n" % len(results["positives"]))
+            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>filename</th>\n    <th>md5</th>\n  </tr>\n')
             for result in results["positives"]:
-                f.write('%s/%s for <a href=%s target="_blank">%s</a></br>\n' % result)
+                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+            f.write('</table>\n')
 
             f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>\n" % len(results["unknows"]))
+            f.write(' <table>\n  <tr>\n    <th>filename</th>\n    <th>md5</th>\n  </tr>\n')
             for result in results["unknows"]:
-                f.write("%s with md5:%s.</br>\n" % result)
+                f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
+            f.write('</table>\n')
 
             f.write("<h4></br>VirusTotal negative results (%s)</br></h4>\n" % len(results["negatives"]))
+            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>filename</th>\n    <th>md5</th>\n  </tr>\n')
             for result in results["negatives"]:
-                f.write('%s/%s for <a href=%s target="_blank">%s</a></br>\n' % result)
+                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+            f.write('</table>\n')
 
-            f.write("</br></br>End of analysis.")
+            f.write("</br></br>\nEnd of analysis.")
 
     print("### End of analysis.")
 
