@@ -80,9 +80,9 @@ def run_vt_analyse(md5s_list, apikey, results, log_path):
             print("### Error, VT refuses to answer, the script will retry in 10sec.")
             sleep(10)
         except HTTPError:
-            return_error_message("Your apikey %s seem to be refuse by VirusTotal." % apikey)
+            return_error_message("Your apikey '%s' seems to be refused by VirusTotal." % apikey)
         except URLError:
-            return_error_message("You should check your internet connexion")
+            return_error_message("You should check your internet connection")
 
     # Analyse the answer
     if len(md5s_list) == 1:
@@ -212,14 +212,15 @@ def run(options, apikey):
 
     # Find the md5s in the file
     md5s_list = find_md5_in_file(line_list, file_type)
-    if len(md5s_list) == 0:
+    md5_number = len(md5s_list)
+    if md5_number == 0:
         print("Found 0 md5 in %s" % path_to_file)
         with open(log_path, 'w') as f:
             f.write("<h2>VT_Scan by Chapi:</h2></br>")
-            f.write("Found <b>%s different md5s</b> in %s.</br>" % (len(md5s_list), path_to_file))
+            f.write("Found <b>0 different md5s</b> in %s.</br>" % path_to_file)
 
     else:
-        print("Found %s different md5s in %s." % (len(md5s_list), path_to_file))
+        print("Found %s different md5s in %s." % (md5_number, path_to_file))
 
         # Search on VT for each md5 and store the results
         results = {"unknows": [], "negatives": [], "positives": []}
@@ -233,22 +234,22 @@ def run(options, apikey):
             f.write("<h2>VT_Scan by Chapi:</h2></br>\n")
             f.write("The input file is <b>%s</b></br>\n" % path_to_file)
             f.write("The input file is detected as a <b>%s</b> log.</br>\n" % file_type)
-            f.write("Found <b>%s different md5s</b>.</br>\n" % len(md5s_list))
+            f.write("Found <b>%s different md5s</b>.</br>\n" % md5_number)
 
             f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>\n" % len(results["positives"]))
-            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>filename</th>\n    <th>md5</th>\n  </tr>\n')
+            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
             for result in results["positives"]:
                 f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
             f.write('</table>\n')
 
             f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>\n" % len(results["unknows"]))
-            f.write(' <table>\n  <tr>\n    <th>filename</th>\n    <th>md5</th>\n  </tr>\n')
+            f.write(' <table>\n  <tr>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
             for result in results["unknows"]:
                 f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
             f.write('</table>\n')
 
             f.write("<h4></br>VirusTotal negative results (%s)</br></h4>\n" % len(results["negatives"]))
-            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>filename</th>\n    <th>md5</th>\n  </tr>\n')
+            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
             for result in results["negatives"]:
                 f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
             f.write('</table>\n')
