@@ -127,7 +127,7 @@ def find_md5_in_file(line_list, file_type):
     parsing_dict = {
         "ZHPDiag": ('MD5.' + r'[0-9a-fA-F]' * 32, "MD5.", r'\\[^\\\[]+\s\[', 1, -2),
         "OTL": ('MD5=' + r'[0-9a-fA-F]' * 32, "MD5=", r'\\[^\\]+$', 1, None),
-        "FRST": (r'[0-9a-fA-F]' * 32 + '\s*$', "", r'\\[^\\]+\s', 1, -34),
+        "FRST": ('\s' + r'[0-9a-fA-F]' * 32 + '\s*$', "", r'\\[^\\]+', 1, -33),
         "RAW": (r'[0-9a-fA-F]' * 32, "", r'\\[\w\-\s]+\.\w+', 1, None)
     }
     md5s_dict = {}
