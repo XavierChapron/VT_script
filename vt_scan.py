@@ -6,7 +6,6 @@ from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 from time import sleep
 from re import search
-from os import _exit
 from optparse import OptionParser
 from os.path import join
 from tempfile import gettempdir
@@ -29,14 +28,9 @@ parser.add_option("-k", "--key",
 (options, args) = parser.parse_args()
 
 
-def return_error_message(message):
-    """As this script is also use on Windows as an exe without cmd,
-    I need something more than a print to inform the user ofthe exit status"""
-    with open(log_path, 'w') as f:
-        f.write('<meta charset="UTF-8">\n')
-        f.write(message)
-    webopen(log_path)
-    _exit(1)
+class ScriptError(Exception):
+    def __init__(self, message):
+        self.message = message
 
 
 def get_file_type(first_line):
@@ -74,12 +68,12 @@ def run_vt_analyse(md5s_list, apikey, results, log_path):
             answer_list = search_on_vt(md5_request, apikey)
         except ValueError:
             answer_list = None
-            print("### Error, VT refuses to answer, the script will retry in 10sec.")
+            raise ScriptError("### Error, VT refuses to answer, the script will retry in 10sec.")
             sleep(10)
         except HTTPError:
-            return_error_message("Your apikey '%s' seems to be refused by VirusTotal." % apikey)
+            raise ScriptError("Your apikey '%s' seems to be refused by VirusTotal." % apikey)
         except URLError:
-            return_error_message("You should check your internet connection")
+            raise ScriptError("You should check your internet connection")
 
     # Analyse the answer
     if len(md5s_list) == 1:
@@ -167,7 +161,7 @@ def get_apikey(path_to_apikey, log_path):
         with open(path_to_apikey, 'r') as f:
             apikey = f.readline().strip()
     except IOError:
-        return_error_message("Can't open: '%s', you must set an apikey file" % path_to_apikey)
+        raise ScriptError("Can't open: '%s', you must set an apikey file" % path_to_apikey)
     return apikey
 
 
@@ -184,7 +178,7 @@ def get_report_lines(path_to_file):
         with open(path_to_file, 'r', encoding='utf-16-le') as f:
             content = f.read()
     except:
-        return_error_message("Error while opening file: %s" % path_to_file)
+        raise ScriptError("Error while opening file: %s" % path_to_file)
 
     return content.split("\n")
 
@@ -259,7 +253,14 @@ def run(options):
     # Get the input file
     path_to_file = options.path_to_file.replace("\n", "")
 
-    run_vt_scan(path_to_file, log_path, options.path_to_apikey)
+    try:
+        run_vt_scan(path_to_file, log_path, options.path_to_apikey)
+    except ScriptError as e:
+        print("Catch an error:")
+        print(e.message)
+        with open(log_path, 'w') as f:
+            f.write('<meta charset="UTF-8">\n')
+            f.write(e.message)
 
     # Open the log
     webopen(log_path)
