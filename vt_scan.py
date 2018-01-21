@@ -171,15 +171,7 @@ def get_apikey(path_to_apikey, log_path):
     return apikey
 
 
-def run(options):
-
-    # Get the input file
-    path_to_file = options.path_to_file.replace("\n", "")
-    print("The input file is %s" % path_to_file)
-
-    # Get the apikey
-    apikey = get_apikey(options.path_to_apikey, log_path)
-
+def get_report_lines(path_to_file):
     # Handle issues with files encoding
     # OTL logs files comes formatted in utf-16-le encoding...
     try:
@@ -194,7 +186,20 @@ def run(options):
     except:
         return_error_message("Error while opening file: %s" % path_to_file)
 
-    line_list = content.split("\n")
+    return content.split("\n")
+
+
+def run(options):
+
+    # Get the input file
+    path_to_file = options.path_to_file.replace("\n", "")
+    print("The input file is %s" % path_to_file)
+
+    # Get the apikeys
+    apikey = get_apikey(options.path_to_apikey, log_path)
+
+    # Get the report lines
+    line_list = get_report_lines(path_to_file)
 
     # Detect the logFile type
     file_type = get_file_type(line_list[0])
