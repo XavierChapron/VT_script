@@ -195,6 +195,9 @@ def run(options, apikey):
     try:
         with open(path_to_file, 'r') as f:
             content = f.read()
+            if "\\x0" in repr(content):
+                with open(path_to_file, 'r', encoding='utf-16-le') as f:
+                    content = f.read()
     except UnicodeDecodeError:
         with open(path_to_file, 'r', encoding='utf-16-le') as f:
             content = f.read()
