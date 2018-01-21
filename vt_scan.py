@@ -13,9 +13,6 @@ from tempfile import gettempdir
 from webbrowser import open as webopen
 
 
-# Set your VT public API Key here
-apikey = ""
-
 # Full path to the output log
 log_path = join(gettempdir(), "vt_scan.html")
 
@@ -25,9 +22,9 @@ parser.add_option("-f", "--file",
                   action="store", default="input.txt",
                   dest="path_to_file")
 parser.add_option("-k", "--key",
-                  help="use to set your VT api key",
-                  action="store", default='',
-                  dest="apikey")
+                  help="path to VT api key file",
+                  action="store", default='apikey.txt',
+                  dest="path_to_apikey")
 
 (options, args) = parser.parse_args()
 
@@ -165,30 +162,23 @@ def find_md5_in_file(line_list, file_type):
     return md5s_list
 
 
-def get_apikey(apikey, options_apikey, log_path):
-    if not options_apikey:
-        if not apikey:
-            try:
-                with open("apikey.txt", 'r') as f:
-                    apikey = f.readline().replace("\n", "").replace(" ", "").replace("\r", "")
-                if not apikey:
-                    return_error_message('You must use an apikey')
-            except IOError:
-                return_error_message('You must use an apikey')
-        return apikey
-    else:
-        # We want to use by default the apikey from command line
-        return options.apikey
+def get_apikey(path_to_apikey, log_path):
+    try:
+        with open(path_to_apikey, 'r') as f:
+            apikey = f.readline().strip()
+    except IOError:
+        return_error_message("Can't open: '%s', you must set an apikey file" % path_to_apikey)
+    return apikey
 
 
-def run(options, apikey):
+def run(options):
 
     # Get the input file
     path_to_file = options.path_to_file.replace("\n", "")
     print("The input file is %s" % path_to_file)
 
     # Get the apikey
-    apikey = get_apikey(apikey, options.apikey, log_path)
+    apikey = get_apikey(options.path_to_apikey, log_path)
 
     # Handle issues with files encoding
     # OTL logs files comes formatted in utf-16-le encoding...
@@ -261,4 +251,4 @@ def run(options, apikey):
     # Open the log
     webopen(log_path)
 
-run(options, apikey)
+run(options)

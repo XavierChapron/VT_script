@@ -18,16 +18,14 @@ While this script has been created to work on a Linux distribution or on Windows
         chmod +x vt_scan.py
 
     You will need a VirusTotal public API key, that can be obtained on VirusTotal website if you create an account.
-    You can either write your API key directly in vt_scan.py line 207, give it to the script with option -k or set it in apikey.txt file
-
-    You might consider to install Vim that is usefull in some case (see Usage)
+    You need to set it in apikey.txt file.
 
 2. For Windows:
     1. You can use it exactly as on Linux.
     2. Or you can download vt_scan.exe and vt_scan.reg.
         * Place the executable where you want it to stay.
-        * Execute vt_scan.reg to create to registry key and open regedit to edit them:
-            * Go to HKEY_CLASSES_ROOT\txtfile\shell\VT_Scan\command and edit the value to add the path to the executable and your apikey.
+        * Execute vt_scan.reg to create a registry key and open regedit to edit them:
+            * Go to HKEY_CLASSES_ROOT\txtfile\shell\VT_Scan\command and edit the value to add the path to the executable and to your apikey file.
 
 ## Usage
 
@@ -36,7 +34,7 @@ While this script has been created to work on a Linux distribution or on Windows
 
     2. Use -f option to choose the file you want to scan, the default is the input.txt file in the current folder.
 
-    3. Use -k option to specify your VirusTotal API key, or the script will use the value in vt_scan.py line 207, or the value in the apikey.txt file in the current folder.
+    3. Use -k option to specify the path to your VirusTotal API key file, or the script will use the value 'apikey.txt'
 
 2. For Windows:
     1. You can use it exactly as on Linux.
