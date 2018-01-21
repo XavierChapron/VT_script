@@ -220,17 +220,14 @@ def save_results(output_file, input_file, input_type, number_of_md5, results):
         f.write("</br></br>\nEnd of analysis.")
 
 
-def run(options):
-
-    # Get the input file
-    path_to_file = options.path_to_file.replace("\n", "")
-    print("The input file is %s" % path_to_file)
+def run_vt_scan(input_file, output_file, apikey_file):
+    print("The input file is %s" % input_file)
 
     # Get the apikeys
-    apikey = get_apikey(options.path_to_apikey, log_path)
+    apikey = get_apikey(apikey_file, output_file)
 
     # Get the report lines
-    line_list = get_report_lines(path_to_file)
+    line_list = get_report_lines(input_file)
 
     # Detect the logFile type
     file_type = get_file_type(line_list[0])
@@ -240,22 +237,29 @@ def run(options):
     md5s_list = find_md5_in_file(line_list, file_type)
     md5_number = len(md5s_list)
     if md5_number == 0:
-        print("Found 0 md5 in %s" % path_to_file)
-        with open(log_path, 'w') as f:
+        print("Found 0 md5 in %s" % input_file)
+        with open(output_file, 'w') as f:
             f.write("<h2>VT_Scan by Chapi:</h2></br>")
-            f.write("Found <b>0 different md5s</b> in %s.</br>" % path_to_file)
+            f.write("Found <b>0 different md5s</b> in %s.</br>" % input_file)
 
     else:
-        print("Found %s different md5s in %s." % (md5_number, path_to_file))
+        print("Found %s different md5s in %s." % (md5_number, input_file))
 
         # Search on VT for each md5 and store the results
         results = {"unknows": [], "negatives": [], "positives": []}
-        run_vt_analyse(md5s_list, apikey, results, log_path)
+        run_vt_analyse(md5s_list, apikey, results, output_file)
 
         # Create the output log
-        save_results(log_path, path_to_file, file_type, md5_number, results)
+        save_results(output_file, input_file, file_type, md5_number, results)
 
     print("### End of analysis.")
+
+
+def run(options):
+    # Get the input file
+    path_to_file = options.path_to_file.replace("\n", "")
+
+    run_vt_scan(path_to_file, log_path, options.path_to_apikey)
 
     # Open the log
     webopen(log_path)
