@@ -189,6 +189,37 @@ def get_report_lines(path_to_file):
     return content.split("\n")
 
 
+def save_results(output_file, input_file, input_type, number_of_md5, results):
+    with open(output_file, 'w') as f:
+        f.write('<meta charset="UTF-8">\n')
+        f.write('<style>\ntable, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n}\nth, td {\n    padding: 5px;\n}\n</style>\n')
+
+        f.write("<h2>VT_Scan by Chapi:</h2></br>\n")
+        f.write("The input file is <b>%s</b></br>\n" % input_file)
+        f.write("The input file is detected as a <b>%s</b> log.</br>\n" % input_type)
+        f.write("Found <b>%s different md5s</b>.</br>\n" % number_of_md5)
+
+        f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>\n" % len(results["positives"]))
+        f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
+        for result in results["positives"]:
+            f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+        f.write('</table>\n')
+
+        f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>\n" % len(results["unknows"]))
+        f.write(' <table>\n  <tr>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
+        for result in results["unknows"]:
+            f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
+        f.write('</table>\n')
+
+        f.write("<h4></br>VirusTotal negative results (%s)</br></h4>\n" % len(results["negatives"]))
+        f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
+        for result in results["negatives"]:
+            f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+        f.write('</table>\n')
+
+        f.write("</br></br>\nEnd of analysis.")
+
+
 def run(options):
 
     # Get the input file
@@ -222,34 +253,7 @@ def run(options):
         run_vt_analyse(md5s_list, apikey, results, log_path)
 
         # Create the output log
-        with open(log_path, 'w') as f:
-            f.write('<meta charset="UTF-8">\n')
-            f.write('<style>\ntable, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n}\nth, td {\n    padding: 5px;\n}\n</style>\n')
-
-            f.write("<h2>VT_Scan by Chapi:</h2></br>\n")
-            f.write("The input file is <b>%s</b></br>\n" % path_to_file)
-            f.write("The input file is detected as a <b>%s</b> log.</br>\n" % file_type)
-            f.write("Found <b>%s different md5s</b>.</br>\n" % md5_number)
-
-            f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>\n" % len(results["positives"]))
-            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
-            for result in results["positives"]:
-                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
-            f.write('</table>\n')
-
-            f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>\n" % len(results["unknows"]))
-            f.write(' <table>\n  <tr>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
-            for result in results["unknows"]:
-                f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
-            f.write('</table>\n')
-
-            f.write("<h4></br>VirusTotal negative results (%s)</br></h4>\n" % len(results["negatives"]))
-            f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
-            for result in results["negatives"]:
-                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
-            f.write('</table>\n')
-
-            f.write("</br></br>\nEnd of analysis.")
+        save_results(log_path, path_to_file, file_type, md5_number, results)
 
     print("### End of analysis.")
 
