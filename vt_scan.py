@@ -54,33 +54,49 @@ def search_on_vt(md5s, apikey):
     return loads(response.read().decode('utf-8'))
 
 
-def run_vt_analyse(md5s_list, apikey, results):
-    # Format the md5s_list for the request
-    md5_request = ""
-    for md5 in md5s_list:
-        md5_request = md5_request + md5[0] + ", "
-    md5_request = md5_request[:-2]
+def run_vt_analyse(md5s_list, apikey):
 
-    # Get the request answer
-    answer_list = None
-    while answer_list is None:
-        try:
-            answer_list = search_on_vt(md5_request, apikey)
-        except ValueError:
-            answer_list = None
-            raise ScriptError("### Error, VT refuses to answer, the script will retry in 10sec.")
-            sleep(10)
-        except HTTPError:
-            raise ScriptError("Your apikey '%s' seems to be refused by VirusTotal." % apikey)
-        except URLError:
-            raise ScriptError("You should check your internet connection")
+    # Create a different request for each group of 4 md5s
+    md5s_groups_list = []
+    i = 0
+    while i + 4 < len(md5s_list):
+        md5s_groups_list.append(md5s_list[i: i + 4])
+        i += 4
+    md5s_groups_list.append(md5s_list[i:])
 
-    # Analyse the answer
-    if len(md5s_list) == 1:
-        analyse_answer(answer_list, md5s_list, results)
-    else:
-        for answer in answer_list:
-            analyse_answer(answer, md5s_list, results)
+    results = {"unknows": [], "negatives": [], "positives": []}
+
+    # For each group, create a request, retrieve VT answer, then analyse the answer
+    for md5s_group in md5s_groups_list:
+
+        # Format the md5s_group for the request
+        md5_request = ""
+        for md5 in md5s_group:
+            md5_request = md5_request + md5[0] + ", "
+        md5_request = md5_request[:-2]
+
+        # Get the request answer
+        answer_list = None
+        while answer_list is None:
+            try:
+                answer_list = search_on_vt(md5_request, apikey)
+            except ValueError:
+                answer_list = None
+                raise ScriptError("### Error, VT refuses to answer, the script will retry in 10sec.")
+                sleep(10)
+            except HTTPError:
+                raise ScriptError("Your apikey '%s' seems to be refused by VirusTotal." % apikey)
+            except URLError:
+                raise ScriptError("You should check your internet connection")
+
+        # Analyse the answer
+        if len(md5s_group) == 1:
+            analyse_answer(answer_list, md5s_group, results)
+        else:
+            for answer in answer_list:
+                analyse_answer(answer, md5s_group, results)
+
+    return results
 
 
 def analyse_answer(answer, md5s_list, results):
@@ -246,8 +262,7 @@ def main(options):
             print("Found %s different md5s in %s." % (md5_number, input_file))
 
             # Search on VT for each md5 and store the results
-            results = {"unknows": [], "negatives": [], "positives": []}
-            run_vt_analyse(md5s_list, apikey, results)
+            results = run_vt_analyse(md5s_list, apikey)
 
             # Create the output log
             save_results(output_file, input_file, file_type, md5_number, results)
