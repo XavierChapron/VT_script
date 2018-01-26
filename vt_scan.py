@@ -249,7 +249,7 @@ def run_vt_scan(input_file, output_file, apikey_file):
     print("### End of analysis.")
 
 
-def run(options):
+def main(options):
     # Get the input file
     path_to_file = options.path_to_file.replace("\n", "")
 
@@ -265,4 +265,6 @@ def run(options):
     # Open the log
     webopen(log_path)
 
-run(options)
+
+if __name__ == '__main__':
+    main(options)
