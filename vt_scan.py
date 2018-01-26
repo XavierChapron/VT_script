@@ -54,7 +54,7 @@ def search_on_vt(md5s, apikey):
     return loads(response.read().decode('utf-8'))
 
 
-def run_vt_analyse(md5s_list, apikey, results, log_path):
+def run_vt_analyse(md5s_list, apikey, results):
     # Format the md5s_list for the request
     md5_request = ""
     for md5 in md5s_list:
@@ -214,47 +214,46 @@ def save_results(output_file, input_file, input_type, number_of_md5, results):
         f.write("</br></br>\nEnd of analysis.")
 
 
-def run_vt_scan(input_file, output_file, apikey_file):
-    print("The input file is %s" % input_file)
-
-    # Get the apikeys
-    apikey = get_apikey(apikey_file, output_file)
-
-    # Get the report lines
-    line_list = get_report_lines(input_file)
-
-    # Detect the logFile type
-    file_type = get_file_type(line_list[0])
-    print("The input file is detected as a %s log." % file_type)
-
-    # Find the md5s in the file
-    md5s_list = find_md5_in_file(line_list, file_type)
-    md5_number = len(md5s_list)
-    if md5_number == 0:
-        print("Found 0 md5 in %s" % input_file)
-        with open(output_file, 'w') as f:
-            f.write("<h2>VT_Scan by Chapi:</h2></br>")
-            f.write("Found <b>0 different md5s</b> in %s.</br>" % input_file)
-
-    else:
-        print("Found %s different md5s in %s." % (md5_number, input_file))
-
-        # Search on VT for each md5 and store the results
-        results = {"unknows": [], "negatives": [], "positives": []}
-        run_vt_analyse(md5s_list, apikey, results, output_file)
-
-        # Create the output log
-        save_results(output_file, input_file, file_type, md5_number, results)
-
-    print("### End of analysis.")
-
-
 def main(options):
-    # Get the input file
-    path_to_file = options.path_to_file.replace("\n", "")
+    # Get the files paths
+    input_file = options.path_to_file.strip()
+    apikey_file = options.path_to_apikey.strip()
+    output_file = log_path
 
     try:
-        run_vt_scan(path_to_file, log_path, options.path_to_apikey)
+        print("The input file is %s" % input_file)
+
+        # Get the apikeys
+        apikey = get_apikey(apikey_file, output_file)
+
+        # Get the report lines
+        line_list = get_report_lines(input_file)
+
+        # Detect the logFile type
+        file_type = get_file_type(line_list[0])
+        print("The input file is detected as a %s log." % file_type)
+
+        # Find the md5s in the file
+        md5s_list = find_md5_in_file(line_list, file_type)
+        md5_number = len(md5s_list)
+        if md5_number == 0:
+            print("Found 0 md5 in %s" % input_file)
+            with open(output_file, 'w') as f:
+                f.write("<h2>VT_Scan by Chapi:</h2></br>")
+                f.write("Found <b>0 different md5s</b> in %s.</br>" % input_file)
+
+        else:
+            print("Found %s different md5s in %s." % (md5_number, input_file))
+
+            # Search on VT for each md5 and store the results
+            results = {"unknows": [], "negatives": [], "positives": []}
+            run_vt_analyse(md5s_list, apikey, results)
+
+            # Create the output log
+            save_results(output_file, input_file, file_type, md5_number, results)
+
+        print("### End of analysis.")
+
     except ScriptError as e:
         print("Catch an error:")
         print(e.message)
