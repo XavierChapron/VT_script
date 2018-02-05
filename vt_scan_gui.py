@@ -5,12 +5,15 @@ from tkinter import filedialog
 from tkinter import scrolledtext
 import vt_scan
 from tempfile import gettempdir
-from os.path import join
 from webbrowser import open as webopen
+from os.path import join, dirname, abspath
+import sys
 
 
 # Full path to the output log
 log_path = join(gettempdir(), "vt_scan.html")
+
+config_file_name = "vt_scan_config.txt"
 
 
 class simpleapp_tk(tk.Tk):
@@ -24,6 +27,7 @@ class simpleapp_tk(tk.Tk):
         self.file_type = ""
         self.md5s_list = []
         self.results = {}
+        self.config_file = join(dirname(abspath(sys.argv[0])), config_file_name)
 
         self.apikey_string = tk.StringVar()
 
@@ -52,7 +56,7 @@ class simpleapp_tk(tk.Tk):
         self.console.grid(column=0, row=8, columnspan=18)
         self.console.insert(tk.END, "Loading config...\n")
         try:
-            self.config = vt_scan.load_config()
+            self.config = vt_scan.load_config(self.config_file)
             self.console.insert(tk.END, "Config found:\n%s\n" % str(self.config))
         except vt_scan.ScriptError as e:
             self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
@@ -66,7 +70,7 @@ class simpleapp_tk(tk.Tk):
     def apikey_save_OnButtonClick(self):
         self.config["apikey"] = self.apikey_entry.get()
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
-        vt_scan.save_config(self.config)
+        vt_scan.save_config(self.config, self.config_file)
         self.console.insert(tk.END, "Config: Saving apikey into config file\n")
 
     def file_dialog_OnButtonClick(self):

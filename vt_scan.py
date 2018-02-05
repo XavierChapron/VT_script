@@ -7,10 +7,11 @@ from urllib.error import HTTPError, URLError
 from time import sleep
 from re import search
 from optparse import OptionParser
-from os.path import join
+from os.path import join, dirname, abspath
 from tempfile import gettempdir
 from webbrowser import open as webopen
 import json
+import sys
 
 
 # Full path to the output log
@@ -31,7 +32,7 @@ parser.add_option("-k", "--key",
 (options, args) = parser.parse_args()
 
 
-config_file = "vt_scan_config.txt"
+config_file_name = "vt_scan_config.txt"
 
 
 class ScriptError(Exception):
@@ -39,7 +40,7 @@ class ScriptError(Exception):
         self.message = message
 
 
-def load_config():
+def load_config(config_file):
     config = {}
     try:
         with open(config_file, "r") as f:
@@ -47,12 +48,12 @@ def load_config():
     except json.JSONDecodeError:
         raise ScriptError("Config file: %s founed corrupted" % config_file)
     except FileNotFoundError:
-        save_config(config)
+        save_config(config, config_file)
         raise ScriptError("No config file found, created an empty one in: %s" % config_file)
     return config
 
 
-def save_config(config):
+def save_config(config, config_file):
     with open(config_file, "w") as f:
         json.dump(config, f)
 
@@ -254,7 +255,8 @@ def main(options):
         print("The input file is %s" % input_file)
 
         # Load config
-        config = load_config()
+        config_file = join(dirname(abspath(sys.argv[0])), config_file_name)
+        config = load_config(config_file)
 
         # Get the apikey
         try:
