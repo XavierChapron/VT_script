@@ -10,6 +10,7 @@ from optparse import OptionParser
 from os.path import join
 from tempfile import gettempdir
 from webbrowser import open as webopen
+import json
 
 
 # Full path to the output log
@@ -28,9 +29,30 @@ parser.add_option("-k", "--key",
 (options, args) = parser.parse_args()
 
 
+config_file = "vt_scan_config.txt"
+
+
 class ScriptError(Exception):
     def __init__(self, message):
         self.message = message
+
+
+def load_config():
+    config = {}
+    try:
+        with open(config_file, "r") as f:
+            config = json.load(f)
+    except json.JSONDecodeError:
+        raise ScriptError("Config file: %s founed corrupted" % config_file)
+    except FileNotFoundError:
+        save_config(config)
+        raise ScriptError("No config file found, created an empty one in: %s" % config_file)
+    return config
+
+
+def save_config(config):
+    with open(config_file, "w") as f:
+        json.dump(config, f)
 
 
 def get_file_type(first_line):
@@ -172,15 +194,6 @@ def find_md5_in_file(line_list, file_type):
     return md5s_list
 
 
-def get_apikey(path_to_apikey, log_path):
-    try:
-        with open(path_to_apikey, 'r') as f:
-            apikey = f.readline().strip()
-    except IOError:
-        raise ScriptError("Can't open: '%s', you must set an apikey file" % path_to_apikey)
-    return apikey
-
-
 def get_report_lines(path_to_file):
     # Handle issues with files encoding
     # OTL logs files comes formatted in utf-16-le encoding...
@@ -233,14 +246,19 @@ def save_results(output_file, input_file, input_type, number_of_md5, results):
 def main(options):
     # Get the files paths
     input_file = options.path_to_file.strip()
-    apikey_file = options.path_to_apikey.strip()
     output_file = log_path
 
     try:
         print("The input file is %s" % input_file)
 
-        # Get the apikeys
-        apikey = get_apikey(apikey_file, output_file)
+        # Load config
+        config = load_config()
+
+        # Get the apikey
+        try:
+            apikey = config["apikey"]
+        except KeyError:
+            raise ScriptError("No apikey define in config file: %s" % config_file)
 
         # Get the report lines
         line_list = get_report_lines(input_file)
