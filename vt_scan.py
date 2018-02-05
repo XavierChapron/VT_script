@@ -21,10 +21,12 @@ parser.add_option("-f", "--file",
                   help="file to use",
                   action="store", default="input.txt",
                   dest="path_to_file")
+
+# Keep -k option for retro compatibility
 parser.add_option("-k", "--key",
-                  help="path to VT api key file",
-                  action="store", default='apikey.txt',
-                  dest="path_to_apikey")
+                  help="Only used for retrocompatibility",
+                  action="store",
+                  dest="dummy")
 
 (options, args) = parser.parse_args()
 
