@@ -40,6 +40,11 @@ class ScriptError(Exception):
         self.message = message
 
 
+class ScriptWarning(Exception):
+    def __init__(self, message):
+        self.message = message
+
+
 def load_config(config_file):
     config = {}
     try:
