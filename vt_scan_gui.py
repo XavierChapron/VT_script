@@ -78,12 +78,15 @@ class simpleapp_tk(tk.Tk):
         try:
             self.config = vt_scan.load_config(self.config_file)
             self.console.insert(tk.END, "Config found:\n%s\n" % str(self.config))
+            self.console.see(tk.END)
         except vt_scan.ScriptWarning as e:
             self.config = vt_scan.load_config(self.config_file)
             self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
+            self.console.see(tk.END)
         except vt_scan.ScriptError as e:
             self.config = {}
             self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
+            self.console.see(tk.END)
 
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
 
@@ -94,6 +97,7 @@ class simpleapp_tk(tk.Tk):
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
         vt_scan.save_config(self.config, self.config_file)
         self.console.insert(tk.END, "Config: Saving apikey into config file\n")
+        self.console.see(tk.END)
 
     def file_dialog_OnButtonClick(self):
         input_file = filedialog.askopenfile(title='Input file')
@@ -105,6 +109,7 @@ class simpleapp_tk(tk.Tk):
             self.console.insert(tk.END, "\nOpening: %s\n" % input_file)
             self.console.insert(tk.END, "Found the file to be of type %s\n" % self.file_type)
             self.console.insert(tk.END, "Found %s MD5s\n" % len(self.md5s_list))
+            self.console.see(tk.END)
 
     def run_OnButtonClick(self):
         try:
@@ -112,6 +117,7 @@ class simpleapp_tk(tk.Tk):
                 try:
                     apikey = self.config["apikey"]
                 except KeyError:
+                    self.apikey_entry.focus_set()
                     raise vt_scan.ScriptError("You should configure an apikey")
                 self.results = vt_scan.run_vt_analyse(self.md5s_list, apikey)
 
@@ -120,15 +126,19 @@ class simpleapp_tk(tk.Tk):
 
                 # Open the log
                 self.console.insert(tk.END, "\nScan complete, opening results\n")
+                self.console.see(tk.END)
                 webopen(log_path)
             else:
+                self.file_dialog_button.focus_set()
                 raise vt_scan.ScriptWarning("You have to choose a file containing MD5s")
 
         except vt_scan.ScriptWarning as e:
             self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
+            self.console.see(tk.END)
 
         except vt_scan.ScriptError as e:
             self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
+            self.console.see(tk.END)
 
 
 if __name__ == "__main__":
