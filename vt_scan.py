@@ -33,6 +33,7 @@ parser.add_option("-k", "--key",
 
 
 config_file_name = "vt_scan_config.txt"
+default_config = {"apikey": "MyApiKeyHere"}
 
 
 class ScriptError(Exception):
@@ -46,15 +47,15 @@ class ScriptWarning(Exception):
 
 
 def load_config(config_file):
-    config = {}
+    config = default_config
     try:
         with open(config_file, "r") as f:
             config = json.load(f)
     except json.JSONDecodeError:
-        raise ScriptError("Config file: %s founed corrupted" % config_file)
+        raise ScriptError("Config file: %s found corrupted.\nFix it or delete it and relaunch the program to create a default one" % config_file)
     except FileNotFoundError:
         save_config(config, config_file)
-        raise ScriptError("No config file found, created an empty one in: %s" % config_file)
+        raise ScriptWarning("No config file found, created a default one in: %s" % config_file)
     return config
 
 
