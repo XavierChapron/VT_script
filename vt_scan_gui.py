@@ -78,7 +78,11 @@ class simpleapp_tk(tk.Tk):
         try:
             self.config = vt_scan.load_config(self.config_file)
             self.console.insert(tk.END, "Config found:\n%s\n" % str(self.config))
+        except vt_scan.ScriptWarning as e:
+            self.config = vt_scan.load_config(self.config_file)
+            self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
         except vt_scan.ScriptError as e:
+            self.config = {}
             self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
 
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
