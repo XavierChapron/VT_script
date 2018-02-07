@@ -15,6 +15,21 @@ log_path = join(gettempdir(), "vt_scan.html")
 
 config_file_name = "vt_scan_config.txt"
 
+app_w = 600
+app_h = 400
+cln_nb = 60
+row_nb = 40
+cln_w = app_w / cln_nb
+row_h = app_h / row_nb
+
+
+def c_to_x(column):
+    return column * cln_w
+
+
+def r_to_y(row):
+    return row * row_h
+
 
 class simpleapp_tk(tk.Tk):
     def __init__(self, parent):
@@ -23,37 +38,42 @@ class simpleapp_tk(tk.Tk):
         self.initialize()
 
     def initialize(self):
-        self.grid()
+        self.geometry("%sx%s" % (app_w, app_h))
         self.file_type = ""
         self.md5s_list = []
         self.results = {}
         self.config_file = join(dirname(abspath(sys.argv[0])), config_file_name)
 
+        # Apikey widgets
+        apikey_label = tk.Label(self, anchor="w", fg="black", text="Apikey:")
+        apikey_label.place(x=c_to_x(1), y=r_to_y(1), width=c_to_x(6), height=r_to_y(2))
+
         self.apikey_string = tk.StringVar()
-
-        apikey_label = tk.Label(self, anchor="w", bg="white", fg="black", text="Apikey:")
-        apikey_label.grid(column=0, row=0, columnspan=3, sticky='EW')
-
         self.apikey_entry = tk.Entry(self, textvariable=self.apikey_string)
-        self.apikey_entry.grid(column=3, row=0, columnspan=10, sticky='EW')
+        self.apikey_entry.place(x=c_to_x(1 + 6 + 1), y=r_to_y(1), width=c_to_x(40), height=r_to_y(2))
 
         apikey_save_button = tk.Button(self, text="Save", command=self.apikey_save_OnButtonClick)
-        apikey_save_button.grid(column=13, row=0, columnspan=5)
+        apikey_save_button.place(x=c_to_x(1 + 6 + 1 + 40 + 1), y=r_to_y(1), width=c_to_x(9), height=r_to_y(2))
 
-        file_dialog_button = tk.Button(self, text="Choose a file", command=self.file_dialog_OnButtonClick)
-        file_dialog_button.grid(column=0, row=1)
+        # Input file widgets
+        apikey_label = tk.Label(self, anchor="w", fg="black", text="Input file:")
+        apikey_label.place(x=c_to_x(1), y=r_to_y(1 + 2 + 1), width=c_to_x(6), height=r_to_y(2))
 
         self.input_file_string = tk.StringVar()
-        self.input_file_string.set("No file selected")
+        self.input_file_string.set("No input file selected")
         input_file_label = tk.Label(self, textvariable=self.input_file_string,
                                     anchor="w", bg="white", fg="black")
-        input_file_label.grid(column=1, row=1, columnspan=10, sticky='EW')
+        input_file_label.place(x=c_to_x(1 + 6 + 1), y=r_to_y(1 + 2 + 1), width=c_to_x(40), height=r_to_y(2))
 
+        self.file_dialog_button = tk.Button(self, text="Choose a file", command=self.file_dialog_OnButtonClick)
+        self.file_dialog_button.place(x=c_to_x(1 + 6 + 1 + 40 + 1), y=r_to_y(1 + 2 + 1), width=c_to_x(9), height=r_to_y(2))
+
+        # Run widget
         run_button = tk.Button(self, text="Run VT Scan", command=self.run_OnButtonClick)
-        run_button.grid(column=5, row=2, columnspan=5)
+        run_button.place(x=(app_w - c_to_x(15)) / 2, y=r_to_y(1 + 2 + 1 + 2 + 1), width=c_to_x(15), height=r_to_y(2))
 
         self.console = scrolledtext.ScrolledText(undo=True)
-        self.console.grid(column=0, row=8, columnspan=18)
+        self.console.place(x=0, y=r_to_y(1 + 2 + 1 + 2 + 1 + 2 + 2), width=app_w, height=app_h - r_to_y(1 + 2 + 1 + 2 + 1 + 2 + 2))
         self.console.insert(tk.END, "Loading config...\n")
         try:
             self.config = vt_scan.load_config(self.config_file)
@@ -63,9 +83,7 @@ class simpleapp_tk(tk.Tk):
 
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
 
-        self.grid_columnconfigure(0, weight=1)
         self.resizable(False, False)
-        self.update()
 
     def apikey_save_OnButtonClick(self):
         self.config["apikey"] = self.apikey_entry.get()
