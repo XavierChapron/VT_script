@@ -122,7 +122,10 @@ class simpleapp_tk(tk.Tk):
                 self.console.insert(tk.END, "\nScan complete, opening results\n")
                 webopen(log_path)
             else:
-                raise vt_scan.ScriptError("You have to choose a file with MD5s")
+                raise vt_scan.ScriptWarning("You have to choose a file containing MD5s")
+
+        except vt_scan.ScriptWarning as e:
+            self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
 
         except vt_scan.ScriptError as e:
             self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
