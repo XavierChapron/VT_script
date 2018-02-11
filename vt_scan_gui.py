@@ -74,6 +74,14 @@ class simpleapp_tk(tk.Tk):
         x_pos = 1
         y_pos += 2 + 1
 
+        # Save dir widget
+        self.save_in_dir = tk.BooleanVar()
+        dir_button = tk.Checkbutton(self, text="Save in input file directory", variable=self.save_in_dir,
+                                    onvalue=True, offvalue=False, command=self.save_in_dir_OnToggle)
+        dir_button.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(20), height=r_to_y(2))
+        x_pos = 1
+        y_pos += 2 + 1
+
         # Run widget
         run_button = tk.Button(self, text="Run VT Scan", command=self.run_OnButtonClick)
         run_button.place(x=(app_w - c_to_x(15)) / 2, y=r_to_y(y_pos), width=c_to_x(15), height=r_to_y(2))
@@ -99,6 +107,7 @@ class simpleapp_tk(tk.Tk):
 
         # Load config
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
+        self.save_in_dir.set(self.config.get("save_in_dir", False))
 
         self.resizable(False, False)
 
@@ -107,6 +116,12 @@ class simpleapp_tk(tk.Tk):
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
         vt_scan.save_config(self.config, self.config_file)
         self.console.insert(tk.END, "Config: Saving apikey into config file\n")
+        self.console.see(tk.END)
+
+    def save_in_dir_OnToggle(self):
+        self.config["save_in_dir"] = self.save_in_dir.get()
+        vt_scan.save_config(self.config, self.config_file)
+        self.console.insert(tk.END, "Config: Saving 'Save in dir property' in config file\n")
         self.console.see(tk.END)
 
     def file_dialog_OnButtonClick(self):
