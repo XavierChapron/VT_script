@@ -4,14 +4,9 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import scrolledtext
 import vt_scan
-from tempfile import gettempdir
 from webbrowser import open as webopen
 from os.path import join, dirname, abspath, expanduser
 import sys
-
-
-# Full path to the output log
-log_path = join(gettempdir(), "vt_scan.html")
 
 config_file_name = "vt_scan_config.txt"
 
@@ -87,6 +82,8 @@ class simpleapp_tk(tk.Tk):
         self.console = scrolledtext.ScrolledText(undo=True)
         self.console.place(x=0, y=r_to_y(y_pos), width=app_w, height=app_h - r_to_y(y_pos))
         self.console.insert(tk.END, "Loading config...\n")
+
+        # Retrieve config
         try:
             self.config = vt_scan.load_config(self.config_file)
             self.console.insert(tk.END, "Config found:\n%s\n" % str(self.config))
@@ -100,6 +97,7 @@ class simpleapp_tk(tk.Tk):
             self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
             self.console.see(tk.END)
 
+        # Load config
         self.apikey_string.set(self.config.get("apikey", "no apikey"))
 
         self.resizable(False, False)
@@ -133,13 +131,15 @@ class simpleapp_tk(tk.Tk):
                     raise vt_scan.ScriptError("You should configure an apikey")
                 self.results = vt_scan.run_vt_analyse(self.md5s_list, apikey)
 
+                output_file = vt_scan.get_output_file(self.config, self.input_file_string.get())
+
                 # Create the output log
-                vt_scan.save_results(log_path, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results)
+                vt_scan.save_results(output_file, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results)
 
                 # Open the log
                 self.console.insert(tk.END, "\nScan complete, opening results\n")
                 self.console.see(tk.END)
-                webopen(log_path)
+                webopen(output_file)
             else:
                 self.file_dialog_button.focus_set()
                 raise vt_scan.ScriptWarning("You have to choose a file containing MD5s")
