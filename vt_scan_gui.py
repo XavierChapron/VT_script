@@ -89,20 +89,20 @@ class simpleapp_tk(tk.Tk):
 
         self.console = scrolledtext.ScrolledText(undo=True)
         self.console.place(x=0, y=r_to_y(y_pos), width=app_w, height=app_h - r_to_y(y_pos))
-        self.console.insert(tk.END, "Loading config...\n")
+        self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_load, 'en'))
 
         # Retrieve config
         try:
             self.config = vt_scan.load_config(self.config_file)
-            self.console.insert(tk.END, "Config found:\n%s\n" % str(self.config))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_load, 'en').format(config=str(self.config)))
             self.console.see(tk.END)
         except vt_scan.ScriptWarning as e:
             self.config = vt_scan.load_config(self.config_file)
-            self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, 'en').format(message=e.message('en')))
             self.console.see(tk.END)
         except vt_scan.ScriptError as e:
             self.config = {}
-            self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.error, 'en').format(message=e.message('en')))
             self.console.see(tk.END)
 
         # Load config
@@ -117,17 +117,17 @@ class simpleapp_tk(tk.Tk):
             self.config["apikey"] = self.apikey_entry.get()
             self.apikey_string.set(self.config.get("apikey", "no apikey"))
             vt_scan.save_config(self.config, self.config_file)
-            self.console.insert(tk.END, "Config: Saving apikey into config file\n")
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_save, 'en').format(property="apikey"))
             self.console.see(tk.END)
         except vt_scan.ScriptWarning as e:
-            self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, 'en').format(message=e.message('en')))
             self.console.see(tk.END)
             self.apikey_entry.focus_set()
 
     def save_in_dir_OnToggle(self):
         self.config["save_in_dir"] = self.save_in_dir.get()
         vt_scan.save_config(self.config, self.config_file)
-        self.console.insert(tk.END, "Config: Saving 'Save in dir property' in config file\n")
+        self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_save, 'en').format(property="Save in dir"))
         self.console.see(tk.END)
 
     def file_dialog_OnButtonClick(self):
@@ -137,9 +137,9 @@ class simpleapp_tk(tk.Tk):
             line_list = vt_scan.get_report_lines(self.input_file_string.get())
             self.file_type = vt_scan.get_file_type(line_list[0])
             self.md5s_list = vt_scan.find_md5_in_file(line_list, self.file_type)
-            self.console.insert(tk.END, "\nOpening: %s\n" % input_file)
-            self.console.insert(tk.END, "Found the file to be of type %s\n" % self.file_type)
-            self.console.insert(tk.END, "Found %s MD5s\n" % len(self.md5s_list))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_opening, 'en').format(file=input_file))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_type, 'en').format(type=self.file_type))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_md5s_nb, 'en').format(nb_md5s=len(self.md5s_list)))
             self.console.see(tk.END)
 
     def run_OnButtonClick(self):
@@ -154,19 +154,19 @@ class simpleapp_tk(tk.Tk):
                 vt_scan.save_results(output_file, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results)
 
                 # Open the log
-                self.console.insert(tk.END, "\nScan complete, opening results\n")
+                self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.scan_complete, 'en'))
                 self.console.see(tk.END)
                 webopen(output_file)
             else:
                 self.file_dialog_button.focus_set()
-                raise vt_scan.ScriptWarning("You have to choose a file containing MD5s")
+                raise vt_scan.ScriptWarning(vt_scan.ErrorsCodes.input_file_no_md5)
 
         except vt_scan.ScriptWarning as e:
-            self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, 'en').format(message=e.message('en')))
             self.console.see(tk.END)
 
         except vt_scan.ScriptError as e:
-            self.console.insert(tk.END, "\n/!\\ ERROR: %s\n" % e.message)
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.error, 'en').format(message=e.message('en')))
             self.console.see(tk.END)
 
 
