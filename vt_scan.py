@@ -291,11 +291,9 @@ def main(options):
         config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
         config = load_config(config_file)
 
-        # Get the apikey
-        try:
-            apikey = config["apikey"]
-        except KeyError:
-            raise ScriptError("No apikey define in config file: %s" % config_file)
+        # Check apikey validity
+        check_apikey_format(config)
+        apikey = config["apikey"]
 
         # Get the report lines
         line_list = get_report_lines(input_file)
@@ -328,6 +326,13 @@ def main(options):
 
     except ScriptError as e:
         print("Catch an error:")
+        print(e.message)
+        with open(output_file, 'w') as f:
+            f.write('<meta charset="UTF-8">\n')
+            f.write(e.message)
+
+    except ScriptWarning as e:
+        print("Catch a warning:")
         print(e.message)
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
