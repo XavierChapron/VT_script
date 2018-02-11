@@ -7,7 +7,7 @@ from urllib.error import HTTPError, URLError
 from time import sleep
 from re import search
 from optparse import OptionParser
-from os.path import join, dirname, abspath
+from os.path import join, dirname, abspath, basename, expanduser
 from tempfile import gettempdir
 from webbrowser import open as webopen
 import json
@@ -62,6 +62,16 @@ def load_config(config_file):
 def save_config(config, config_file):
     with open(config_file, "w") as f:
         json.dump(config, f)
+
+
+def get_output_file(config, input_file):
+    input_file_name = basename(input_file).split(".")[0]
+    input_file_dir = dirname(abspath(expanduser(input_file)))
+    output_file_name = input_file_name + "_vt_scan.html"
+    if config.get("save_in_dir", False):
+        return join(input_file_dir, output_file_name)
+    else:
+        return join(gettempdir(), output_file_name)
 
 
 def get_file_type(first_line):
