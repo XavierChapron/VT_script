@@ -106,17 +106,23 @@ class simpleapp_tk(tk.Tk):
             self.console.see(tk.END)
 
         # Load config
-        self.apikey_string.set(self.config.get("apikey", "no apikey"))
+        self.apikey_string.set(self.config.get("apikey", ""))
         self.save_in_dir.set(self.config.get("save_in_dir", False))
 
         self.resizable(False, False)
 
     def apikey_save_OnButtonClick(self):
-        self.config["apikey"] = self.apikey_entry.get()
-        self.apikey_string.set(self.config.get("apikey", "no apikey"))
-        vt_scan.save_config(self.config, self.config_file)
-        self.console.insert(tk.END, "Config: Saving apikey into config file\n")
-        self.console.see(tk.END)
+        try:
+            vt_scan.check_apikey_format({"apikey": self.apikey_entry.get()})
+            self.config["apikey"] = self.apikey_entry.get()
+            self.apikey_string.set(self.config.get("apikey", "no apikey"))
+            vt_scan.save_config(self.config, self.config_file)
+            self.console.insert(tk.END, "Config: Saving apikey into config file\n")
+            self.console.see(tk.END)
+        except vt_scan.ScriptWarning as e:
+            self.console.insert(tk.END, "\n/!\\ WARNING: %s\n" % e.message)
+            self.console.see(tk.END)
+            self.apikey_entry.focus_set()
 
     def save_in_dir_OnToggle(self):
         self.config["save_in_dir"] = self.save_in_dir.get()
@@ -139,12 +145,8 @@ class simpleapp_tk(tk.Tk):
     def run_OnButtonClick(self):
         try:
             if len(self.md5s_list) > 0:
-                try:
-                    apikey = self.config["apikey"]
-                except KeyError:
-                    self.apikey_entry.focus_set()
-                    raise vt_scan.ScriptError("You should configure an apikey")
-                self.results = vt_scan.run_vt_analyse(self.md5s_list, apikey)
+                vt_scan.check_apikey_format(self.config)
+                self.results = vt_scan.run_vt_analyse(self.md5s_list, self.config["apikey"])
 
                 output_file = vt_scan.get_output_file(self.config, self.input_file_string.get())
 
