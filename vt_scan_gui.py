@@ -59,7 +59,7 @@ class simpleapp_tk(tk.Tk):
 
         # Input file widgets
         apikey_label = tk.Label(self, anchor="w", fg="black", text="Input file:")
-        apikey_label.place(x=c_to_x(x_pos), y=r_to_y(1 + 2 + 1), width=c_to_x(6), height=r_to_y(2))
+        apikey_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(6), height=r_to_y(2))
         x_pos += 6 + 1
 
         self.input_file_string = tk.StringVar()
@@ -79,6 +79,21 @@ class simpleapp_tk(tk.Tk):
         dir_button = tk.Checkbutton(self, text="Save in input file directory", variable=self.save_in_dir,
                                     onvalue=True, offvalue=False, command=self.save_in_dir_OnToggle)
         dir_button.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(20), height=r_to_y(2))
+        x_pos += 20 + 5
+
+        # Language widget
+        language_label = tk.Label(self, anchor="w", fg="black", text="Language:")
+        language_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(8), height=r_to_y(2))
+        x_pos += 8 + 1
+
+        self.language = tk.StringVar()
+        language_en = tk.Radiobutton(self, text="EN", variable=self.language, value="en", command=self.lang_OnChange)
+        language_en.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(5), height=r_to_y(2))
+        x_pos += 5 + 1
+        language_fr = tk.Radiobutton(self, text="FR", variable=self.language, value="fr", command=self.lang_OnChange)
+        language_fr.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(5), height=r_to_y(2))
+        x_pos += 5 + 1
+
         x_pos = 1
         y_pos += 2 + 1
 
@@ -94,15 +109,16 @@ class simpleapp_tk(tk.Tk):
         # Retrieve config
         try:
             self.config = vt_scan.load_config(self.config_file)
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_load, 'en').format(config=str(self.config)))
+            self.language.set(self.config.get("language", "en"))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_load, self.config.get("language", "en")).format(config=str(self.config)))
             self.console.see(tk.END)
         except vt_scan.ScriptWarning as e:
             self.config = vt_scan.load_config(self.config_file)
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, 'en').format(message=e.message('en')))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
             self.console.see(tk.END)
         except vt_scan.ScriptError as e:
             self.config = {}
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.error, 'en').format(message=e.message('en')))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.error, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
             self.console.see(tk.END)
 
         # Load config
@@ -117,17 +133,23 @@ class simpleapp_tk(tk.Tk):
             self.config["apikey"] = self.apikey_entry.get()
             self.apikey_string.set(self.config.get("apikey", "no apikey"))
             vt_scan.save_config(self.config, self.config_file)
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_save, 'en').format(property="apikey"))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_save, self.config.get("language", "en")).format(property="apikey"))
             self.console.see(tk.END)
         except vt_scan.ScriptWarning as e:
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, 'en').format(message=e.message('en')))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
             self.console.see(tk.END)
             self.apikey_entry.focus_set()
 
     def save_in_dir_OnToggle(self):
         self.config["save_in_dir"] = self.save_in_dir.get()
         vt_scan.save_config(self.config, self.config_file)
-        self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_save, 'en').format(property="Save in dir"))
+        self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_save, self.config.get("language", "en")).format(property="Save in dir"))
+        self.console.see(tk.END)
+
+    def lang_OnChange(self):
+        self.config["language"] = self.language.get()
+        vt_scan.save_config(self.config, self.config_file)
+        self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.config_save, self.config.get("language", "en")).format(property="Language"))
         self.console.see(tk.END)
 
     def file_dialog_OnButtonClick(self):
@@ -137,9 +159,9 @@ class simpleapp_tk(tk.Tk):
             line_list = vt_scan.get_report_lines(self.input_file_string.get())
             self.file_type = vt_scan.get_file_type(line_list[0])
             self.md5s_list = vt_scan.find_md5_in_file(line_list, self.file_type)
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_opening, 'en').format(file=input_file))
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_type, 'en').format(type=self.file_type))
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_md5s_nb, 'en').format(nb_md5s=len(self.md5s_list)))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_opening, self.config.get("language", "en")).format(file=input_file))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_type, self.config.get("language", "en")).format(type=self.file_type))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.file_md5s_nb, self.config.get("language", "en")).format(nb_md5s=len(self.md5s_list)))
             self.console.see(tk.END)
 
     def run_OnButtonClick(self):
@@ -154,7 +176,7 @@ class simpleapp_tk(tk.Tk):
                 vt_scan.save_results(output_file, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results)
 
                 # Open the log
-                self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.scan_complete, 'en'))
+                self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.scan_complete, self.config.get("language", "en")))
                 self.console.see(tk.END)
                 webopen(output_file)
             else:
@@ -162,11 +184,11 @@ class simpleapp_tk(tk.Tk):
                 raise vt_scan.ScriptWarning(vt_scan.ErrorsCodes.input_file_no_md5)
 
         except vt_scan.ScriptWarning as e:
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, 'en').format(message=e.message('en')))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.warning, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
             self.console.see(tk.END)
 
         except vt_scan.ScriptError as e:
-            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.error, 'en').format(message=e.message('en')))
+            self.console.insert(tk.END, vt_scan.get_string(vt_scan.VariousCodes.error, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
             self.console.see(tk.END)
 
 
