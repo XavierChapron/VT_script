@@ -34,13 +34,21 @@ default_config = {"apikey": "MyApiKeyHere", "save_in_dir": False}
 
 
 class ScriptError(Exception):
-    def __init__(self, message):
-        self.message = message
+    def __init__(self, code, parameters={}):
+        self.code = code
+        self.parameters = parameters
+
+    def message(self, lang):
+        return ErrorsStrings[lang][self.code].format(**self.parameters)
 
 
 class ScriptWarning(Exception):
-    def __init__(self, message):
-        self.message = message
+    def __init__(self, code, parameters={}):
+        self.code = code
+        self.parameters = parameters
+
+    def message(self, lang):
+        return ErrorsStrings[lang][self.code].format(**self.parameters)
 
 
 def load_config(config_file):
