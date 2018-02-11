@@ -14,9 +14,6 @@ import json
 import sys
 
 
-# Full path to the output log
-log_path = join(gettempdir(), "vt_scan.html")
-
 parser = OptionParser("usage: %prog -f path_to_file [options]")
 parser.add_option("-f", "--file",
                   help="file to use",
@@ -33,7 +30,7 @@ parser.add_option("-k", "--key",
 
 
 config_file_name = "vt_scan_config.txt"
-default_config = {"apikey": "MyApiKeyHere"}
+default_config = {"apikey": "MyApiKeyHere", "save_in_dir": False}
 
 
 class ScriptError(Exception):
@@ -265,7 +262,9 @@ def save_results(output_file, input_file, input_type, number_of_md5, results):
 def main(options):
     # Get the files paths
     input_file = options.path_to_file.strip()
-    output_file = log_path
+
+    # Init output file to "/tmp/errors_vt_scan.html" and it's windows equivalent
+    output_file = get_output_file({}, "errors.txt")
 
     try:
         print("The input file is %s" % input_file)
@@ -286,6 +285,8 @@ def main(options):
         # Detect the logFile type
         file_type = get_file_type(line_list[0])
         print("The input file is detected as a %s log." % file_type)
+
+        output_file = get_output_file(config, input_file)
 
         # Find the md5s in the file
         md5s_list = find_md5_in_file(line_list, file_type)
@@ -310,12 +311,12 @@ def main(options):
     except ScriptError as e:
         print("Catch an error:")
         print(e.message)
-        with open(log_path, 'w') as f:
+        with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
             f.write(e.message)
 
     # Open the log
-    webopen(log_path)
+    webopen(output_file)
 
 
 if __name__ == '__main__':
