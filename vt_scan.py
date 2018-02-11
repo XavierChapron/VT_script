@@ -138,7 +138,7 @@ def run_vt_analyse(md5s_list, apikey):
                 answer_list = search_on_vt(md5_request, apikey)
             except ValueError:
                 answer_list = None
-                raise ScriptError("VT refuses to answer, the script will retry in 10sec.")
+                print("VT refuses to answer, the script will retry in 10sec.")
                 sleep(10)
             except HTTPError:
                 raise ScriptError("Your apikey '%s' seems to be refused by VirusTotal." % apikey)
