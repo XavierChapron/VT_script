@@ -271,7 +271,7 @@ def main(options):
         print("The input file is %s" % input_file)
 
         # Load config
-        config_file = join(dirname(abspath(sys.argv[0])), config_file_name)
+        config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
         config = load_config(config_file)
 
         # Get the apikey

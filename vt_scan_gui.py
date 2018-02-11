@@ -6,7 +6,7 @@ from tkinter import scrolledtext
 import vt_scan
 from tempfile import gettempdir
 from webbrowser import open as webopen
-from os.path import join, dirname, abspath
+from os.path import join, dirname, abspath, expanduser
 import sys
 
 
@@ -42,7 +42,7 @@ class simpleapp_tk(tk.Tk):
         self.file_type = ""
         self.md5s_list = []
         self.results = {}
-        self.config_file = join(dirname(abspath(sys.argv[0])), config_file_name)
+        self.config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
 
         x_pos = 1
         y_pos = 1
