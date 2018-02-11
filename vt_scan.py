@@ -30,7 +30,7 @@ parser.add_option("-k", "--key",
 
 
 config_file_name = "vt_scan_config.txt"
-default_config = {"apikey": "MyApiKeyHere", "save_in_dir": False}
+default_config = {"apikey": "MyApiKeyHere", "save_in_dir": False, "language": "en"}
 
 
 class Enum(tuple):
@@ -41,6 +41,7 @@ ErrorsCodes = Enum(
     [
         'config_file_corrupted',
         'config_file_none',
+        'config_file_bad_language',
         'apikey_invalid_none',
         'apikey_invalid_default',
         'apikey_invalid_char',
@@ -56,6 +57,7 @@ ErrorsStrings = {
     'en': {
         ErrorsCodes.config_file_corrupted: "Config file: {file} found corrupted.\nFix it or delete it and relaunch the program to create a default one",
         ErrorsCodes.config_file_none: "No config file found, created a default one in: {file}",
+        ErrorsCodes.config_file_bad_language: "Language {lang} unknown, options are: 'en' or 'fr'",
         ErrorsCodes.apikey_invalid_none: "No apikey found, you need to configure it using vt_scan_gui apikey field or manually in vt_scan_config.txt",
         ErrorsCodes.apikey_invalid_default: "Default apikey '{apikey}' found, you need to configure it using vt_scan_gui apikey field or manually in vt_scan_config.txt",
         ErrorsCodes.apikey_invalid_char: "Invalid char '{char}' in apikey '{apikey}' found, you need to fix it using vt_scan_gui apikey field or manually in vt_scan_config.txt",
@@ -68,6 +70,7 @@ ErrorsStrings = {
     'fr': {
         ErrorsCodes.config_file_corrupted: "Le fichier de configuration: {file} est corrompu.\nRéparez le ou supprimez le et relancer le programme pour restaurer celui par défaut.",
         ErrorsCodes.config_file_none: "Fichier de configuration absent, création d'un par défaut ici : {file}",
+        ErrorsCodes.config_file_bad_language: "Langue {lang} inconnue, les options sont : 'en' ou 'fr'",
         ErrorsCodes.apikey_invalid_none: "Aucune clé d'API trouvée, vous devez en configurer une en utilisant le champ apikey de vt_scan_gui ou manuellement dans vt_scan_config.txt",
         ErrorsCodes.apikey_invalid_default: "Clé d'API par défaut '{apikey}' trouvé, vous devez en configurer une en utilisant le champ apikey de vt_scan_gui ou manuellement dans vt_scan_config.txt",
         ErrorsCodes.apikey_invalid_char: "Character invalide '{char}' trové dans la clé d'API '{apikey}', vous devez la corriger en utilisant le champ apikey de vt_scan_gui ou manuellement dans vt_scan_config.txt",
@@ -147,11 +150,17 @@ def load_config(config_file):
     try:
         with open(config_file, "r") as f:
             config = json.load(f)
+
+        if config.get('language', 'en') not in ["en", "fr"]:
+            raise ScriptError(ErrorsCodes.config_file_bad_language, {"lang": config.get('language', 'en')})
+
     except json.JSONDecodeError:
         raise ScriptError(ErrorsCodes.config_file_corrupted, {"file": config_file})
+
     except FileNotFoundError:
         save_config(config, config_file)
         raise ScriptWarning(ErrorsCodes.config_file_none, {"file": config_file})
+
     return config
 
 
@@ -376,6 +385,8 @@ def save_results(output_file, input_file, input_type, number_of_md5, results):
 
 
 def main(options):
+    config = {}
+
     # Get the files paths
     input_file = options.path_to_file.strip()
 
@@ -424,17 +435,17 @@ def main(options):
 
     except ScriptError as e:
         print("Catch an error:")
-        print(e.message('en'))
+        print(e.message(config.get("language", "en")))
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message('en'))
+            f.write(e.message(config.get("language", "en")))
 
     except ScriptWarning as e:
         print("Catch a warning:")
-        print(e.message('en'))
+        print(e.message(config.get("language", "en")))
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message('en'))
+            f.write(e.message(config.get("language", "en")))
 
     # Open the log
     webopen(output_file)
