@@ -80,6 +80,50 @@ ErrorsStrings = {
 }
 
 
+VariousCodes = Enum(
+    [
+        'config_load',
+        'config_found',
+        'config_save',
+        'file_opening',
+        'file_type',
+        'file_md5s_nb',
+        'scan_complete',
+        'warning',
+        'error'
+    ]
+)
+
+VariousStrings = {
+    'en': {
+        VariousCodes.config_load: "Loading config...\n",
+        VariousCodes.config_found: "Config found:\n{config}\n",
+        VariousCodes.config_save: "Config: Saving {property} into config file\n",
+        VariousCodes.file_opening: "Opening file: {file}\n",
+        VariousCodes.file_type: "Found the file to be of type {type}.\n",
+        VariousCodes.file_md5s_nb: "Found {nb_md5s} MD5s in this file.\n",
+        VariousCodes.scan_complete: "\nScan complete, opening results\n",
+        VariousCodes.warning: "\n/!\\ WARNING: {message}\n\n",
+        VariousCodes.error: "\n/!\\ ERROR: {message}\n\n"
+    },
+    'fr': {
+        VariousCodes.config_load: "Chargement de la configuration...\n",
+        VariousCodes.config_found: "Configuration trouvée :\n{config}\n",
+        VariousCodes.config_save: "Configuration: Sauvegarde de {property} dans le fichier de configuration\n",
+        VariousCodes.file_opening: "Ouverture du fichier : {file}\n",
+        VariousCodes.file_type: "Le fichier est du type {type}.\n",
+        VariousCodes.file_md5s_nb: "{nb_md5s} MD5s ont été trouvé dans ce fichier.\n",
+        VariousCodes.scan_complete: "\nScan complet, ouverture des resultats\n",
+        VariousCodes.warning: "\n/!\\ ATTENTION: {message}\n\n",
+        VariousCodes.error: "\n/!\\ ERREUR: {message}\n\n"
+    }
+}
+
+
+def get_string(string_code, lang):
+    return VariousStrings[lang][string_code]
+
+
 class ScriptError(Exception):
     def __init__(self, code, parameters={}):
         self.code = code
