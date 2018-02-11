@@ -104,10 +104,10 @@ def load_config(config_file):
         with open(config_file, "r") as f:
             config = json.load(f)
     except json.JSONDecodeError:
-        raise ScriptError("Config file: %s found corrupted.\nFix it or delete it and relaunch the program to create a default one" % config_file)
+        raise ScriptError(ErrorsCodes.config_file_corrupted, {"file": config_file})
     except FileNotFoundError:
         save_config(config, config_file)
-        raise ScriptWarning("No config file found, created a default one in: %s" % config_file)
+        raise ScriptWarning(ErrorsCodes.config_file_none, {"file": config_file})
     return config
 
 
@@ -130,18 +130,17 @@ def check_apikey_format(config):
     try:
         apikey = config["apikey"]
     except KeyError:
-        raise ScriptWarning("No apikey found, you need to configure it using vt_scan_gui apikey field or manually in vt_scan_config.txt")
+        raise ScriptWarning(ErrorsCodes.apikey_invalid_none)
 
     if apikey == default_config["apikey"]:
-        raise ScriptWarning("Default apikey '%s' found, you need to configure it using vt_scan_gui apikey field or manually in vt_scan_config.txt" % apikey)
+        raise ScriptWarning(ErrorsCodes.apikey_invalid_default, {'apikey': apikey})
 
     for char in apikey.lower():
         if char not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]:
-            raise ScriptWarning("Invalid char '%s' in apikey '%s' found, you need to fix it using vt_scan_gui apikey field or manually in vt_scan_config.txt" % (char, apikey))
+            raise ScriptWarning(ErrorsCodes.apikey_invalid_char, {'apikey': apikey, 'char': char})
 
     if len(apikey) != 64:
-        raise ScriptWarning("Invalid apikey lenght (%s instead of 64) in apikey '%s', you need to fix it using vt_scan_gui apikey field or manually in vt_scan_config.txt"
-                            % (len(apikey), apikey))
+        raise ScriptWarning(ErrorsCodes.apikey_invalid_lenght, {'apikey': apikey, 'lenght': len(apikey)})
 
 
 def get_file_type(first_line):
@@ -196,9 +195,9 @@ def run_vt_analyse(md5s_list, apikey):
                 print("VT refuses to answer, the script will retry in 10sec.")
                 sleep(10)
             except HTTPError:
-                raise ScriptError("Your apikey '%s' seems to be refused by VirusTotal." % apikey)
+                raise ScriptError(ErrorsCodes.apikey_refused, {'apikey': apikey})
             except URLError:
-                raise ScriptError("You should check your internet connection")
+                raise ScriptError(ErrorsCodes.no_internet_connexion)
 
         # Analyse the answer
         if len(md5s_group) == 1:
@@ -296,7 +295,7 @@ def get_report_lines(path_to_file):
         with open(path_to_file, 'r', encoding='utf-16-le') as f:
             content = f.read()
     except:
-        raise ScriptError("Error while opening file: %s" % path_to_file)
+        raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
 
     return content.split("\n")
 
@@ -381,17 +380,17 @@ def main(options):
 
     except ScriptError as e:
         print("Catch an error:")
-        print(e.message)
+        print(e.message('en'))
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message)
+            f.write(e.message('en'))
 
     except ScriptWarning as e:
         print("Catch a warning:")
-        print(e.message)
+        print(e.message('en'))
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message)
+            f.write(e.message('en'))
 
     # Open the log
     webopen(output_file)
