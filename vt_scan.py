@@ -71,6 +71,24 @@ def get_output_file(config, input_file):
         return join(gettempdir(), output_file_name)
 
 
+def check_apikey_format(config):
+    try:
+        apikey = config["apikey"]
+    except KeyError:
+        raise ScriptWarning("No apikey found, you need to configure it using vt_scan_gui apikey field or manually in vt_scan_config.txt")
+
+    if apikey == default_config["apikey"]:
+        raise ScriptWarning("Default apikey '%s' found, you need to configure it using vt_scan_gui apikey field or manually in vt_scan_config.txt" % apikey)
+
+    for char in apikey.lower():
+        if char not in ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]:
+            raise ScriptWarning("Invalid char '%s' in apikey '%s' found, you need to fix it using vt_scan_gui apikey field or manually in vt_scan_config.txt" % (char, apikey))
+
+    if len(apikey) != 64:
+        raise ScriptWarning("Invalid apikey lenght (%s instead of 64) in apikey '%s', you need to fix it using vt_scan_gui apikey field or manually in vt_scan_config.txt"
+                            % (len(apikey), apikey))
+
+
 def get_file_type(first_line):
     "Search on the first_line to find some keyword helping identifying the file type"
     if "ZHPDiag" in first_line:
