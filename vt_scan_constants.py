@@ -1,5 +1,5 @@
 config_file_name = "vt_scan_config.txt"
-default_config = {"apikey": "MyApiKeyHere", "save_in_dir": False, "language": "en"}
+default_config = {"apikey": "MyApiKeyHere", "save_in_dir": False}
 
 
 class Enum(tuple):
