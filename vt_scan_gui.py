@@ -155,24 +155,24 @@ class simpleapp_tk(tk.Tk):
             self.config["apikey"] = self.apikey_entry.get()
             self.apikey_string.set(self.config.get("apikey", "no apikey"))
             save_config(self.config, self.config_file)
-            self.console.insert(tk.END, get_string(VariousCodes.config_save, self.config.get("language", "en")).format(property="apikey"))
+            self.console.insert(tk.END, get_string(VariousCodes.config_save, self.language).format(property="apikey"))
             self.console.see(tk.END)
         except ScriptWarning as e:
-            self.console.insert(tk.END, get_string(VariousCodes.warning, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
+            self.console.insert(tk.END, get_string(VariousCodes.warning, self.language).format(message=e.message(self.language)))
             self.console.see(tk.END)
             self.apikey_entry.focus_set()
 
     def save_in_dir_OnToggle(self):
         self.config["save_in_dir"] = self.save_in_dir.get()
         save_config(self.config, self.config_file)
-        self.console.insert(tk.END, get_string(VariousCodes.config_save, self.config.get("language", "en")).format(property="Save in dir"))
+        self.console.insert(tk.END, get_string(VariousCodes.config_save, self.language).format(property="Save in dir"))
         self.console.see(tk.END)
 
     def lang_OnChange(self):
         self.config["language"] = self.language_object.get()
         self.language = self.language_object.get()
         save_config(self.config, self.config_file)
-        self.console.insert(tk.END, get_string(VariousCodes.config_save, self.config.get("language", "en")).format(property="Language"))
+        self.console.insert(tk.END, get_string(VariousCodes.config_save, self.language).format(property="Language"))
         self.console.see(tk.END)
 
     def file_dialog_OnButtonClick(self):
@@ -182,9 +182,9 @@ class simpleapp_tk(tk.Tk):
             line_list = get_report_lines(self.input_file_string.get())
             self.file_type = get_file_type(line_list[0])
             self.md5s_list = find_md5_in_file(line_list, self.file_type)
-            self.console.insert(tk.END, get_string(VariousCodes.file_opening, self.config.get("language", "en")).format(file=input_file))
-            self.console.insert(tk.END, get_string(VariousCodes.file_type, self.config.get("language", "en")).format(type=self.file_type))
-            self.console.insert(tk.END, get_string(VariousCodes.file_md5s_nb, self.config.get("language", "en")).format(nb_md5s=len(self.md5s_list)))
+            self.console.insert(tk.END, get_string(VariousCodes.file_opening, self.language).format(file=input_file))
+            self.console.insert(tk.END, get_string(VariousCodes.file_type, self.language).format(type=self.file_type))
+            self.console.insert(tk.END, get_string(VariousCodes.file_md5s_nb, self.language).format(nb_md5s=len(self.md5s_list)))
             self.console.see(tk.END)
 
     def run_OnButtonClick(self):
@@ -199,7 +199,7 @@ class simpleapp_tk(tk.Tk):
                 save_results(output_file, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results)
 
                 # Open the log
-                self.console.insert(tk.END, get_string(VariousCodes.scan_complete, self.config.get("language", "en")))
+                self.console.insert(tk.END, get_string(VariousCodes.scan_complete, self.language))
                 self.console.see(tk.END)
                 webopen(output_file)
             else:
@@ -207,11 +207,11 @@ class simpleapp_tk(tk.Tk):
                 raise ScriptWarning(ErrorsCodes.input_file_no_md5)
 
         except ScriptWarning as e:
-            self.console.insert(tk.END, get_string(VariousCodes.warning, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
+            self.console.insert(tk.END, get_string(VariousCodes.warning, self.language).format(message=e.message(self.language)))
             self.console.see(tk.END)
 
         except ScriptError as e:
-            self.console.insert(tk.END, get_string(VariousCodes.error, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
+            self.console.insert(tk.END, get_string(VariousCodes.error, self.language).format(message=e.message(self.language)))
             self.console.see(tk.END)
 
 
