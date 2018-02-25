@@ -13,6 +13,7 @@ from webbrowser import open as webopen
 import json
 import sys
 from vt_scan_constants import ErrorsCodes, ErrorsStrings, config_file_name, default_config, VariousStrings
+from locale import getdefaultlocale
 
 
 parser = OptionParser("usage: %prog -f path_to_file [options]")
@@ -50,6 +51,13 @@ class ScriptWarning(Exception):
 
     def message(self, lang):
         return ErrorsStrings[lang][self.code].format(**self.parameters)
+
+
+def get_language_from_locale():
+    if getdefaultlocale()[0] == "fr_FR":
+        return 'fr'
+    else:
+        return 'en'
 
 
 def load_config(config_file):
