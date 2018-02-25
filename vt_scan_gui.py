@@ -5,7 +5,7 @@ from tkinter import filedialog
 from tkinter import scrolledtext
 from vt_scan import get_string, ScriptWarning, ScriptError, load_config, save_config
 from vt_scan import get_output_file, check_apikey_format, get_file_type, run_vt_analyse
-from vt_scan import find_md5_in_file, get_report_lines, save_results
+from vt_scan import find_md5_in_file, get_report_lines, save_results, get_language_from_locale
 from vt_scan_constants import ErrorsCodes, config_file_name, VariousCodes
 from webbrowser import open as webopen
 from os.path import join, dirname, abspath, expanduser
@@ -28,6 +28,33 @@ def r_to_y(row):
     return row * row_h
 
 
+def retrieve_config(config_file):
+    language = get_language_from_locale()
+    message = ""
+    try:
+        config = load_config(config_file)
+        if "language" in config.keys():
+            language = config["language"]
+            return config, language, get_string(VariousCodes.config_found, language).format(config=config)
+        else:
+            message = get_string(VariousCodes.config_found, language).format(config=config)
+            message += get_string(VariousCodes.config_file_no_language, language)
+            return config, language, message
+
+    except ScriptWarning as e:
+        # Reload config as a default one is saved on ScriptWarning
+        config = load_config(config_file)
+        message = get_string(VariousCodes.warning, language).format(message=e.message(language))
+        message += get_string(VariousCodes.config_file_no_language, language)
+        return config, language, message
+
+    except ScriptError as e:
+        config = {}
+        message = get_string(VariousCodes.error, language).format(message=e.message(language))
+        message += get_string(VariousCodes.config_file_no_language, language)
+        return config, language, message
+
+
 class simpleapp_tk(tk.Tk):
     def __init__(self, parent):
         tk.Tk.__init__(self, parent)
@@ -40,6 +67,9 @@ class simpleapp_tk(tk.Tk):
         self.md5s_list = []
         self.results = {}
         self.config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
+
+        # Retrieve config, config message is handled when console is instantiated
+        self.config, self.language, config_message = retrieve_config(self.config_file)
 
         x_pos = 1
         y_pos = 1
@@ -88,11 +118,14 @@ class simpleapp_tk(tk.Tk):
         language_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(8), height=r_to_y(2))
         x_pos += 8 + 1
 
-        self.language = tk.StringVar()
-        language_en = tk.Radiobutton(self, text="EN", variable=self.language, value="en", command=self.lang_OnChange)
+        self.language_object = tk.StringVar()
+        # Only set radio button if the language was defined from the config
+        if "language" in self.config.keys():
+            self.language_object.set(self.language)
+        language_en = tk.Radiobutton(self, text="EN", variable=self.language_object, value="en", command=self.lang_OnChange)
         language_en.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(5), height=r_to_y(2))
         x_pos += 5 + 1
-        language_fr = tk.Radiobutton(self, text="FR", variable=self.language, value="fr", command=self.lang_OnChange)
+        language_fr = tk.Radiobutton(self, text="FR", variable=self.language_object, value="fr", command=self.lang_OnChange)
         language_fr.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(5), height=r_to_y(2))
         x_pos += 5 + 1
 
@@ -106,24 +139,11 @@ class simpleapp_tk(tk.Tk):
 
         self.console = scrolledtext.ScrolledText(undo=True)
         self.console.place(x=0, y=r_to_y(y_pos), width=app_w, height=app_h - r_to_y(y_pos))
-        self.console.insert(tk.END, get_string(VariousCodes.config_load, 'en'))
-
-        # Retrieve config
-        try:
-            self.config = load_config(self.config_file)
-            self.language.set(self.config.get("language", "en"))
-            self.console.insert(tk.END, get_string(VariousCodes.config_load, self.config.get("language", "en")).format(config=str(self.config)))
-            self.console.see(tk.END)
-        except ScriptWarning as e:
-            self.config = load_config(self.config_file)
-            self.console.insert(tk.END, get_string(VariousCodes.warning, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
-            self.console.see(tk.END)
-        except ScriptError as e:
-            self.config = {}
-            self.console.insert(tk.END, get_string(VariousCodes.error, self.config.get("language", "en")).format(message=e.message(self.config.get("language", "en"))))
-            self.console.see(tk.END)
 
         # Load config
+        self.console.insert(tk.END, get_string(VariousCodes.config_load, self.language))
+        self.console.insert(tk.END, config_message)
+        self.console.see(tk.END)
         self.apikey_string.set(self.config.get("apikey", ""))
         self.save_in_dir.set(self.config.get("save_in_dir", False))
 
@@ -149,7 +169,8 @@ class simpleapp_tk(tk.Tk):
         self.console.see(tk.END)
 
     def lang_OnChange(self):
-        self.config["language"] = self.language.get()
+        self.config["language"] = self.language_object.get()
+        self.language = self.language_object.get()
         save_config(self.config, self.config_file)
         self.console.insert(tk.END, get_string(VariousCodes.config_save, self.config.get("language", "en")).format(property="Language"))
         self.console.see(tk.END)
