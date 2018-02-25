@@ -308,12 +308,19 @@ def main(options):
     # Init output file to "/tmp/errors_vt_scan.html" and it's windows equivalent
     output_file = get_output_file({}, "errors.txt")
 
+    # Retrieve language based on locale
+    config["language"] = get_language_from_locale()
+
     try:
         print("The input file is %s" % input_file)
 
         # Load config
         config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
         config = load_config(config_file)
+
+        # Use locale language if no config language
+        if "language" not in config.keys():
+            config["language"] = get_language_from_locale()
 
         # Check apikey validity
         check_apikey_format(config)
@@ -350,17 +357,17 @@ def main(options):
 
     except ScriptError as e:
         print("Catch an error:")
-        print(e.message(config.get("language", "en")))
+        print(e.message(config["language"]))
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message(config.get("language", "en")))
+            f.write(e.message(config["language"]))
 
     except ScriptWarning as e:
         print("Catch a warning:")
-        print(e.message(config.get("language", "en")))
+        print(e.message(config["language"]))
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message(config.get("language", "en")))
+            f.write(e.message(config["language"]))
 
     # Open the log
     webopen(output_file)
