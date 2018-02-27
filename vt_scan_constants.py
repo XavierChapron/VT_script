@@ -71,7 +71,8 @@ VariousCodes = Enum(
         'choose_file',
         'save_in_dir',
         'language',
-        'run_vt_scan'
+        'run_vt_scan',
+        'waiting_vt'
     ]
 )
 
@@ -94,7 +95,8 @@ VariousStrings = {
         VariousCodes.choose_file: "Choose a file",
         VariousCodes.save_in_dir: "Save in input file directory",
         VariousCodes.language: "Language:",
-        VariousCodes.run_vt_scan: "Run VT Scan"
+        VariousCodes.run_vt_scan: "Run VT Scan",
+        VariousCodes.waiting_vt: "VT refuses to answer, the script will retry in 10sec."
     },
     'fr': {
         VariousCodes.config_load: "Chargement de la configuration...\n",
@@ -114,6 +116,7 @@ VariousStrings = {
         VariousCodes.choose_file: "Choisir un fichier",
         VariousCodes.save_in_dir: "Sauvegarder le rapport",
         VariousCodes.language: "Langue:",
-        VariousCodes.run_vt_scan: "Lancer VT Scan"
+        VariousCodes.run_vt_scan: "Lancer VT Scan",
+        VariousCodes.waiting_vt: "VT refuse de répondre, le programme va résssayer dans 10 sec."
     }
 }
