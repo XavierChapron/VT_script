@@ -72,7 +72,13 @@ VariousCodes = Enum(
         'save_in_dir',
         'language',
         'run_vt_scan',
-        'waiting_vt'
+        'waiting_vt',
+        'vt_scan_title',
+        'vt_nonzero',
+        'vt_unknown',
+        'vt_negative',
+        'result',
+        'file'
     ]
 )
 
@@ -96,7 +102,13 @@ VariousStrings = {
         VariousCodes.save_in_dir: "Save in input file directory",
         VariousCodes.language: "Language:",
         VariousCodes.run_vt_scan: "Run VT Scan",
-        VariousCodes.waiting_vt: "VT refuses to answer, the script will retry in 10sec."
+        VariousCodes.waiting_vt: "VT refuses to answer, the script will retry in 10sec.",
+        VariousCodes.vt_scan_title: "VT_Scan by Chapi:",
+        VariousCodes.vt_nonzero: "VirusTotal nonzero detections ({nb}):",
+        VariousCodes.vt_unknown: "VirusTotal unknown files ({nb}):",
+        VariousCodes.vt_negative: "VirusTotal negative results ({nb}):",
+        VariousCodes.result: "Result",
+        VariousCodes.file: "File"
     },
     'fr': {
         VariousCodes.config_load: "Chargement de la configuration...\n",
@@ -117,6 +129,12 @@ VariousStrings = {
         VariousCodes.save_in_dir: "Sauvegarder le rapport",
         VariousCodes.language: "Langue:",
         VariousCodes.run_vt_scan: "Lancer VT Scan",
-        VariousCodes.waiting_vt: "VT refuse de répondre, le programme va résssayer dans 10 sec."
+        VariousCodes.waiting_vt: "VT refuse de répondre, le programme va résssayer dans 10 sec.",
+        VariousCodes.vt_scan_title: "VT_Scan par Chapi :",
+        VariousCodes.vt_nonzero: "VirusTotal détections non nulles ({nb}):",
+        VariousCodes.vt_unknown: "VirusTotal fichiers inconnus ({nb}):",
+        VariousCodes.vt_negative: "VirusTotal résulats négatifs ({nb}):",
+        VariousCodes.result: "Resultat",
+        VariousCodes.file: "Fichier"
     }
 }
