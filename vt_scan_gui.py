@@ -75,46 +75,46 @@ class simpleapp_tk(tk.Tk):
         y_pos = 1
 
         # Apikey widgets
-        apikey_label = tk.Label(self, anchor="w", fg="black", text="Apikey:")
+        apikey_label = tk.Label(self, anchor="w", fg="black", text=get_string(VariousCodes.apikey, self.language))
         apikey_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(6), height=r_to_y(2))
         x_pos += 6 + 1
 
         self.apikey_string = tk.StringVar()
         self.apikey_entry = tk.Entry(self, textvariable=self.apikey_string)
-        self.apikey_entry.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(40), height=r_to_y(2))
-        x_pos += 40 + 1
+        self.apikey_entry.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(38), height=r_to_y(2))
+        x_pos += 38 + 1
 
-        apikey_save_button = tk.Button(self, text="Save", command=self.apikey_save_OnButtonClick)
-        apikey_save_button.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(9), height=r_to_y(2))
+        apikey_save_button = tk.Button(self, text=get_string(VariousCodes.save, self.language), command=self.apikey_save_OnButtonClick)
+        apikey_save_button.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(11), height=r_to_y(2))
         x_pos = 1
         y_pos += 2 + 1
 
         # Input file widgets
-        apikey_label = tk.Label(self, anchor="w", fg="black", text="Input file:")
+        apikey_label = tk.Label(self, anchor="w", fg="black", text=get_string(VariousCodes.input_file, self.language))
         apikey_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(6), height=r_to_y(2))
         x_pos += 6 + 1
 
         self.input_file_string = tk.StringVar()
-        self.input_file_string.set("No input file selected")
+        self.input_file_string.set(get_string(VariousCodes.no_file, self.language))
         input_file_label = tk.Label(self, textvariable=self.input_file_string,
                                     anchor="w", bg="white", fg="black")
-        input_file_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(40), height=r_to_y(2))
-        x_pos += 40 + 1
+        input_file_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(38), height=r_to_y(2))
+        x_pos += 38 + 1
 
-        self.file_dialog_button = tk.Button(self, text="Choose a file", command=self.file_dialog_OnButtonClick)
-        self.file_dialog_button.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(9), height=r_to_y(2))
+        self.file_dialog_button = tk.Button(self, text=get_string(VariousCodes.choose_file, self.language), command=self.file_dialog_OnButtonClick)
+        self.file_dialog_button.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(11), height=r_to_y(2))
         x_pos = 1
         y_pos += 2 + 1
 
         # Save dir widget
         self.save_in_dir = tk.BooleanVar()
-        dir_button = tk.Checkbutton(self, text="Save in input file directory", variable=self.save_in_dir,
+        dir_button = tk.Checkbutton(self, text=get_string(VariousCodes.save_in_dir, self.language), variable=self.save_in_dir,
                                     onvalue=True, offvalue=False, command=self.save_in_dir_OnToggle)
         dir_button.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(20), height=r_to_y(2))
         x_pos += 20 + 5
 
         # Language widget
-        language_label = tk.Label(self, anchor="w", fg="black", text="Language:")
+        language_label = tk.Label(self, anchor="w", fg="black", text=get_string(VariousCodes.language, self.language))
         language_label.place(x=c_to_x(x_pos), y=r_to_y(y_pos), width=c_to_x(8), height=r_to_y(2))
         x_pos += 8 + 1
 
@@ -133,7 +133,7 @@ class simpleapp_tk(tk.Tk):
         y_pos += 2 + 1
 
         # Run widget
-        run_button = tk.Button(self, text="Run VT Scan", command=self.run_OnButtonClick)
+        run_button = tk.Button(self, text=get_string(VariousCodes.run_vt_scan, self.language), command=self.run_OnButtonClick)
         run_button.place(x=(app_w - c_to_x(15)) / 2, y=r_to_y(y_pos), width=c_to_x(15), height=r_to_y(2))
         y_pos += 2 + 1
 
@@ -153,7 +153,7 @@ class simpleapp_tk(tk.Tk):
         try:
             check_apikey_format({"apikey": self.apikey_entry.get()})
             self.config["apikey"] = self.apikey_entry.get()
-            self.apikey_string.set(self.config.get("apikey", "no apikey"))
+            self.apikey_string.set(self.config["apikey"])
             save_config(self.config, self.config_file)
             self.console.insert(tk.END, get_string(VariousCodes.config_save, self.language).format(property="apikey"))
             self.console.see(tk.END)
