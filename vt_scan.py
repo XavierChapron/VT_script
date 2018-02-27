@@ -12,7 +12,7 @@ from tempfile import gettempdir
 from webbrowser import open as webopen
 import json
 import sys
-from vt_scan_constants import ErrorsCodes, ErrorsStrings, config_file_name, default_config, VariousStrings
+from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_file_name, default_config, VariousStrings
 from locale import getdefaultlocale
 
 
@@ -132,7 +132,7 @@ def search_on_vt(md5s, apikey):
     return loads(response.read().decode('utf-8'))
 
 
-def run_vt_analyse(md5s_list, apikey):
+def run_vt_analyse(md5s_list, apikey, language):
 
     # Create a different request for each group of 4 md5s
     md5s_groups_list = []
@@ -160,7 +160,7 @@ def run_vt_analyse(md5s_list, apikey):
                 answer_list = search_on_vt(md5_request, apikey)
             except ValueError:
                 answer_list = None
-                print("VT refuses to answer, the script will retry in 10sec.")
+                print(get_string(VariousCodes.waiting_vt, language))
                 sleep(10)
             except HTTPError:
                 raise ScriptError(ErrorsCodes.apikey_refused, {'apikey': apikey})
@@ -312,8 +312,6 @@ def main(options):
     config["language"] = get_language_from_locale()
 
     try:
-        print("The input file is %s" % input_file)
-
         # Load config
         config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
         config = load_config(config_file)
@@ -327,44 +325,43 @@ def main(options):
         apikey = config["apikey"]
 
         # Get the report lines
+        print(get_string(VariousCodes.file_opening, config["language"]).format(file=input_file))
         line_list = get_report_lines(input_file)
 
         # Detect the logFile type
         file_type = get_file_type(line_list[0])
-        print("The input file is detected as a %s log." % file_type)
+        print(get_string(VariousCodes.file_type, config["language"]).format(type=file_type))
 
         output_file = get_output_file(config, input_file)
 
         # Find the md5s in the file
         md5s_list = find_md5_in_file(line_list, file_type)
         md5_number = len(md5s_list)
+        print(get_string(VariousCodes.file_md5s_nb, config["language"]).format(nb_md5s=md5_number))
         if md5_number == 0:
-            print("Found 0 md5 in %s" % input_file)
             with open(output_file, 'w') as f:
                 f.write("<h2>VT_Scan by Chapi:</h2></br>")
                 f.write("Found <b>0 different md5s</b> in %s.</br>" % input_file)
 
         else:
-            print("Found %s different md5s in %s." % (md5_number, input_file))
-
             # Search on VT for each md5 and store the results
-            results = run_vt_analyse(md5s_list, apikey)
+            results = run_vt_analyse(md5s_list, apikey, config["language"])
 
             # Create the output log
             save_results(output_file, input_file, file_type, md5_number, results)
 
-        print("### End of analysis.")
+        print(get_string(VariousCodes.scan_complete, config["language"]))
 
     except ScriptError as e:
-        print("Catch an error:")
-        print(e.message(config["language"]))
+        error_message = get_string(VariousCodes.error, config["language"]).format(message=e.message(config["language"]))
+        print(error_message)
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
             f.write(e.message(config["language"]))
 
     except ScriptWarning as e:
-        print("Catch a warning:")
-        print(e.message(config["language"]))
+        error_message = get_string(VariousCodes.warning, config["language"]).format(message=e.message(config["language"]))
+        print(error_message)
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
             f.write(e.message(config["language"]))
