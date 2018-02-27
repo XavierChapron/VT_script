@@ -63,7 +63,15 @@ VariousCodes = Enum(
         'file_md5s_nb',
         'scan_complete',
         'warning',
-        'error'
+        'error',
+        'input_file',
+        'apikey',
+        'save',
+        'no_file',
+        'choose_file',
+        'save_in_dir',
+        'language',
+        'run_vt_scan'
     ]
 )
 
@@ -78,7 +86,15 @@ VariousStrings = {
         VariousCodes.file_md5s_nb: "Found {nb_md5s} MD5s in this file.\n",
         VariousCodes.scan_complete: "\nScan complete, opening results\n",
         VariousCodes.warning: "\n/!\\ WARNING: {message}\n\n",
-        VariousCodes.error: "\n/!\\ ERROR: {message}\n\n"
+        VariousCodes.error: "\n/!\\ ERROR: {message}\n\n",
+        VariousCodes.input_file: "Input file:",
+        VariousCodes.apikey: "Apikey:",
+        VariousCodes.save: "Save",
+        VariousCodes.no_file: "No input file selected",
+        VariousCodes.choose_file: "Choose a file",
+        VariousCodes.save_in_dir: "Save in input file directory",
+        VariousCodes.language: "Language:",
+        VariousCodes.run_vt_scan: "Run VT Scan"
     },
     'fr': {
         VariousCodes.config_load: "Chargement de la configuration...\n",
@@ -90,6 +106,14 @@ VariousStrings = {
         VariousCodes.file_md5s_nb: "{nb_md5s} MD5s ont été trouvé dans ce fichier.\n",
         VariousCodes.scan_complete: "\nScan complet, ouverture des resultats\n",
         VariousCodes.warning: "\n/!\\ ATTENTION: {message}\n\n",
-        VariousCodes.error: "\n/!\\ ERREUR: {message}\n\n"
+        VariousCodes.error: "\n/!\\ ERREUR: {message}\n\n",
+        VariousCodes.input_file: "Fichier :",
+        VariousCodes.apikey: "Apikey :",
+        VariousCodes.save: "Sauvegarder",
+        VariousCodes.no_file: "Pas de fichier sélectionné",
+        VariousCodes.choose_file: "Choisir un fichier",
+        VariousCodes.save_in_dir: "Sauvegarder le rapport",
+        VariousCodes.language: "Langue:",
+        VariousCodes.run_vt_scan: "Lancer VT Scan"
     }
 }
