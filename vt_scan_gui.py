@@ -191,7 +191,7 @@ class simpleapp_tk(tk.Tk):
         try:
             if len(self.md5s_list) > 0:
                 check_apikey_format(self.config)
-                self.results = run_vt_analyse(self.md5s_list, self.config["apikey"])
+                self.results = run_vt_analyse(self.md5s_list, self.config["apikey"], self.language)
 
                 output_file = get_output_file(self.config, self.input_file_string.get())
 
