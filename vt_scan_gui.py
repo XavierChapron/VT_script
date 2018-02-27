@@ -196,7 +196,7 @@ class simpleapp_tk(tk.Tk):
                 output_file = get_output_file(self.config, self.input_file_string.get())
 
                 # Create the output log
-                save_results(output_file, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results)
+                save_results(output_file, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results, self.language)
 
                 # Open the log
                 self.console.insert(tk.END, get_string(VariousCodes.scan_complete, self.language))
