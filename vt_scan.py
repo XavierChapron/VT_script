@@ -268,39 +268,57 @@ def get_report_lines(path_to_file):
     return content.split("\n")
 
 
-def save_results(output_file, input_file, input_type, number_of_md5, results):
+def save_results(output_file, input_file, input_type, number_of_md5, results, language):
     with open(output_file, 'w') as f:
         f.write('<meta charset="UTF-8">\n')
         f.write('<style>\ntable, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n}\nth, td {\n    padding: 5px;\n}\n</style>\n')
 
-        f.write("<h2>VT_Scan by Chapi:</h2></br>\n")
-        f.write("The input file is <b>%s</b></br>\n" % input_file)
-        f.write("The input file is detected as a <b>%s</b> log.</br>\n" % input_type)
-        f.write("Found <b>%s different md5s</b>.</br>\n" % number_of_md5)
+        f.write("<h2>" + get_string(VariousCodes.vt_scan_title, language) + "</h2></br>")
+        f.write(get_string(VariousCodes.file_opening, language).format(file=input_file) + "</br>")
+        f.write(get_string(VariousCodes.file_type, language).format(type=input_type) + "</br>")
+        f.write(get_string(VariousCodes.file_md5s_nb, language).format(nb_md5s=number_of_md5) + "</br>")
 
-        f.write("<h4></br>VirusTotal nonzero detections (%s)</br></h4>\n" % len(results["positives"]))
-        f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
-        for result in results["positives"]:
-            f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
-        f.write('</table>\n')
+        if number_of_md5 == 0:
+            return
 
-        f.write("<h4></br>VirusTotal unknown files (%s)</br></h4>\n" % len(results["unknows"]))
-        f.write(' <table>\n  <tr>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
-        for result in results["unknows"]:
-            f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
-        f.write('</table>\n')
+        if len(results["positives"]) != 0:
+            f.write("<h4></br>" + get_string(VariousCodes.vt_nonzero, language).format(nb=len(results["positives"])) + "</br></h4>\n")
+            f.write(' <table>\n  <tr>\n    <th>')
+            f.write(get_string(VariousCodes.result, language))
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.file, language))
+            f.write('</th>\n    <th>MD5</th>\n  </tr>\n')
+            for result in results["positives"]:
+                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+            f.write('</table>\n')
 
-        f.write("<h4></br>VirusTotal negative results (%s)</br></h4>\n" % len(results["negatives"]))
-        f.write(' <table>\n  <tr>\n    <th>Result</th>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
-        for result in results["negatives"]:
-            f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
-        f.write('</table>\n')
+        if len(results["unknows"]) != 0:
+            f.write("<h4></br>" + get_string(VariousCodes.vt_unknown, language).format(nb=len(results["unknows"])) + "</br></h4>\n")
+            f.write(' <table>\n  <tr>\n    <th>')
+            f.write(get_string(VariousCodes.file, language))
+            f.write('</th>\n    <th>MD5</th>\n  </tr>\n')
+            f.write(' <table>\n  <tr>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
+            for result in results["unknows"]:
+                f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
+            f.write('</table>\n')
 
-        f.write("</br></br>\nEnd of analysis.")
+        if len(results["negatives"]) != 0:
+            f.write("<h4></br>" + get_string(VariousCodes.vt_negative, language).format(nb=len(results["negatives"])) + "</br></h4>\n")
+            f.write(' <table>\n  <tr>\n    <th>')
+            f.write(get_string(VariousCodes.result, language))
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.file, language))
+            f.write('</th>\n    <th>MD5</th>\n  </tr>\n')
+            for result in results["negatives"]:
+                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+            f.write('</table>\n')
+
+        f.write("</br></br>" + get_string(VariousCodes.scan_complete, language))
 
 
 def main(options):
     config = {}
+    results = {}
 
     # Get the files paths
     input_file = options.path_to_file.strip()
@@ -311,6 +329,7 @@ def main(options):
     # Retrieve language based on locale
     config["language"] = get_language_from_locale()
 
+    print(get_string(VariousCodes.vt_scan_title, config["language"]))
     try:
         # Load config
         config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
@@ -338,17 +357,12 @@ def main(options):
         md5s_list = find_md5_in_file(line_list, file_type)
         md5_number = len(md5s_list)
         print(get_string(VariousCodes.file_md5s_nb, config["language"]).format(nb_md5s=md5_number))
-        if md5_number == 0:
-            with open(output_file, 'w') as f:
-                f.write("<h2>VT_Scan by Chapi:</h2></br>")
-                f.write("Found <b>0 different md5s</b> in %s.</br>" % input_file)
-
-        else:
+        if md5_number != 0:
             # Search on VT for each md5 and store the results
             results = run_vt_analyse(md5s_list, apikey, config["language"])
 
-            # Create the output log
-            save_results(output_file, input_file, file_type, md5_number, results)
+        # Create the output log
+        save_results(output_file, input_file, file_type, md5_number, results, config["language"])
 
         print(get_string(VariousCodes.scan_complete, config["language"]))
 
@@ -357,14 +371,14 @@ def main(options):
         print(error_message)
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message(config["language"]))
+            f.write(error_message)
 
     except ScriptWarning as e:
         error_message = get_string(VariousCodes.warning, config["language"]).format(message=e.message(config["language"]))
         print(error_message)
         with open(output_file, 'w') as f:
             f.write('<meta charset="UTF-8">\n')
-            f.write(e.message(config["language"]))
+            f.write(error_message)
 
     # Open the log
     webopen(output_file)
