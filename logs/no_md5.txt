@@ -1,0 +1,6 @@
+~ ZHPDiag v2016.7.29.119 Par Nicolas Coolman (2016/07/29)
+~ Démarré par Xavier (Administrator)  (2016/07/30 12:22:28)
+~ Site: https://www.nicolascoolman.com
+
+
+---\\ Recherche particulière de fichiers génériques (26) - 11s
