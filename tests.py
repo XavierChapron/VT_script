@@ -1,5 +1,5 @@
 import unittest
-from vt_scan import get_report_lines
+from vt_scan import get_report_lines, get_file_type
 
 
 class Get_Report_Lines_Tests(unittest.TestCase):
@@ -59,3 +59,49 @@ class Get_Report_Lines_Tests(unittest.TestCase):
         self.assertEqual(len(lines), 625)
         self.assertEqual(lines[0], '\ufeffOTL logfile created on: 2/26/2011 10:49:12 AM - Run')
         self.assertEqual(lines[1], 'OTLPE by OldTimer - Version 3.1.44.3     Folder = X:\Programs\OTLPE')
+
+
+class Get_File_Type_Tests(unittest.TestCase):
+    def test_zhpdiag(self):
+        lines = get_report_lines("logs/ZHPDiag_utf-16-le.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "ZHPDiag")
+
+        lines = get_report_lines("logs/ZHPDiag.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "ZHPDiag")
+
+        lines = get_report_lines("logs/no_md5.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "ZHPDiag")
+
+        lines = get_report_lines("logs/short.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "ZHPDiag")
+
+    def test_otl(self):
+        lines = get_report_lines("logs/OTL.Txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "OTL")
+
+        lines = get_report_lines("logs/OTLpecustom.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "OTL")
+
+        lines = get_report_lines("logs/OTL_with_malware.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "OTL")
+
+    def test_frst(self):
+        lines = get_report_lines("logs/FRST.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "FRST")
+
+    def test_raw(self):
+        lines = get_report_lines("logs/SystemLook.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "RAW")
+
+        lines = get_report_lines("logs/raw.txt")
+        type = get_file_type(lines[0])
+        self.assertEqual(type, "RAW")
