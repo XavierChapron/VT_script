@@ -1,4 +1,4 @@
-.PHONY: clean, version, copy, archive
+.PHONY: clean, version, copy, archive, apikey
 
 clean:
 	rm -f -r build
@@ -24,3 +24,6 @@ copy: version
 
 archive: copy
 	zip -r vt_script vt_script
+
+apikey:
+	cp backup_vt_scan_config.txt vt_scan_config.txt
