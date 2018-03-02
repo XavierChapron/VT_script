@@ -17,20 +17,6 @@ from locale import getdefaultlocale
 
 VERSION = "0.0.0"
 
-parser = OptionParser("usage: %prog -f path_to_file [options]")
-parser.add_option("-f", "--file",
-                  help="file to use",
-                  action="store", default="input.txt",
-                  dest="path_to_file")
-
-# Keep -k option for retro compatibility
-parser.add_option("-k", "--key",
-                  help="Only used for retrocompatibility",
-                  action="store",
-                  dest="dummy")
-
-(options, args) = parser.parse_args()
-
 
 def get_string(string_code, lang):
     return VariousStrings[lang][string_code]
@@ -317,7 +303,21 @@ def save_results(output_file, input_file, input_type, number_of_md5, results, la
         f.write("</br></br>" + get_string(VariousCodes.scan_complete, language))
 
 
-def main(options):
+def main():
+    parser = OptionParser("usage: %prog -f path_to_file [options]")
+    parser.add_option("-f", "--file",
+                      help="file to use",
+                      action="store", default="input.txt",
+                      dest="path_to_file")
+
+    # Keep -k option for retro compatibility
+    parser.add_option("-k", "--key",
+                      help="Only used for retrocompatibility",
+                      action="store",
+                      dest="dummy")
+
+    (options, args) = parser.parse_args()
+
     config = {}
     results = {}
 
@@ -386,4 +386,4 @@ def main(options):
 
 
 if __name__ == '__main__':
-    main(options)
+    main()
