@@ -1,4 +1,4 @@
-.PHONY: clean, version, copy, archive, apikey
+.PHONY: clean, version, copy, archive, apikey, test
 
 clean:
 	rm -f -r build
@@ -27,3 +27,6 @@ archive: copy
 
 apikey:
 	cp backup_vt_scan_config.txt vt_scan_config.txt
+
+test:
+	py.test tests.py --cov=.
