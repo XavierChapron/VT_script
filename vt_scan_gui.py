@@ -5,7 +5,7 @@ from tkinter import filedialog
 from tkinter import scrolledtext
 from vt_scan import get_string, ScriptWarning, ScriptError, load_config, save_config
 from vt_scan import get_output_file, check_apikey_format, get_file_type, run_vt_analyse
-from vt_scan import find_md5_in_file, get_report_lines, save_results, get_language_from_locale
+from vt_scan import find_md5_in_file, get_report_lines, save_results, get_language_from_locale, VERSION
 from vt_scan_constants import ErrorsCodes, config_file_name, VariousCodes
 from webbrowser import open as webopen
 from os.path import join, dirname, abspath, expanduser
@@ -217,5 +217,5 @@ class simpleapp_tk(tk.Tk):
 
 if __name__ == "__main__":
     app = simpleapp_tk(None)
-    app.title('VT Scan GUI')
+    app.title('VT Scan GUI - version {version}'.format(version=VERSION))
     app.mainloop()

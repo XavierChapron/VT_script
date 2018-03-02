@@ -15,6 +15,7 @@ import sys
 from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_file_name, default_config, VariousStrings
 from locale import getdefaultlocale
 
+VERSION = "0.0.0"
 
 parser = OptionParser("usage: %prog -f path_to_file [options]")
 parser.add_option("-f", "--file",
@@ -273,7 +274,7 @@ def save_results(output_file, input_file, input_type, number_of_md5, results, la
         f.write('<meta charset="UTF-8">\n')
         f.write('<style>\ntable, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n}\nth, td {\n    padding: 5px;\n}\n</style>\n')
 
-        f.write("<h2>" + get_string(VariousCodes.vt_scan_title, language) + "</h2></br>")
+        f.write("<h2>" + get_string(VariousCodes.vt_scan_title, language).format(version=VERSION) + "</h2></br>")
         f.write(get_string(VariousCodes.file_opening, language).format(file=input_file) + "</br>")
         f.write(get_string(VariousCodes.file_type, language).format(type=input_type) + "</br>")
         f.write(get_string(VariousCodes.file_md5s_nb, language).format(nb_md5s=number_of_md5) + "</br>")
@@ -329,7 +330,7 @@ def main(options):
     # Retrieve language based on locale
     config["language"] = get_language_from_locale()
 
-    print(get_string(VariousCodes.vt_scan_title, config["language"]))
+    print(get_string(VariousCodes.vt_scan_title, config["language"]).format(version=VERSION))
     try:
         # Load config
         config_file = join(dirname(abspath(expanduser(sys.argv[0]))), config_file_name)
