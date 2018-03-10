@@ -15,7 +15,7 @@ import sys
 from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_file_name, default_config, VariousStrings
 from locale import getdefaultlocale
 
-VERSION = "0.0.0"
+VERSION = "1.0.0"
 
 
 def get_string(string_code, lang):
