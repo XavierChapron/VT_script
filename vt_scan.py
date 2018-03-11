@@ -11,11 +11,30 @@ from os.path import join, dirname, abspath, basename, expanduser
 from tempfile import gettempdir
 from webbrowser import open as webopen
 import json
+import codecs
 import sys
 from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_file_name, default_config, VariousStrings
 from locale import getdefaultlocale
 
 VERSION = "1.0.0"
+
+BOM_UTF32_BE, BOM_UTF32_LE, BOM_UTF8, BOM_UTF16_BE, BOM_UTF16_LE, DEFAULT = range(6)
+codec_bom = {
+    BOM_UTF32_BE: codecs.BOM_UTF32_BE,
+    BOM_UTF32_LE: codecs.BOM_UTF32_LE,
+    BOM_UTF16_BE: codecs.BOM_UTF16_BE,
+    BOM_UTF8: codecs.BOM_UTF8,
+    BOM_UTF16_LE: codecs.BOM_UTF16_LE,
+    DEFAULT: b''
+}
+codec_decoder = {
+    BOM_UTF32_BE: 'utf_32_be',
+    BOM_UTF32_LE: 'utf_32_le',
+    BOM_UTF16_BE: 'utf_16_be',
+    BOM_UTF8: 'utf_8',
+    BOM_UTF16_LE: 'utf_16_le',
+    DEFAULT: 'utf8'
+}
 
 
 def get_string(string_code, lang):
@@ -238,21 +257,19 @@ def find_md5_in_file(line_list, file_type):
 
 
 def get_report_lines(path_to_file):
-    # Handle issues with files encoding
-    # OTL logs files comes formatted in utf-16-le encoding...
-    try:
-        with open(path_to_file, 'r') as f:
-            content = f.read()
-            if "\\x0" in repr(content):
-                with open(path_to_file, 'r', encoding='utf-16-le') as f:
-                    content = f.read()
-    except UnicodeDecodeError:
-        with open(path_to_file, 'r', encoding='utf-16-le') as f:
-            content = f.read()
-    except:
-        raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
+    with open(path_to_file, 'rb') as f:
+        b_content = f.read()
 
-    return content.split("\n")
+    for codec in range(6):
+        bom = codec_bom[codec]
+        if bom == b_content[:len(bom)]:
+            decoder = codecs.getdecoder(codec_decoder[codec])
+            content = decoder(b_content[len(bom):])[0]
+            content = content.replace("\r", "")
+            content = content.split("\n")
+            return content
+
+    raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
 
 
 def save_results(output_file, input_file, input_type, number_of_md5, results, language):
