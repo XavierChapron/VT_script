@@ -273,7 +273,7 @@ def get_report_lines(path_to_file):
 
 
 def save_results(output_file, input_file, input_type, number_of_md5, results, language):
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         f.write('<meta charset="UTF-8">\n')
         f.write('<style>\ntable, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n}\nth, td {\n    padding: 5px;\n}\n</style>\n')
 
