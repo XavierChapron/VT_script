@@ -7,12 +7,12 @@ class Get_Report_Lines_Tests(unittest.TestCase):
     def test_utf8_unicode_bom_crlf(self):
         lines = get_report_lines("logs/OTL.Txt")
         self.assertEqual(len(lines), 547)
-        self.assertEqual(lines[0], '\ufeffOTL logfile created on: 30/07/2016 12:26:10 - Run 1')
+        self.assertEqual(lines[0], 'OTL logfile created on: 30/07/2016 12:26:10 - Run 1')
         self.assertEqual(lines[1], 'OTL by OldTimer - Version 3.2.69.0     Folder = C:\\Users\\Xavier\\Downloads')
 
         lines = get_report_lines("logs/FRST.txt")
         self.assertEqual(len(lines), 441)
-        self.assertEqual(lines[0], "\ufeffRésultats d'analyse de  Farbar Recovery Scan Tool (FRST) (x64) Version: 27-07-2016")
+        self.assertEqual(lines[0], "Résultats d'analyse de  Farbar Recovery Scan Tool (FRST) (x64) Version: 27-07-2016")
         self.assertEqual(lines[1], "Exécuté par Xavier (administrateur) sur XAVIER-WIN7 (30-07-2016 12:37:49)")
 
     def test_utf8_unicode_crlf(self):
@@ -24,7 +24,7 @@ class Get_Report_Lines_Tests(unittest.TestCase):
     def test_utf16_le_crlf(self):
         lines = get_report_lines("logs/ZHPDiag_utf-16-le.txt")
         self.assertEqual(len(lines), 902)
-        self.assertEqual(lines[0], '\ufeff~ ZHPDiag v2018.1.5.5 Par Nicolas Coolman (2018/01/05)')
+        self.assertEqual(lines[0], '~ ZHPDiag v2018.1.5.5 Par Nicolas Coolman (2018/01/05)')
         self.assertEqual(lines[1], '~ Démarré par USERNAME (Administrator)  (2018/01/06 15:33:32)')
 
     def test_utf8_unicode_crlf(self):
@@ -57,7 +57,7 @@ class Get_Report_Lines_Tests(unittest.TestCase):
     def test_data(self):
         lines = get_report_lines("logs/OTLpecustom.txt")
         self.assertEqual(len(lines), 625)
-        self.assertEqual(lines[0], '\ufeffOTL logfile created on: 2/26/2011 10:49:12 AM - Run')
+        self.assertEqual(lines[0], 'OTL logfile created on: 2/26/2011 10:49:12 AM - Run')
         self.assertEqual(lines[1], 'OTLPE by OldTimer - Version 3.1.44.3     Folder = X:\Programs\OTLPE')
 
 
