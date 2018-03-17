@@ -69,45 +69,20 @@ class Get_Report_Lines_Tests(unittest.TestCase):
 
 class Get_File_Type_Tests(unittest.TestCase):
     def test_zhpdiag(self):
-        lines = get_report_lines("logs/ZHPDiag_utf-16-le.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "ZHPDiag")
-
-        lines = get_report_lines("logs/ZHPDiag.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "ZHPDiag")
-
-        lines = get_report_lines("logs/no_md5.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "ZHPDiag")
-
-        lines = get_report_lines("logs/short.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "ZHPDiag")
+        file_type = get_file_type("~ ZHPDiag v2016.7.29.119 Par Nicolas Coolman (2016/07/29)")
+        self.assertEqual(file_type, "ZHPDiag")
 
     def test_otl(self):
-        lines = get_report_lines("logs/OTL.Txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "OTL")
-
-        lines = get_report_lines("logs/OTLpecustom.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "OTL")
-
-        lines = get_report_lines("logs/OTL_with_malware.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "OTL")
+        file_type = get_file_type('OTL logfile created on: 2/26/2011 10:49:12 AM - Run')
+        self.assertEqual(file_type, "OTL")
 
     def test_frst(self):
-        lines = get_report_lines("logs/FRST.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "FRST")
+        file_type = get_file_type("Résultats d'analyse de  Farbar Recovery Scan Tool (FRST) (x64) Version: 27-07-2016")
+        self.assertEqual(file_type, "FRST")
 
     def test_raw(self):
-        lines = get_report_lines("logs/SystemLook.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "RAW")
+        file_type = get_file_type('SystemLook 30.07.11 by jpshortstuff')
+        self.assertEqual(file_type, "RAW")
 
-        lines = get_report_lines("logs/raw.txt")
-        type = get_file_type(lines[0])
-        self.assertEqual(type, "RAW")
+        file_type = get_file_type('RAW')
+        self.assertEqual(file_type, "RAW")
