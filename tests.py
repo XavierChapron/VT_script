@@ -1,5 +1,6 @@
 import unittest
-from vt_scan import get_report_lines, get_file_type
+from vt_scan import get_report_lines, get_file_type, ScriptError
+from vt_scan_constants import ErrorsCodes
 
 
 class Get_Report_Lines_Tests(unittest.TestCase):
@@ -59,6 +60,11 @@ class Get_Report_Lines_Tests(unittest.TestCase):
         self.assertEqual(len(lines), 625)
         self.assertEqual(lines[0], 'OTL logfile created on: 2/26/2011 10:49:12 AM - Run')
         self.assertEqual(lines[1], 'OTLPE by OldTimer - Version 3.1.44.3     Folder = X:\Programs\OTLPE')
+
+    def test_no_file(self):
+        with self.assertRaises(ScriptError) as error:
+            get_report_lines("no_file")
+        self.assertEqual(error.exception.code, ErrorsCodes.input_file_not_found)
 
 
 class Get_File_Type_Tests(unittest.TestCase):
