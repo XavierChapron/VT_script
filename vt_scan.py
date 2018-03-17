@@ -390,14 +390,14 @@ def main():
     except ScriptError as e:
         error_message = get_string(VariousCodes.error, config["language"]).format(message=e.message(config["language"]))
         print(error_message)
-        with open(output_file, 'w') as f:
+        with open(output_file, 'w', encoding='utf-8') as f:
             f.write('<meta charset="UTF-8">\n')
             f.write(error_message)
 
     except ScriptWarning as e:
         error_message = get_string(VariousCodes.warning, config["language"]).format(message=e.message(config["language"]))
         print(error_message)
-        with open(output_file, 'w') as f:
+        with open(output_file, 'w', encoding='utf-8') as f:
             f.write('<meta charset="UTF-8">\n')
             f.write(error_message)
 
