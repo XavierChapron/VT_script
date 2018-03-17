@@ -18,7 +18,8 @@ ErrorsCodes = Enum(
         'apikey_refused',
         'no_internet_connexion',
         'input_file_read_error',
-        'input_file_no_md5'
+        'input_file_no_md5',
+        'input_file_not_found'
     ]
 )
 
@@ -34,7 +35,8 @@ ErrorsStrings = {
         ErrorsCodes.apikey_refused: "Your apikey '{apikey}' seems to be refused by VirusTotal.",
         ErrorsCodes.no_internet_connexion: "You should check your internet connection",
         ErrorsCodes.input_file_read_error: "Error while opening file: {file}",
-        ErrorsCodes.input_file_no_md5: "You have to choose a file with no md5s."
+        ErrorsCodes.input_file_no_md5: "You have to choose a file with no md5s.",
+        ErrorsCodes.input_file_not_found: "File not found: '{file}'."
     },
     'fr': {
         ErrorsCodes.config_file_corrupted: "Le fichier de configuration: {file} est corrompu.\nRéparez le ou supprimez le et relancer le programme pour restaurer celui par défaut.",
@@ -47,7 +49,8 @@ ErrorsStrings = {
         ErrorsCodes.apikey_refused: "Votre clé d'API '{apikey}' semble être refusé par VirusTotal.\n si ce n'est pas votre clé d'API, configurez la en utilisant le champ apikey de vt_scan_gui ou manuellement dans vt_scan_config.txt",
         ErrorsCodes.no_internet_connexion: "Problème de connexion à Internet",
         ErrorsCodes.input_file_read_error: "Erreur lors de l'ouverture du fichier : {file}",
-        ErrorsCodes.input_file_no_md5: "Le fichier ne contient aucun md5."
+        ErrorsCodes.input_file_no_md5: "Le fichier ne contient aucun md5.",
+        ErrorsCodes.input_file_not_found: "Fichier absent : '{file}'."
     }
 }
 

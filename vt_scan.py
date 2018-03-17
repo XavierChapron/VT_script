@@ -257,8 +257,12 @@ def find_md5_in_file(line_list, file_type):
 
 
 def get_report_lines(path_to_file):
-    with open(path_to_file, 'rb') as f:
-        b_content = f.read()
+    try:
+        with open(path_to_file, 'rb') as f:
+            b_content = f.read()
+    except FileNotFoundError:
+        raise ScriptError(ErrorsCodes.input_file_not_found, {'file': path_to_file})
+
 
     for codec in range(6):
         bom = codec_bom[codec]
