@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import scrolledtext
 from vt_scan import get_string, ScriptWarning, ScriptError, load_config, save_config
-from vt_scan import get_output_file, check_apikey_format, get_file_type, run_vt_analyse
+from vt_scan import get_output_file, retrieve_apikey, get_file_type, run_vt_analyse
 from vt_scan import find_md5_in_file, get_report_lines, save_results, get_language_from_locale, VERSION
 from vt_scan_constants import ErrorsCodes, config_file_name, VariousCodes
 from webbrowser import open as webopen
@@ -151,8 +151,7 @@ class simpleapp_tk(tk.Tk):
 
     def apikey_save_OnButtonClick(self):
         try:
-            check_apikey_format({"apikey": self.apikey_entry.get()})
-            self.config["apikey"] = self.apikey_entry.get()
+            self.config["apikey"] = retrieve_apikey({"apikey": self.apikey_entry.get()})
             self.apikey_string.set(self.config["apikey"])
             save_config(self.config, self.config_file)
             self.console.insert(tk.END, get_string(VariousCodes.config_save, self.language).format(property="apikey"))
@@ -190,8 +189,7 @@ class simpleapp_tk(tk.Tk):
     def run_OnButtonClick(self):
         try:
             if len(self.md5s_list) > 0:
-                check_apikey_format(self.config)
-                self.results = run_vt_analyse(self.md5s_list, self.config["apikey"], self.language)
+                self.results = run_vt_analyse(self.md5s_list, retrieve_apikey(self.config), self.language)
 
                 output_file = get_output_file(self.config, self.input_file_string.get())
 

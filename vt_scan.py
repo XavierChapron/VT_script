@@ -100,7 +100,7 @@ def get_output_file(config, input_file):
         return join(gettempdir(), output_file_name)
 
 
-def check_apikey_format(config):
+def retrieve_apikey(config):
     try:
         apikey = config["apikey"]
     except KeyError:
@@ -115,6 +115,8 @@ def check_apikey_format(config):
 
     if len(apikey) != 64:
         raise ScriptWarning(ErrorsCodes.apikey_invalid_lenght, {'apikey': apikey, 'lenght': len(apikey)})
+
+    return apikey
 
 
 def get_file_type(first_line):
@@ -360,9 +362,8 @@ def main():
         if "language" not in config.keys():
             config["language"] = get_language_from_locale()
 
-        # Check apikey validity
-        check_apikey_format(config)
-        apikey = config["apikey"]
+        # Retrieve apikey and check its validity
+        apikey = retrieve_apikey(config)
 
         # Get the report lines
         print(get_string(VariousCodes.file_opening, config["language"]).format(file=input_file))
