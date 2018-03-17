@@ -16,7 +16,7 @@ import sys
 from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_file_name, default_config, VariousStrings
 from locale import getdefaultlocale
 
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 
 BOM_UTF32_BE, BOM_UTF32_LE, BOM_UTF8, BOM_UTF16_BE, BOM_UTF16_LE, DEFAULT = range(6)
 codec_bom = {
