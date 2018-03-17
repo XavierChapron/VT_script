@@ -1,6 +1,6 @@
 import unittest
-from vt_scan import get_report_lines, get_file_type, ScriptError
-from vt_scan_constants import ErrorsCodes
+from vt_scan import get_report_lines, get_file_type, ScriptError, ScriptWarning, retrieve_apikey
+from vt_scan_constants import ErrorsCodes, default_config
 
 
 class Get_Report_Lines_Tests(unittest.TestCase):
@@ -86,3 +86,29 @@ class Get_File_Type_Tests(unittest.TestCase):
 
         file_type = get_file_type('RAW')
         self.assertEqual(file_type, "RAW")
+
+
+class Check_Apikey_Format_Tests(unittest.TestCase):
+    def test_valid(self):
+        apikey = retrieve_apikey({"apikey": "A" * 64})
+        self.assertEqual(apikey, "A" * 64)
+
+    def test_none(self):
+        with self.assertRaises(ScriptWarning) as error:
+            retrieve_apikey({})
+        self.assertEqual(error.exception.code, ErrorsCodes.apikey_invalid_none)
+
+    def test_default(self):
+        with self.assertRaises(ScriptWarning) as error:
+            retrieve_apikey(default_config)
+        self.assertEqual(error.exception.code, ErrorsCodes.apikey_invalid_default)
+
+    def test_bad_char(self):
+        with self.assertRaises(ScriptWarning) as error:
+            retrieve_apikey({"apikey": "A" * 63 + "g"})
+        self.assertEqual(error.exception.code, ErrorsCodes.apikey_invalid_char)
+
+    def test_bad_lenght(self):
+        with self.assertRaises(ScriptWarning) as error:
+            retrieve_apikey({"apikey": "A" * 63})
+        self.assertEqual(error.exception.code, ErrorsCodes.apikey_invalid_lenght)
