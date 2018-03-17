@@ -182,7 +182,7 @@ class simpleapp_tk(tk.Tk):
             line_list = get_report_lines(self.input_file_string.get())
             self.file_type = get_file_type(line_list[0])
             self.md5s_list = find_md5_in_file(line_list, self.file_type)
-            self.console.insert(tk.END, get_string(VariousCodes.file_opening, self.language).format(file=input_file))
+            self.console.insert(tk.END, get_string(VariousCodes.file_opening, self.language).format(file=input_file.name))
             self.console.insert(tk.END, get_string(VariousCodes.file_type, self.language).format(type=self.file_type))
             self.console.insert(tk.END, get_string(VariousCodes.file_md5s_nb, self.language).format(nb_md5s=len(self.md5s_list)))
             self.console.see(tk.END)

@@ -305,7 +305,6 @@ def save_results(output_file, input_file, input_type, number_of_md5, results, la
             f.write(' <table>\n  <tr>\n    <th>')
             f.write(get_string(VariousCodes.file, language))
             f.write('</th>\n    <th>MD5</th>\n  </tr>\n')
-            f.write(' <table>\n  <tr>\n    <th>Filename</th>\n    <th>MD5</th>\n  </tr>\n')
             for result in results["unknows"]:
                 f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
             f.write('</table>\n')
