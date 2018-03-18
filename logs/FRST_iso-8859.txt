@@ -1,0 +1,299 @@
+Résultats d'analyse de  Farbar Recovery Scan Tool (FRST) (x86) Version: 13.03.2018
+Exécuté par Système sur MININT-PEGB47 (16-03-2018 19:17:01)
+Exécuté depuis X:\Users\Default\Desktop
+Platform: Windows 7 Professional Service Pack 1 (X86) Langue: Français (France)
+Internet Explorer Version 11
+Mode d'amorçage: Recovery
+Par défaut: ControlSet001
+[b]ATTENTION!:=====> Si le système est amorçable, FRST doit être exécuté en mode normal ou sans échec afin de créer un journal complet.[/b]
+
+
+ATTENTION!:=====> LE SYSTÈME D'EXPLOITATION EST UN SYSTÈME X64 MAIS LE DISQUE D'AMORÇAGE UTILISÉ POUR DÉMARRER EN ENVIRONNEMENT DE RÉCUPÉRATION EST UN DISQUE SYSTÈME X86.
+Tutoriel pour Farbar Recovery Scan Tool: http://www.geekstogo.com/forum/topic/335081-frst-tutorial-how-to-use-farbar-recovery-scan-tool/
+
+==================== Registre (Avec liste blanche) ===========================
+
+(Si un élément est inclus dans le fichier fixlist.txt, l'élément de Registre sera restauré à la valeur par défaut ou supprimé. Le fichier ne sera pas déplacé.)
+
+HKLM\...\Run: [VBoxTray] => C:\Windows\system32\VBoxTray.exe [1852568 2018-01-15] (Oracle Corporation)
+HKLM\...\Run: [Shadow Defender Daemon] => C:\Program Files\Shadow Defender\DefenderDaemon.exe [462000 2017-10-16] (SHADOWDEFENDER.COM)
+
+==================== Services (Avec liste blanche) ====================
+
+(Si un élément est inclus dans le fichier fixlist.txt, il sera supprimé du Registre. Le fichier ne sera pas déplacé, sauf s'il est inscrit séparément.)
+
+S4 aspnet_state; C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_state.exe [52832 2017-10-03] (Microsoft Corporation)
+S4 clr_optimization_v2.0.50727_64; C:\Windows\Microsoft.NET\Framework64\v2.0.50727\mscorsvw.exe [90776 2014-03-19] (Microsoft Corporation)
+S2 clr_optimization_v4.0.30319_64; C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorsvw.exe [128608 2017-10-03] (Microsoft Corporation)
+S3 FontCache3.0.0.0; C:\Windows\Microsoft.Net\Framework64\v3.0\WPF\PresentationFontCache.exe [42856 2010-11-21] (Microsoft Corporation)
+S3 idsvc; C:\Windows\Microsoft.NET\Framework64\v3.0\Windows Communication Foundation\infocard.exe [859288 2014-03-17] (Microsoft Corporation)
+S3 MozillaMaintenance; C:\Program Files (x86)\Mozilla Maintenance Service\maintenanceservice.exe [194512 2018-02-14] (Mozilla Foundation)
+S4 NetMsmqActivator; C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe [136288 2017-10-04] (Microsoft Corporation)
+S4 NetPipeActivator; C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe [136288 2017-10-04] (Microsoft Corporation)
+S4 NetTcpActivator; C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe [136288 2017-10-04] (Microsoft Corporation)
+S4 NetTcpPortSharing; C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe [136288 2017-10-04] (Microsoft Corporation)
+S3 PerfHost; C:\Windows\SysWow64\perfhost.exe [20992 2009-07-14] (Microsoft Corporation)
+S2 VBoxService; C:\Windows\System32\VBoxService.exe [1875392 2018-01-15] (Oracle Corporation)
+S2 WinDefend; C:\Program Files\Windows Defender\mpsvc.dll [1011712 2016-03-25] (Microsoft Corporation)
+S2 {0CBD4F48-3751-475D-BE88-4F271385B672}; C:\Program Files\Shadow Defender\Service.exe [135160 2017-10-16] (SHADOWDEFENDER.COM)
+
+===================== Pilotes (Avec liste blanche) ======================
+
+(Si un élément est inclus dans le fichier fixlist.txt, il sera supprimé du Registre. Le fichier ne sera pas déplacé, sauf s'il est inscrit séparément.)
+
+S3 b06bdrv; C:\Windows\system32\drivers\bxvbda.sys [468480 2009-06-10] (Broadcom Corporation)
+S3 b57nd60a; C:\Windows\System32\DRIVERS\b57nd60a.sys [270848 2009-06-10] (Broadcom Corporation)
+S0 diskpt; C:\Windows\System32\drivers\diskpt.sys [464008 2017-10-15] (SHADOWDEFENDER.COM)
+S3 E1G60; C:\Windows\System32\DRIVERS\E1G6032E.sys [145792 2009-06-10] (Intel Corporation)
+S3 ebdrv; C:\Windows\system32\drivers\evbda.sys [3286016 2009-06-10] (Broadcom Corporation)
+S3 ksthunk; C:\Windows\system32\drivers\ksthunk.sys [20992 2009-07-14] (Microsoft Corporation)
+S0 VBoxGuest; C:\Windows\System32\DRIVERS\VBoxGuest.sys [169632 2018-01-15] (Oracle Corporation)
+S3 VBoxMouse; C:\Windows\System32\DRIVERS\VBoxMouse.sys [144696 2018-01-15] (Oracle Corporation)
+S1 VBoxSF; C:\Windows\System32\drivers\VBoxSF.sys [298976 2018-01-15] (Oracle Corporation)
+S3 VBoxVideo; C:\Windows\System32\DRIVERS\VBoxVideo.sys [162912 2018-01-15] (Oracle Corporation)
+
+========================== MD5 Pilotes =======================
+
+C:\Windows\system32\drivers\1394ohci.sys E96ECC2315E4F7B42973CEAADC727C18
+C:\Windows\System32\drivers\ACPI.sys 6ECB3791368947C1E3588062325CCBD8
+C:\Windows\system32\drivers\acpipmi.sys 99F8E788246D495CE3794D7E7821D2CA
+C:\Windows\system32\drivers\adp94xx.sys 2F6B34B83843F0C5118B63AC634F5BF4
+C:\Windows\system32\drivers\adpahci.sys 597F78224EE9224EA1A13D6350CED962
+C:\Windows\system32\drivers\adpu320.sys E109549C90F62FB570B9540C4B148E54
+C:\Windows\system32\drivers\afd.sys 0DC2A9882540DEA4A55B08785E09D8FC
+C:\Windows\system32\drivers\agp440.sys 2823C845E4108CD74EC035E8ADB32A2B
+C:\Windows\system32\drivers\aliide.sys 56F1EA3065D386173EA976E7C8403E07
+C:\Windows\system32\drivers\amdide.sys 9B66BA4D578B18A3A02607A49A46ED15
+C:\Windows\system32\drivers\amdk8.sys 7024F087CFF1833A806193EF9D22CDA9
+C:\Windows\system32\drivers\amdppm.sys 1E56388B3FE0D031C44144EB8C4D6217
+C:\Windows\system32\drivers\amdsata.sys AA8663311D3E7B711710AFAEE1825A2F
+C:\Windows\system32\drivers\amdsbs.sys F67F933E79241ED32FF46A4F29B5120B
+C:\Windows\System32\drivers\amdxata.sys 0B5BFDCF705BF9F462B151FC5BE428B8
+C:\Windows\system32\drivers\appid.sys C16B5B379A2A79702CC5FF923EAAE3FD
+C:\Windows\system32\drivers\arc.sys C484F8CEB1717C540242531DB7845C4E
+C:\Windows\system32\drivers\arcsas.sys 019AF6924AEFE7839F61C830227FE79C
+C:\Windows\System32\DRIVERS\asyncmac.sys 769765CE2CC62867468CEA93969B2242
+C:\Windows\System32\drivers\atapi.sys C8AA50005E6461D5C2C247DBABBF2008
+C:\Windows\system32\drivers\bxvbda.sys 3E5B191307609F7514148C6832BB0842
+C:\Windows\System32\DRIVERS\b57nd60a.sys B5ACE6968304A3900EEB1EBFD9622DF2
+C:\Windows\System32\Drivers\Beep.sys B688235B47E8AC299B346692F736A562
+C:\Windows\System32\DRIVERS\blbdrive.sys 61583EE3C3A17003C4ACD0475646B4D3
+C:\Windows\System32\DRIVERS\bowser.sys ABA3984C822E4D3F889699912D85D6C5
+C:\Windows\system32\drivers\BrFiltLo.sys F09EEE9EDC320B5E1501F749FDE686C8
+C:\Windows\system32\drivers\BrFiltUp.sys B114D3098E9BDB8BEA8B053685831BE6
+C:\Windows\System32\Drivers\Brserid.sys 43BEA8D483BF1870F018E2D02E06A5BD
+C:\Windows\System32\Drivers\BrSerWdm.sys A6ECA2151B08A09CACECA35C07F05B42
+C:\Windows\System32\Drivers\BrUsbMdm.sys B79968002C277E869CF38BD22CD61524
+C:\Windows\System32\Drivers\BrUsbSer.sys A87528880231C54E75EA7A44943B38BF
+C:\Windows\system32\drivers\bthmodem.sys 9DA669F11D1F894AB4EB69BF546A42E8
+C:\Windows\System32\DRIVERS\cdfs.sys B8BD2BB284668C84865658C77574381A
+C:\Windows\system32\drivers\cdrom.sys 7200A15FCDDECA736E97D2815A32A54F
+C:\Windows\system32\drivers\circlass.sys D7CD5C4E1B71FA62050515314CFB52CF
+C:\Windows\System32\CLFS.sys 3963FEC1892368DD500E6ED1F5C286CE
+C:\Windows\System32\DRIVERS\CmBatt.sys 0840155D0BDDF1190F84A663C284BD33
+C:\Windows\system32\drivers\cmdide.sys 4B47BBF1744551C2BE1469DAA66C1038
+C:\Windows\System32\Drivers\cng.sys A98CED39AD91B445E2E442A9BD67E8B4
+C:\Windows\System32\DRIVERS\compbatt.sys 102DE219C3F61415F964C88E9085AD14
+C:\Windows\System32\DRIVERS\CompositeBus.sys 03EDB043586CCEBA243D689BDDA370A8
+C:\Windows\system32\drivers\crcdisk.sys 1C827878A998C18847245FE1F34EE597
+C:\Windows\System32\drivers\csc.sys 44C86C4072E894344C551A3A23FAEF1F
+C:\Windows\System32\Drivers\dfsc.sys 9B38580063D281A99E68EF5813022A5F
+C:\Windows\System32\drivers\discache.sys 3322A9E3CD6CD76729CBD1D96C1C3103
+C:\Windows\System32\drivers\disk.sys 97659D0CEBCF0DB9C265D3DE1B116ECF
+C:\Windows\System32\drivers\diskpt.sys 3AE7155EC3B4AD2CD002C897F5985E60
+C:\Windows\system32\drivers\dmvsc.sys 5DB085A8A6600BE6401F2B24EECB5415
+C:\Windows\system32\drivers\drmkaud.sys A1A42D99C70331B86B7B574598BDCA3A
+C:\Windows\System32\drivers\dxgkrnl.sys 5CEF80AE869336376F550ECAE91E424A
+C:\Windows\System32\DRIVERS\E1G6032E.sys EDC6E9C057C9D7F83EEA22B4CEF5DCAD
+C:\Windows\system32\drivers\evbda.sys DC5D737F51BE844D8C82C695EB17372F
+C:\Windows\system32\drivers\elxstor.sys 0E5DA5369A0FCAEA12456DD852545184
+C:\Windows\system32\drivers\errdev.sys 7D8430241B482BC2BC8EACFD056C5F14
+C:\Windows\System32\Drivers\exfat.sys 7E45F8B117419ABA3BB26579F6E70324
+C:\Windows\System32\Drivers\fastfat.sys 6EDFA237D25433C03F42FBFDB16BDD24
+C:\Windows\system32\drivers\fdc.sys D765D19CD8EF61F650C384F62FAC00AB
+C:\Windows\System32\drivers\fileinfo.sys 655661BE46B5F5F3FD454E2C3095B930
+C:\Windows\System32\drivers\filetrace.sys 5F671AB5BC87EEA04EC38A6CD5962A47
+C:\Windows\system32\drivers\flpydisk.sys C172A0F53008EAEB8EA33FE10E177AF5
+C:\Windows\System32\drivers\fltmgr.sys 1010630ABAA94551C88EF3F111E5DB76
+C:\Windows\System32\drivers\FsDepends.sys D43703496149971890703B4B1B723EAC
+C:\Windows\System32\Drivers\Fs_Rec.sys EC4F611CEB6B65672EEF06928C2CEB8C
+C:\Windows\System32\DRIVERS\fvevol.sys 21B39456D89EE661F20F08082292DC9F
+C:\Windows\system32\drivers\gagp30kx.sys 8C778D335C9D272CFD3298AB02ABE3B6
+C:\Windows\system32\drivers\hcw85cir.sys F2523EF6460FC42405B12248338AB2F0
+C:\Windows\system32\drivers\HdAudio.sys 345AC81C44BC37685725D78CB641F28F
+C:\Windows\system32\drivers\HDAudBus.sys 45DAAFD1056B8942C5038EFFD285658D
+C:\Windows\system32\drivers\HidBatt.sys 78E86380454A7B10A5EB255DC44A355F
+C:\Windows\system32\drivers\hidbth.sys 387C19A65ECADEB9D27E80F27D882FCF
+C:\Windows\system32\drivers\hidir.sys 0A77D29F311B88CFAE3B13F9C1A73825
+C:\Windows\system32\drivers\hidusb.sys D150C09088401493980E7A80CFA091FE
+C:\Windows\system32\drivers\HpSAMD.sys 39D2ABCD392F3D8A6DCE7B60AE7B8EFC
+C:\Windows\System32\drivers\HTTP.sys CF5C9BD985120781200D35FD445D0BD5
+C:\Windows\System32\drivers\hwpolicy.sys A5462BD6884960C9DC85ED49D34FF392
+C:\Windows\system32\drivers\i8042prt.sys 55CCD3E5E4DA18FCF0598F42249D47DF
+C:\Windows\system32\drivers\iaStorV.sys 58A8CCA18210A9096B626B08EACC0B28
+C:\Windows\system32\drivers\iirsp.sys 5C18831C61933628F5BB0EA2675B9D21
+C:\Windows\system32\drivers\intelide.sys 74D9B6BDA6F9CDAF7E19F5A33B63EBC9
+C:\Windows\System32\DRIVERS\intelppm.sys ADA036632C664CAA754079041CF1F8C1
+C:\Windows\System32\DRIVERS\ipfltdrv.sys C9F0E1BD74365A8771590E9008D22AB6
+C:\Windows\system32\drivers\IPMIDrv.sys 63C9FB04EECFA385BC092D9B41E85990
+C:\Windows\System32\drivers\ipnat.sys 9774AA4661A30E0ADCEA48B5A1B9F4B7
+C:\Windows\System32\drivers\irenum.sys 3ABF5E7213EB28966D55D58B515D5CE9
+C:\Windows\system32\drivers\isapnp.sys E3DBCD75AA78937303E54E0946669959
+C:\Windows\system32\drivers\msiscsi.sys 7A9C4A7DAE277FC177D60E4C75164763
+C:\Windows\system32\drivers\kbdclass.sys C3CEAAF93C02A205B0712DEF98BAE544
+C:\Windows\system32\drivers\kbdhid.sys 73DD773AC3F96B229AF7C6BB0D9009FE
+C:\Windows\System32\Drivers\ksecdd.sys DFE85B031220F8E0271716BBB3C4C8FF
+C:\Windows\System32\Drivers\ksecpkg.sys 70D7302DD70B979637179BFD8295C924
+C:\Windows\system32\drivers\ksthunk.sys 6869281E78CB31A43E969F06B57347C4
+C:\Windows\System32\DRIVERS\lltdio.sys 1538831CF8AD2979A04C423779465827
+C:\Windows\system32\drivers\lsi_fc.sys 1A93E54EB0ECE102495A51266DCDB6A6
+C:\Windows\system32\drivers\lsi_sas.sys 1047184A9FDC8BDBFF857175875EE810
+C:\Windows\system32\drivers\lsi_sas2.sys 30F5C0DE1EE8B5BC9306C1F0E4A75F93
+C:\Windows\system32\drivers\lsi_scsi.sys 0504EACAFF0D3C8AED161C4B0D369D4A
+C:\Windows\system32\drivers\luafv.sys 5416CEB2916BBE635288C4D1075B045E
+C:\Windows\system32\drivers\megasas.sys A55805F747C6EDB6A9080D7C633BD0F4
+C:\Windows\system32\drivers\MegaSR.sys BAF74CE0072480C3B6B7C13B2A94D6B3
+C:\Windows\System32\drivers\modem.sys DFDA7308112839CE14D5F2C92B62607A
+C:\Windows\system32\drivers\monitor.sys 419D67778CA8B7DFFB39DF3FCE3EE351
+C:\Windows\system32\drivers\mouclass.sys 7D27EA49F3C1F687D357E77A470AEA99
+C:\Windows\System32\DRIVERS\mouhid.sys D3BF052C40B0C4166D9FD86A4288C1E6
+C:\Windows\System32\drivers\mountmgr.sys 072D8646E23ECF8A3F5F0157017B4DB6
+C:\Windows\system32\drivers\mpio.sys AE8932E3B623A75B547F8CB71D70C469
+C:\Windows\System32\drivers\mpsdrv.sys 5F46B69809CE21701289300B6B668684
+C:\Windows\system32\drivers\mrxdav.sys 98DB1790F0A584E0A2528B92B052417F
+C:\Windows\System32\DRIVERS\mrxsmb.sys 767C6DF04C5758B9F0790D400541B44F
+C:\Windows\System32\DRIVERS\mrxsmb10.sys BD55F604FFABC911F8E5500186AE70E5
+C:\Windows\System32\DRIVERS\mrxsmb20.sys 92EECFB046D4706A4B8D699A4069B6EC
+C:\Windows\System32\drivers\msahci.sys 0C7033B1EF362F6C1F74E3E41B2306B8
+C:\Windows\system32\drivers\msdsm.sys A75ADF411CF22D1C57AE40773BE51CDC
+C:\Windows\System32\Drivers\Msfs.sys AA3FB40E17CE1388FA1BEDAB50EA8F96
+C:\Windows\System32\drivers\mshidkmdf.sys F9D215A46A8B9753F61767FA72A20326
+C:\Windows\System32\drivers\msisadrv.sys 5BDBD4F3C00E887B7FA8E416CD146855
+C:\Windows\System32\drivers\MSKSSRV.sys 49CCF2C4FEA34FFAD8B1B59D49439366
+C:\Windows\System32\drivers\MSPCLOCK.sys BDD71ACE35A232104DDD349EE70E1AB3
+C:\Windows\System32\drivers\MSPQM.sys 4ED981241DB27C3383D72092B618A1D0
+C:\Windows\System32\Drivers\MsRPC.sys 759A9EEB0FA9ED79DA1FB7D4EF78866D
+C:\Windows\system32\drivers\mssmbios.sys AEF3CB71F17CB9D8C6A3B49D3CDE5E22
+C:\Windows\System32\drivers\MSTEE.sys 2E66F9ECB30B4221A318C92AC2250779
+C:\Windows\system32\drivers\MTConfig.sys 7EA404308934E675BFFDE8EDF0757BCD
+C:\Windows\System32\Drivers\mup.sys ADF51F0215E71361B35FA2C5D3F49D66
+C:\Windows\System32\DRIVERS\nwifi.sys 9FB2A095B1166CB3C9A06651863B3452
+C:\Windows\System32\drivers\ndis.sys 8664770EC3CF87492AD1CDDA424FD3CB
+C:\Windows\System32\DRIVERS\ndiscap.sys 9F9A1F53AAD7DA4D6FEF5BB73AB811AC
+C:\Windows\System32\DRIVERS\ndistapi.sys 8196473CCF244832109BE0F5BEFD7C4D
+C:\Windows\System32\DRIVERS\ndisuio.sys A17CC85238E2D08E0C44A8FE3DC3B192
+C:\Windows\System32\DRIVERS\ndiswan.sys 53F7305169863F0A2BDDC49E116C2E11
+C:\Windows\System32\Drivers\NDProxy.sys 357C6186EBE2B4065080A06F740DCB34
+C:\Windows\System32\DRIVERS\netbios.sys 7FA2D0AC5EA6E10013AC4B7D300BD906
+C:\Windows\System32\DRIVERS\netbt.sys 734837208CAFD6E0959A7A0333C95C9D
+C:\Windows\system32\drivers\nfrd960.sys 77889813BE4D166CDAB78DDBA990DA92
+C:\Windows\System32\Drivers\Npfs.sys 1E4C4AB5C9B8DD13179BBDC75A2A01F7
+C:\Windows\System32\drivers\nsiproxy.sys BE313E566EEA2A4B7F9AAC9782A567D4
+C:\Windows\System32\Drivers\Ntfs.sys 1065D9AFE491706EB00AD3CBB76C9E54
+C:\Windows\System32\Drivers\Null.sys 9899284589F75FA8724FF3D16AED75C1
+C:\Windows\system32\drivers\nvraid.sys C58189F39002E5E483C0B8BF728E8343
+C:\Windows\system32\drivers\nvstor.sys 77497B64AEAC221A081D2EE7C80B1CF4
+C:\Windows\system32\drivers\nv_agp.sys 1317382EDFDF491DA4CB3BACFF058A52
+C:\Windows\system32\drivers\ohci1394.sys C1E10246E2F0436D0AFD147E8F28391F
+C:\Windows\system32\drivers\parport.sys 0E75370C05A7AB23E3B05840BA9E1935
+C:\Windows\System32\drivers\partmgr.sys B38E9BF9A0A43B0E84731CE83541D710
+C:\Windows\System32\drivers\pci.sys E8EDD0D68FB3D1FD1B1EB410DC8E87BC
+C:\Windows\system32\drivers\pciide.sys 7D7E0DC331C675B35627B9E2C4ED1B4B
+C:\Windows\system32\drivers\pcmcia.sys B2E81D4E87CE48589F98CB8C05B01F2F
+C:\Windows\System32\drivers\pcw.sys D6B9C2E1A11A3A4B26A182FFEF18F603
+C:\Windows\System32\drivers\peauth.sys EA4D67448BE493D543F1730D6CD04694
+C:\Windows\System32\DRIVERS\raspptp.sys 0E13F3D32ED2C76B3485294E43040738
+C:\Windows\system32\drivers\processr.sys 0D922E23C041EFB1C3FAC2A6F943C9BF
+C:\Windows\System32\DRIVERS\pacer.sys 0557CF5A2556BD58E26384169D72438D
+C:\Windows\system32\drivers\ql2300.sys A53A15A11EBFD21077463EE2C7AFEEF0
+C:\Windows\system32\drivers\ql40xx.sys 4F6D12B51DE1AAEFF7DC58C4D75423C8
+C:\Windows\system32\drivers\qwavedrv.sys 76707BB36430888D9CE9D705398ADB6C
+C:\Windows\System32\DRIVERS\rasacd.sys 5A0DA8AD5762FA2D91678A8A01311704
+C:\Windows\System32\DRIVERS\AgileVpn.sys FCBC6E55B7EAFEE6E26B5AF77441DD2A
+C:\Windows\System32\DRIVERS\rasl2tp.sys 471815800AE33E6F1C32FB1B97C490CA
+C:\Windows\System32\DRIVERS\raspppoe.sys 64908FACD0C3EAE09E4FDF251A4B2792
+C:\Windows\System32\DRIVERS\rassstp.sys E8B1E447B008D07FF47D016C2B0EEECB
+C:\Windows\System32\DRIVERS\rdbss.sys FB45727105E27756B3252572A138FA19
+C:\Windows\System32\DRIVERS\rdpbus.sys 302DA2A0539F2CF54D7C6CC30C1F2D8D
+C:\Windows\System32\DRIVERS\RDPCDD.sys CEA6CC257FC9B7715F1C2B4849286D24
+C:\Windows\System32\drivers\rdpdr.sys 596C9872717441BF3550927731C1AFE6
+C:\Windows\System32\drivers\rdpencdd.sys BB5971A4F00659529A5C44831AF22365
+C:\Windows\System32\drivers\rdprefmp.sys 216F3FA57533D98E1F74DED70113177A
+C:\Windows\System32\Drivers\RDPWD.sys 79062C89658D3E71097E0CB7A85B7E46
+C:\Windows\System32\drivers\rdyboost.sys 53E15480838EB8550D80A8796982C7EE
+C:\Windows\System32\DRIVERS\rspndr.sys DDC86E4F8E7456261E637E3552E804FF
+C:\Windows\system32\drivers\vms3cap.sys E60C0A09F997826C7627B244195AB581
+C:\Windows\system32\drivers\sbp2port.sys AC03AF3329579FFFB455AA2DAABBE22B
+C:\Windows\System32\DRIVERS\scfilter.sys 53CE84F6E4FABFC5AB47375546E1303D
+C:\Windows\System32\Drivers\secdrv.sys 3EA8A16169C26AFBEB544E0E48421186
+C:\Windows\system32\drivers\serenum.sys 38B4E056D31DF16EC0EB5884F65B1979
+C:\Windows\system32\drivers\serial.sys F9DF63C7E70CBAC77EB07E454B35AB2A
+C:\Windows\system32\drivers\sermouse.sys 1C545A7D0691CC4A027396535691C3E3
+C:\Windows\system32\drivers\sffdisk.sys 5E332126E8DBAB045A21D623EA5A0488
+C:\Windows\system32\drivers\sffp_mmc.sys C7CF5601AEBC0AFD053C065998E312B1
+C:\Windows\system32\drivers\sffp_sd.sys 4530300DB74296B77FCC9E549E0C3752
+C:\Windows\system32\drivers\sfloppy.sys A9D601643A1647211A1EE2EC4E433FF4
+C:\Windows\system32\drivers\SiSRaid2.sys 843CAF1E5FDE1FFD5FF768F23A51E2E1
+C:\Windows\system32\drivers\sisraid4.sys 6A6C106D42E9FFFF8B9FCB4F754F6DA4
+C:\Windows\System32\DRIVERS\smb.sys 548260A7B8654E024DC30BF8A7C5BAA4
+C:\Windows\System32\Drivers\spldr.sys B9E31E5CACDFE584F34F730A677803F9
+C:\Windows\System32\DRIVERS\srv.sys 72E6A150A8C8530B201832D1C801CDE6
+C:\Windows\System32\DRIVERS\srv2.sys C4F67ABCC5033D334613F28F9E782809
+C:\Windows\System32\DRIVERS\srvnet.sys C53CB62B0E57488AAE41FDA0FF8A0AB9
+C:\Windows\system32\drivers\stexstor.sys F3817967ED533D08327DC73BC4D5542A
+C:\Windows\System32\drivers\vmstorfl.sys 7785DC213270D2FC066538DAF94087E7
+C:\Windows\system32\drivers\storvsc.sys D34E4943D5AC096C8EDEEBFD80D76E23
+C:\Windows\system32\drivers\swenum.sys 5485470D82D50777757AF985776474BD
+C:\Windows\System32\drivers\tcpip.sys 7FB36A0A036ADDACE0A868E4A43C1C27
+C:\Windows\System32\DRIVERS\tcpip.sys 7FB36A0A036ADDACE0A868E4A43C1C27
+C:\Windows\System32\drivers\tcpipreg.sys 7FE5586314EE7D6AA8483264A089E5AF
+C:\Windows\System32\drivers\tdpipe.sys 5FB705F7D93059B059900F2C6F7DE76B
+C:\Windows\System32\drivers\tdtcp.sys CEB11D6BB417E3E26CD0FEFDCAD5A052
+C:\Windows\System32\DRIVERS\tdx.sys 4DD986720F7CB7A8A5D1226793097B9A
+C:\Windows\system32\drivers\termdd.sys DF87E778D5EDC3F8959C6AB05A9C4E39
+C:\Windows\System32\DRIVERS\tssecsrv.sys 2CF58216424757ED29605B4F18EC443C
+C:\Windows\System32\drivers\tsusbflt.sys D11C783E3EF9A3C52C0EBE83CC5000E9
+C:\Windows\system32\drivers\TsUsbGD.sys 9CC2CCAE8A84820EAECB886D477CBCB8
+C:\Windows\System32\DRIVERS\tunnel.sys 06BC523D39A2E6A9FBAED812C7A5ED6B
+C:\Windows\system32\drivers\uagp35.sys B4DD609BD7E282BFC683CEC7EAAAAD67
+C:\Windows\System32\DRIVERS\udfs.sys 8DE87C94A4938BF4C21C310077DB22BD
+C:\Windows\system32\drivers\uliagpkx.sys F76C937416EE9A617FF5519370EEA1A1
+C:\Windows\system32\drivers\umbus.sys C77B614D818386596EC5540E318AE034
+C:\Windows\system32\drivers\umpass.sys B2E8E8CB557B156DA5493BBDDCC1474D
+C:\Windows\system32\drivers\usbccgp.sys 9E68E917FB4B5C983438969643F53BEF
+C:\Windows\system32\drivers\usbcir.sys 710EE0EEDFF1DB5089397CCBBBD80C58
+C:\Windows\system32\drivers\usbehci.sys 3F9D3902CE931E2A28DD8452AE915B67
+C:\Windows\system32\drivers\usbhub.sys 86B65EEBC03B936DE8B26E5A18D98FA2
+C:\Windows\system32\drivers\usbohci.sys 099C2931C6F73EB1B9E13C560F61B50D
+C:\Windows\system32\drivers\usbprint.sys 73188F58FB384E75C4063D29413CEE3D
+C:\Windows\system32\drivers\USBSTOR.SYS 18C50A2277BCB1509A27F91A07377263
+C:\Windows\system32\drivers\usbuhci.sys 5D7651347C7D702F4A5DE53603DC024F
+C:\Windows\System32\DRIVERS\VBoxGuest.sys C69C61383C3F4E5BF80F9795E3DD61F0
+C:\Windows\System32\DRIVERS\VBoxMouse.sys 8734792BFA90E3A87371339B0A53E1A2
+C:\Windows\System32\drivers\VBoxSF.sys 865B346800F93B2BF41D064B6429DDFB
+C:\Windows\System32\DRIVERS\VBoxVideo.sys 3BB105AFDB8F2E1E3E5A9013645A07F7
+C:\Windows\System32\drivers\vdrvroot.sys DB25700CE057D426102AB5A2259F275B
+C:\Windows\System32\DRIVERS\vgapnp.sys DA4DA3F5E02943C2DC8C6ED875DE68DD
+C:\Windows\System32\drivers\vga.sys 53E92A310193CB3C03BEA963DE7D9CFC
+C:\Windows\system32\drivers\vhdmp.sys FF0E9994E61F7D9778DB1C4E6F3F25F5
+C:\Windows\system32\drivers\viaide.sys 2B6E179E984F5A11521F8FE1EA6BAE83
+C:\Windows\system32\drivers\vmbus.sys 8F64E493D31328784CAD66101E674377
+C:\Windows\system32\drivers\VMBusHID.sys 7DE90B48F210D29649380545DB45A187
+C:\Windows\System32\drivers\volmgr.sys 95B852EC9A799A1FDAD33A8F8FDE8818
+C:\Windows\System32\drivers\volmgrx.sys 85C5468BC395819AE2A0C747334BA14C
+C:\Windows\System32\drivers\volsnap.sys B52F1F5F55CD773BA89E5739B82E9C34
+C:\Windows\system32\drivers\vsmraid.sys 5E2016EA6EBACA03C04FEAC5F330D997
+C:\Windows\System32\drivers\vwifibus.sys BFCBFD74A7D673AF8311F236AA15D0AF
+C:\Windows\system32\drivers\wacompen.sys 4E9440F4F152A7B944CB1663D3935A3E
+C:\Windows\System32\DRIVERS\wanarp.sys 7AF9F1F2BAF52266096501BBBEEE62A9
+C:\Windows\System32\DRIVERS\wanarp.sys 7AF9F1F2BAF52266096501BBBEEE62A9
+C:\Windows\system32\drivers\wd.sys 72889E16FF12BA0F235467D6091B17DC
+C:\Windows\System32\drivers\Wdf01000.sys 37CE6867FC4A6827009A713A9737262C
+C:\Windows\System32\DRIVERS\wfplwf.sys 7575DC87DF112AC0C6E95A0F87915CDC
+C:\Windows\System32\drivers\wimmount.sys 05ECAEC3E4529A7153B3136CEB49F0EC
+C:\Windows\system32\drivers\wmiacpi.sys 241A2D103E5F63A69B130D7C344A228D
+C:\Windows\system32\drivers\ws2ifsl.sys 6BCC1D7D2FD2453957C5479A32364E52
+C:\Windows\System32\drivers\WudfPf.sys AB886378EEB55C6C75B4F2D14B6C869F
+C:\Windows\System32\DRIVERS\WUDFRd.sys DDA4CAF29D8C0A297F886BFE561E6659
+
+==================== Fin de FRST.txt ============================
