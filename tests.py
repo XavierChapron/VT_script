@@ -61,6 +61,12 @@ class Get_Report_Lines_Tests(unittest.TestCase):
         self.assertEqual(lines[0], 'OTL logfile created on: 2/26/2011 10:49:12 AM - Run')
         self.assertEqual(lines[1], 'OTLPE by OldTimer - Version 3.1.44.3     Folder = X:\Programs\OTLPE')
 
+    def test_iso_8859(self):
+        lines = get_report_lines("logs/FRST_iso-8859.txt")
+        self.assertEqual(len(lines), 299)
+        self.assertEqual(lines[0], "Résultats d'analyse de  Farbar Recovery Scan Tool (FRST) (x86) Version: 13.03.2018")
+        self.assertEqual(lines[1], "Exécuté par Système sur MININT-PEGB47 (16-03-2018 19:17:01)")
+
     def test_no_file(self):
         with self.assertRaises(ScriptError) as error:
             get_report_lines("no_file")
