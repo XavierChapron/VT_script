@@ -265,17 +265,28 @@ def get_report_lines(path_to_file):
     except FileNotFoundError:
         raise ScriptError(ErrorsCodes.input_file_not_found, {'file': path_to_file})
 
-
+    decoder = None
     for codec in range(6):
         bom = codec_bom[codec]
         if bom == b_content[:len(bom)]:
             decoder = codecs.getdecoder(codec_decoder[codec])
-            content = decoder(b_content[len(bom):])[0]
-            content = content.replace("\r", "")
-            content = content.split("\n")
-            return content
+            break
 
-    raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
+    if decoder == None:
+        raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
+
+    try:
+        content = decoder(b_content[len(bom):])[0]
+    except:
+        try:
+            decoder = codecs.getdecoder('latin1')
+            content = decoder(b_content[len(bom):])[0]
+        except:
+            raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
+
+    content = content.replace("\r", "")
+    content = content.split("\n")
+    return content
 
 
 def save_results(output_file, input_file, input_type, number_of_md5, results, language):
