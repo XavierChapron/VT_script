@@ -258,7 +258,7 @@ def find_md5_in_file(line_list, file_type):
     return md5s_list
 
 
-def get_report_lines(path_to_file):
+def get_report_content(path_to_file):
     try:
         with open(path_to_file, 'rb') as f:
             b_content = f.read()
@@ -285,7 +285,6 @@ def get_report_lines(path_to_file):
             raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
 
     content = content.replace("\r", "")
-    content = content.split("\n")
     return content
 
 
@@ -378,7 +377,8 @@ def main():
 
         # Get the report lines
         print(get_string(VariousCodes.file_opening, config["language"]).format(file=input_file))
-        line_list = get_report_lines(input_file)
+        report_content = get_report_content(input_file)
+        line_list = report_content.split("\n")
 
         # Detect the logFile type
         file_type = get_file_type(line_list[0])

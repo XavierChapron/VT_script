@@ -5,7 +5,7 @@ from tkinter import filedialog
 from tkinter import scrolledtext
 from vt_scan import get_string, ScriptWarning, ScriptError, load_config, save_config
 from vt_scan import get_output_file, retrieve_apikey, get_file_type, run_vt_analyse
-from vt_scan import find_md5_in_file, get_report_lines, save_results, get_language_from_locale, VERSION
+from vt_scan import find_md5_in_file, get_report_content, save_results, get_language_from_locale, VERSION
 from vt_scan_constants import ErrorsCodes, config_file_name, VariousCodes
 from webbrowser import open as webopen
 from os.path import join, dirname, abspath, expanduser
@@ -178,7 +178,8 @@ class simpleapp_tk(tk.Tk):
         input_file = filedialog.askopenfile(title='Input file')
         if input_file:
             self.input_file_string.set(input_file.name)
-            line_list = get_report_lines(self.input_file_string.get())
+            report_content = get_report_content(self.input_file_string.get())
+            line_list = report_content.split("\n")
             self.file_type = get_file_type(line_list[0])
             self.md5s_list = find_md5_in_file(line_list, self.file_type)
             self.console.insert(tk.END, get_string(VariousCodes.file_opening, self.language).format(file=input_file.name))
