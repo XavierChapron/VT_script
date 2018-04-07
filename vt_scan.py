@@ -148,7 +148,8 @@ def search_on_vt(md5s, apikey):
     return loads(response.read().decode('utf-8'))
 
 
-def run_vt_analyse(md5s_list, apikey, language):
+def run_vt_analyse(md5s_dict, apikey, language):
+    md5s_list = list(md5s_dict.keys())
 
     # Create a different request for each group of 4 md5s
     md5s_groups_list = []
@@ -158,7 +159,7 @@ def run_vt_analyse(md5s_list, apikey, language):
         i += 4
     md5s_groups_list.append(md5s_list[i:])
 
-    results = {"unknows": [], "negatives": [], "positives": []}
+    results = {"unknows": OrderedDict(), "negatives": OrderedDict(), "positives": OrderedDict()}
 
     # For each group, create a request, retrieve VT answer, then analyse the answer
     for md5s_group in md5s_groups_list:
@@ -166,7 +167,7 @@ def run_vt_analyse(md5s_list, apikey, language):
         # Format the md5s_group for the request
         md5_request = ""
         for md5 in md5s_group:
-            md5_request = md5_request + md5[0] + ", "
+            md5_request = md5_request + md5 + ", "
         md5_request = md5_request[:-2]
 
         # Get the request answer
@@ -196,30 +197,24 @@ def run_vt_analyse(md5s_list, apikey, language):
 def analyse_answer(answer, md5s_list, results):
     # Check if VT have found the associate the file
     if answer.get("response_code", 0) == 0:
-        md5 = answer.get("resource", "error")
-        filename = get_filename_for_md5(md5, md5s_list)
-        results["unknows"].append((filename, md5))
+        md5 = answer.get("resource", "error").upper()
+        results["unknows"][md5] = {}
 
     else:
         # store the answer
-        md5 = answer.get(u"md5", None).lower()
-        filename = get_filename_for_md5(md5, md5s_list)
+        md5 = answer.get("md5", '').upper()
         positives = answer.get("positives", None)
         total = answer.get("total", None)
         url = "https://www.virustotal.com/latest-scan/" + md5
-        result = (positives, total, url, filename, md5)
+        result = {
+                 'positives': positives,
+                 'total': total,
+                 'url': url
+                 }
         if positives:
-            results["positives"].append(result)
+            results["positives"][md5] = result
         else:
-            results["negatives"].append(result)
-
-
-def get_filename_for_md5(md5, md5s_list):
-    "Find the associate filename to a md5"
-    for element in md5s_list:
-        if element[0].lower() == md5.lower():
-            return element[1]
-    raise ValueError
+            results["negatives"][md5] = result
 
 
 def find_md5_in_file(report, file_type):
