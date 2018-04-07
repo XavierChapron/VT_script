@@ -533,15 +533,15 @@ def main():
         output_file = get_output_file(config, input_file)
 
         # Find the md5s in the file
-        md5s_list = find_md5_in_file(line_list, file_type)
-        md5_number = len(md5s_list)
+        md5s_dict = find_md5_in_file(report_content, file_type)
+        md5_number = len(md5s_dict.keys())
         print(get_string(VariousCodes.file_md5s_nb, config["language"]).format(nb_md5s=md5_number))
         if md5_number != 0:
             # Search on VT for each md5 and store the results
-            results = run_vt_analyse(md5s_list, apikey, config["language"])
+            results = run_vt_analyse(md5s_dict, apikey, config["language"])
 
         # Create the output log
-        save_results(output_file, input_file, file_type, md5_number, results, config["language"])
+        save_results(output_file, input_file, file_type, md5s_dict, results, config["language"])
 
         print(get_string(VariousCodes.scan_complete, config["language"]))
 

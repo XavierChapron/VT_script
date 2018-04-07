@@ -181,21 +181,21 @@ class simpleapp_tk(tk.Tk):
             report_content = get_report_content(self.input_file_string.get())
             line_list = report_content.split("\n")
             self.file_type = get_file_type(line_list[0])
-            self.md5s_list = find_md5_in_file(line_list, self.file_type)
+            self.md5s_dict = find_md5_in_file(report_content, self.file_type)
             self.console.insert(tk.END, get_string(VariousCodes.file_opening, self.language).format(file=input_file.name))
             self.console.insert(tk.END, get_string(VariousCodes.file_type, self.language).format(type=self.file_type))
-            self.console.insert(tk.END, get_string(VariousCodes.file_md5s_nb, self.language).format(nb_md5s=len(self.md5s_list)))
+            self.console.insert(tk.END, get_string(VariousCodes.file_md5s_nb, self.language).format(nb_md5s=len(self.md5s_dict.keys())))
             self.console.see(tk.END)
 
     def run_OnButtonClick(self):
         try:
-            if len(self.md5s_list) > 0:
-                self.results = run_vt_analyse(self.md5s_list, retrieve_apikey(self.config), self.language)
+            if len(self.md5s_dict.keys()) > 0:
+                self.results = run_vt_analyse(self.md5s_dict, retrieve_apikey(self.config), self.language)
 
                 output_file = get_output_file(self.config, self.input_file_string.get())
 
                 # Create the output log
-                save_results(output_file, self.input_file_string.get(), self.file_type, len(self.md5s_list), self.results, self.language)
+                save_results(output_file, self.input_file_string.get(), self.file_type, self.md5s_dict, self.results, self.language)
 
                 # Open the log
                 self.console.insert(tk.END, get_string(VariousCodes.scan_complete, self.language))
