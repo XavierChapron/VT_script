@@ -17,7 +17,7 @@ from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_f
 from locale import getdefaultlocale
 from collections import OrderedDict
 
-VERSION = "1.0.4"
+VERSION = "1.0.5"
 
 BOM_UTF32_BE, BOM_UTF32_LE, BOM_UTF8, BOM_UTF16_BE, BOM_UTF16_LE, DEFAULT = range(6)
 codec_bom = {
