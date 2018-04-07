@@ -121,12 +121,19 @@ def retrieve_apikey(config):
 
 def get_file_type(first_line):
     "Search on the first_line to find some keyword helping identifying the file type"
+
     if "ZHPDiag" in first_line:
         return "ZHPDiag"
     if "OTL" in first_line:
         return "OTL"
-    if "FRST" in first_line:
-        return "FRST"
+    if "SEAF" in first_line:
+        return "SEAF"
+    if "Farbar Recovery Scan Tool" in first_line:
+        if "FRST" in first_line:
+            return "FRST"
+        else:
+            return "FRST - additional"
+
     return "RAW"
 
 

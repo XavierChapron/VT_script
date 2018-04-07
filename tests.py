@@ -86,6 +86,14 @@ class Get_File_Type_Tests(unittest.TestCase):
         file_type = get_file_type("Résultats d'analyse de  Farbar Recovery Scan Tool (FRST) (x64) Version: 27-07-2016")
         self.assertEqual(file_type, "FRST")
 
+    def test_frst_additional(self):
+        file_type = get_file_type("Farbar Recovery Scan Tool (x64) Version: 27.01.2018")
+        self.assertEqual(file_type, "FRST - additional")
+
+    def test_seaf(self):
+        file_type = get_file_type("1. ========================= SEAF 1.0.1.0 - C_XX")
+        self.assertEqual(file_type, "SEAF")
+
     def test_raw(self):
         file_type = get_file_type('SystemLook 30.07.11 by jpshortstuff')
         self.assertEqual(file_type, "RAW")
