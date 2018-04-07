@@ -378,7 +378,9 @@ def get_report_content(path_to_file):
     return content
 
 
-def save_results(output_file, input_file, input_type, number_of_md5, results, language):
+def save_results(output_file, input_file, input_type, md5s_dict, results, language):
+    number_of_md5 = len(md5s_dict.keys())
+
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write('<meta charset="UTF-8">\n')
         f.write('<style>\ntable, th, td {\n    border: 1px solid black;\n    border-collapse: collapse;\n}\nth, td {\n    padding: 5px;\n}\n</style>\n')
@@ -391,24 +393,63 @@ def save_results(output_file, input_file, input_type, number_of_md5, results, la
         if number_of_md5 == 0:
             return
 
+        # Check for duplicate without same name or size
+        for md5, files in md5s_dict.items():
+            if len(files) == 1:
+                continue
+            for file in files:
+                if files[0]["file_name"] != file["file_name"] or files[0]["file_size"] != file["file_size"]:
+                    f.write("</br><b/>" + get_string(VariousCodes.dup_warning, language).format(md5=md5) + "</b></br>")
+                    break
+
         if len(results["positives"]) != 0:
             f.write("<h4></br>" + get_string(VariousCodes.vt_nonzero, language).format(nb=len(results["positives"])) + "</br></h4>\n")
             f.write(' <table>\n  <tr>\n    <th>')
             f.write(get_string(VariousCodes.result, language))
             f.write('</th>\n    <th>')
+            f.write("MD5")
+            f.write('</th>\n    <th>')
             f.write(get_string(VariousCodes.file, language))
-            f.write('</th>\n    <th>MD5</th>\n  </tr>\n')
-            for result in results["positives"]:
-                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.folder, language))
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.size, language))
+            f.write('</th>\n</tr>\n')
+            for md5, result in results["positives"].items():
+                report_md5 = md5s_dict[md5]
+                result['md5'] = md5
+                result['file_name'] = ""
+                result['file_dir'] = ""
+                result['file_size'] = ""
+                for file in report_md5:
+                    result['file_name'] += file['file_name'] + "</br>"
+                    result['file_dir'] += file['file_dir'] + "</br>"
+                    result['file_size'] += file['file_size'] + "</br>"
+                f.write('<tr><td>{positives}/{total}</td><td><a href={url} target="_blank">{md5}</a></td><td>{file_name}</td><td>{file_dir}</td><td>{file_size}</td></tr>\n'.format(**result))
             f.write('</table>\n')
 
         if len(results["unknows"]) != 0:
             f.write("<h4></br>" + get_string(VariousCodes.vt_unknown, language).format(nb=len(results["unknows"])) + "</br></h4>\n")
             f.write(' <table>\n  <tr>\n    <th>')
+            f.write("MD5")
+            f.write('</th>\n    <th>')
             f.write(get_string(VariousCodes.file, language))
-            f.write('</th>\n    <th>MD5</th>\n  </tr>\n')
-            for result in results["unknows"]:
-                f.write("<tr><td>%s</td><td>%s</td></tr>\n" % result)
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.folder, language))
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.size, language))
+            f.write('</th>\n</tr>\n')
+            for md5, result in results["unknows"].items():
+                report_md5 = md5s_dict[md5]
+                result['md5'] = md5
+                result['file_name'] = ""
+                result['file_dir'] = ""
+                result['file_size'] = ""
+                for file in report_md5:
+                    result['file_name'] += file['file_name'] + "</br>"
+                    result['file_dir'] += file['file_dir'] + "</br>"
+                    result['file_size'] += file['file_size'] + "</br>"
+                f.write('<tr><td>{md5}</td><td>{file_name}</td><td>{file_dir}</td><td>{file_size}</td></tr>\n'.format(**result))
             f.write('</table>\n')
 
         if len(results["negatives"]) != 0:
@@ -416,10 +457,25 @@ def save_results(output_file, input_file, input_type, number_of_md5, results, la
             f.write(' <table>\n  <tr>\n    <th>')
             f.write(get_string(VariousCodes.result, language))
             f.write('</th>\n    <th>')
+            f.write("MD5")
+            f.write('</th>\n    <th>')
             f.write(get_string(VariousCodes.file, language))
-            f.write('</th>\n    <th>MD5</th>\n  </tr>\n')
-            for result in results["negatives"]:
-                f.write('<tr><td>%s/%s</td><td><a href=%s target="_blank">%s</a></td><td>%s</td></tr>\n' % result)
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.folder, language))
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.size, language))
+            f.write('</th>\n</tr>\n')
+            for md5, result in results["negatives"].items():
+                report_md5 = md5s_dict[md5]
+                result['md5'] = md5
+                result['file_name'] = ""
+                result['file_dir'] = ""
+                result['file_size'] = ""
+                for file in report_md5:
+                    result['file_name'] += file['file_name'] + "</br>"
+                    result['file_dir'] += file['file_dir'] + "</br>"
+                    result['file_size'] += file['file_size'] + "</br>"
+                f.write('<tr><td>{positives}/{total}</td><td><a href={url} target="_blank">{md5}</a></td><td>{file_name}</td><td>{file_dir}</td><td>{file_size}</td></tr>\n'.format(**result))
             f.write('</table>\n')
 
         f.write("</br></br>" + get_string(VariousCodes.scan_complete, language))
