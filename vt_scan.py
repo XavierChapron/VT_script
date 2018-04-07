@@ -5,7 +5,7 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 from time import sleep
-from re import search
+from re import search, findall, DOTALL
 from optparse import OptionParser
 from os.path import join, dirname, abspath, basename, expanduser
 from tempfile import gettempdir
@@ -15,6 +15,7 @@ import codecs
 import sys
 from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_file_name, default_config, VariousStrings
 from locale import getdefaultlocale
+from collections import OrderedDict
 
 VERSION = "1.0.4"
 
@@ -221,48 +222,135 @@ def get_filename_for_md5(md5, md5s_list):
     raise ValueError
 
 
-def find_md5_in_file(line_list, file_type):
-    "Find all md5 and the name of the associated file"
+def find_md5_in_file(report, file_type):
+    "Find all md5 and the name, dir and size of the associated file"
 
-    parsing_dict = {
-        "ZHPDiag": ('MD5.' + r'[0-9a-fA-F]' * 32, "MD5.", r'\\[^\\\[]+\s\[', 1, -2),
-        "OTL": ('MD5=' + r'[0-9a-fA-F]' * 32, "MD5=", r'\\[^\\]+$', 1, None),
-        "FRST": ('\s' + r'[0-9a-fA-F]' * 32 + '\s*$', "", r'\\[^\\]+', 1, -33),
-        "RAW": (r'[0-9a-fA-F]' * 32, "", r'\\[\w\-\s]+\.\w+', 1, None)
-    }
-    md5s_dict = {}
-    md5s_list = []
+    if file_type == "ZHPDiag":
+        return find_md5_in_zhpdiag(report)
 
-    for line in line_list:
-        filename = "'no filename'"
-        parsing_tupple = parsing_dict.get(file_type, parsing_dict["RAW"])
+    if file_type == "OTL":
+        return find_md5_in_otl(report)
 
-        # Get md5 if md5
-        search_md5 = search(parsing_tupple[0], line)
+    if file_type == "SEAF":
+        return find_md5_in_seaf(report)
+
+    if file_type == "FRST - additional":
+        return find_md5_in_frst_additional(report)
+
+    return find_md5_in_raw(report)
+
+
+def find_md5_in_zhpdiag(report):
+    md5s_dict = OrderedDict()
+
+    regexp = r'\[MD5.([0-9a-fA-F]{32})\].*? -- (.*?) \[(.*?)\]'
+
+    matches = findall(regexp, report)
+    for match in matches:
+        md5s_dict[match[0].upper()] = []
+
+    for match in matches:
+        file_name = match[1].split("\\")[-1]
+        file_dir = match[1][: -(len(file_name) + 1)]
+        md5s_dict[match[0].upper()].append({
+                                      'file_name': file_name,
+                                      'file_dir': file_dir,
+                                      'file_size': match[2]
+                                   })
+
+    return md5s_dict
+
+
+def find_md5_in_otl(report):
+    md5s_dict = OrderedDict()
+
+    regexp = r'\[[0-9][0-9][0-9][0-9]/.*? \| ([0-9,]*) \| .*?\].*?MD5=([0-9a-fA-F]{32}) -- (.*?)\n'
+
+    matches = findall(regexp, report)
+    for match in matches:
+        md5s_dict[match[1].upper()] = []
+
+    for match in matches:
+        file_name = match[2].split("\\")[-1]
+        file_dir = match[2][: -(len(file_name) + 1)]
+        md5s_dict[match[1].upper()].append({
+                                      'file_name': file_name,
+                                      'file_dir': file_dir,
+                                      'file_size': match[0]
+                                   })
+    return md5s_dict
+
+
+def find_md5_in_frst_additional(report):
+    md5s_dict = OrderedDict()
+
+    regexp = r'(.*?)\n\[.*?\] ([0-9]*) _____ \(.*?\) ([0-9a-fA-F]{32}) \['
+
+    matches = findall(regexp, report)
+    for match in matches:
+        md5s_dict[match[2].upper()] = []
+
+    for match in matches:
+        file_name = match[0].split("\\")[-1]
+        file_dir = match[0][: -(len(file_name) + 1)]
+        md5s_dict[match[2].upper()].append({
+                                      'file_name': file_name,
+                                      'file_dir': file_dir,
+                                      'file_size': match[1]
+                                   })
+    return md5s_dict
+
+
+def find_md5_in_seaf(report):
+    md5s_dict = OrderedDict()
+
+    regexp = r'[0-9]*\. "(.*?)" \[.*?\| (.*?) ].*?Hash MD5: ([0-9a-fA-F]{32})'
+
+    matches = findall(regexp, report, DOTALL)
+
+    for match in matches:
+        md5s_dict[match[2].upper()] = []
+
+    for match in matches:
+        file_name = match[0].split("\\")[-1]
+        file_dir = match[0][: -(len(file_name) + 1)]
+        md5s_dict[match[2].upper()].append({
+                                      'file_name': file_name,
+                                      'file_dir': file_dir,
+                                      'file_size': match[1]
+                                   })
+    return md5s_dict
+
+
+def find_md5_in_raw(report):
+    md5s_dict = OrderedDict()
+    matches = []
+
+    for line in report.split("\n"):
+        search_md5 = search(r'[0-9a-fA-F]{32}', line)
         if not search_md5:
             continue
-        md5 = search_md5.group(0).replace(parsing_tupple[1], "")
+        md5 = search_md5.group(0)
 
-        # Get filename if filename
-        if file_type == "FRST":
-            search_filename = search(parsing_tupple[2] + md5, line)
-        else:
-            search_filename = search(parsing_tupple[2], line)
-        if search_filename:
-            filename = search_filename.group(0)[parsing_tupple[3]:parsing_tupple[4]]
+        search_file = search(r'.*[\w\-\s]+\.\w+', line)
+        file = ''
+        if search_file:
+            file = search_file.group(0)
 
-        # Format md5 and filename
-        md5 = md5.lower().strip()
-        filename = filename.replace("\n", "").replace("\r", "")
+        matches.append((md5, file))
 
-        # Remove already existing md5
-        if md5s_dict.get(md5, False):
-            continue
+    for match in matches:
+        md5s_dict[match[0].upper()] = []
 
-        # Add md5 and filename to the queue
-        md5s_dict[md5] = True
-        md5s_list.append((md5, filename))
-    return md5s_list
+    for match in matches:
+        file_name = match[1].split("\\")[-1]
+        file_dir = match[1][: -(len(file_name) + 1)]
+        md5s_dict[match[0].upper()].append({
+                                      'file_name': file_name,
+                                      'file_dir': file_dir,
+                                      'file_size' : ''
+                                   })
+    return md5s_dict
 
 
 def get_report_content(path_to_file):
