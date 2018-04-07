@@ -1,0 +1,14 @@
+Farbar Recovery Scan Tool (x64) Version: 27.01.2018
+Exécuté par USER (02-02-2018 10:01:28)
+Exécuté depuis C:\Users\USER\Desktop
+Mode d'amorçage: Normal
+
+================== Chercher Fichiers: "SearchAll: kiscrack;mstap32;ctxfix;BOX_KTR;AnarchyIRCLib;CTxfiReg;userinit" =============
+
+Fichier:
+========
+C:\_OTM\MovedFiles\01312018_101037\C_Windows\SysWOW64\CTxfiReg.exe
+[2018-01-31 09:39][2018-01-31 09:39] 000179712 _____ (Microsoft Corporation) A4F6DF0E33E644E802C8798ED94D80EA [Le fichier est signé numériquement]
+
+C:\_OTM\MovedFiles\01312018_101037\C_Users\USER\Desktop\kiscrack.exe
+[2018-01-31 09:38][2018-01-31 09:38] 002903040 _____ (Microsoft Corporation) 77D770A3ADA662C0BAD69B8DB37C94D3 [Fichier non signé]
