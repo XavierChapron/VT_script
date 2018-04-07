@@ -94,10 +94,11 @@ class Get_File_Type_Tests(unittest.TestCase):
         file_type = get_file_type("1. ========================= SEAF 1.0.1.0 - C_XX")
         self.assertEqual(file_type, "SEAF")
 
-    def test_raw(self):
-        file_type = get_file_type('SystemLook 30.07.11 by jpshortstuff')
-        self.assertEqual(file_type, "RAW")
+    def test_systemlook(self):
+        file_type = get_file_type("SystemLook 30.07.11 by jpshortstuff")
+        self.assertEqual(file_type, "SystemLook")
 
+    def test_raw(self):
         file_type = get_file_type('RAW')
         self.assertEqual(file_type, "RAW")
 
@@ -194,6 +195,17 @@ class Find_MD5_In_File_Tests(unittest.TestCase):
         md5_dicts = find_md5_in_file(content, file_type)
         self.assertEqual(list(md5_dicts.keys()), ["3D0B9EA79BF1F828324447D84AA9DCE2"])
         self.assertEqual(md5_dicts["3D0B9EA79BF1F828324447D84AA9DCE2"], [{'file_name': 'hh.exe', 'file_dir': 'C:\Windows', 'file_size': '17 Ko'}])
+
+    def test_seaf(self):
+        file_type = "SystemLook"
+        content = get_report_content("logs/SystemLook.txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 3)
+
+        content = "C:\Program Files (x86)\PhotoFiltre Studio X\Plugins\Flaming Pear [all]\Flaming Pear Lacquer 1.0\Keygen\Keygen.exe --a---- 3901 bytes [09:51 19/07/2016] [19:00 20/01/2000] C0724C709D2CAF0780F4EB50EFB5F457"
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(list(md5_dicts.keys()), ["C0724C709D2CAF0780F4EB50EFB5F457"])
+        self.assertEqual(md5_dicts["C0724C709D2CAF0780F4EB50EFB5F457"], [{'file_name': 'Keygen.exe', 'file_dir': 'C:\Program Files (x86)\PhotoFiltre Studio X\Plugins\Flaming Pear [all]\Flaming Pear Lacquer 1.0\Keygen', 'file_size': '3901 bytes'}])
 
     def test_raw(self):
         file_type = "RAW"
