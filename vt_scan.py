@@ -127,6 +127,8 @@ def get_file_type(first_line):
         return "ZHPDiag"
     if "OTL" in first_line:
         return "OTL"
+    if "SystemLook" in first_line:
+        return "SystemLook"
     if "SEAF" in first_line:
         return "SEAF"
     if "Farbar Recovery Scan Tool" in first_line:
@@ -232,6 +234,9 @@ def find_md5_in_file(report, file_type):
     if file_type == "FRST - additional":
         return find_md5_in_frst_additional(report)
 
+    if file_type == "SystemLook":
+        return find_md5_in_systemlook(report)
+
     return find_md5_in_raw(report)
 
 
@@ -303,6 +308,26 @@ def find_md5_in_seaf(report):
 
     matches = findall(regexp, report, DOTALL)
 
+    for match in matches:
+        md5s_dict[match[2].upper()] = []
+
+    for match in matches:
+        file_name = match[0].split("\\")[-1]
+        file_dir = match[0][: -(len(file_name) + 1)]
+        md5s_dict[match[2].upper()].append({
+                                      'file_name': file_name,
+                                      'file_dir': file_dir,
+                                      'file_size': match[1]
+                                   })
+    return md5s_dict
+
+
+def find_md5_in_systemlook(report):
+    md5s_dict = OrderedDict()
+
+    regexp = r'(.*?) [a-z\-]*? ([0-9]* bytes) \[.*?\] \[.*?\] ([0-9a-fA-F]{32})'
+
+    matches = findall(regexp, report)
     for match in matches:
         md5s_dict[match[2].upper()] = []
 
