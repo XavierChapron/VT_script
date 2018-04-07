@@ -77,11 +77,14 @@ VariousCodes = Enum(
         'run_vt_scan',
         'waiting_vt',
         'vt_scan_title',
+        'dup_warning',
         'vt_nonzero',
         'vt_unknown',
         'vt_negative',
         'result',
-        'file'
+        'file',
+        'folder',
+        'size'
     ]
 )
 
@@ -107,11 +110,14 @@ VariousStrings = {
         VariousCodes.run_vt_scan: "Run VT Scan",
         VariousCodes.waiting_vt: "VT refuses to answer, the script will retry in 10sec.",
         VariousCodes.vt_scan_title: "VT_Scan by Chapi - version {version}",
+        VariousCodes.dup_warning: "Warning potential collision on MD5 {md5}.",
         VariousCodes.vt_nonzero: "VirusTotal nonzero detections ({nb}):",
         VariousCodes.vt_unknown: "VirusTotal unknown files ({nb}):",
         VariousCodes.vt_negative: "VirusTotal negative results ({nb}):",
         VariousCodes.result: "Result",
-        VariousCodes.file: "File"
+        VariousCodes.file: "File",
+        VariousCodes.folder: "Folder",
+        VariousCodes.size: "Size"
     },
     'fr': {
         VariousCodes.config_load: "Chargement de la configuration...\n",
@@ -134,10 +140,13 @@ VariousStrings = {
         VariousCodes.run_vt_scan: "Lancer VT Scan",
         VariousCodes.waiting_vt: "VT refuse de répondre, le programme va résssayer dans 10 sec.",
         VariousCodes.vt_scan_title: "VT_Scan par Chapi - version {version}",
+        VariousCodes.dup_warning: "Attention collision potentielle sur le MD5 {md5}.",
         VariousCodes.vt_nonzero: "VirusTotal détections non nulles ({nb}):",
         VariousCodes.vt_unknown: "VirusTotal fichiers inconnus ({nb}):",
         VariousCodes.vt_negative: "VirusTotal résulats négatifs ({nb}):",
         VariousCodes.result: "Resultat",
-        VariousCodes.file: "Fichier"
+        VariousCodes.file: "Fichier",
+        VariousCodes.folder: "Dossier",
+        VariousCodes.size: "Taille"
     }
 }
