@@ -1,5 +1,5 @@
 import unittest
-from vt_scan import get_report_content, get_file_type, ScriptError, ScriptWarning, retrieve_apikey
+from vt_scan import get_report_content, get_file_type, ScriptError, ScriptWarning, retrieve_apikey, find_md5_in_file
 from vt_scan_constants import ErrorsCodes, default_config
 
 
@@ -126,3 +126,77 @@ class Check_Apikey_Format_Tests(unittest.TestCase):
         with self.assertRaises(ScriptWarning) as error:
             retrieve_apikey({"apikey": "A" * 63})
         self.assertEqual(error.exception.code, ErrorsCodes.apikey_invalid_lenght)
+
+
+
+class Find_MD5_In_File_Tests(unittest.TestCase):
+    def test_zhpdiag(self):
+        file_type = "ZHPDiag"
+        content = get_report_content("logs/ZHPDiag.txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 31)
+
+        content = "[MD5.AC4C51EB24AA95B77F705AB159189E24] - 21/11/2010 - (.Microsoft Corporation - Explorateur Windows.) -- C:\Windows\Explorer.exe [2872320]  =>.Microsoft Corporation"
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(list(md5_dicts.keys()), ["AC4C51EB24AA95B77F705AB159189E24"])
+        self.assertEqual(md5_dicts["AC4C51EB24AA95B77F705AB159189E24"], [{'file_name': 'Explorer.exe', 'file_dir': 'C:\Windows', 'file_size': '2872320'}])
+
+    def test_otl(self):
+        file_type = "OTL"
+        content = get_report_content("logs/OTL.Txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 6)
+
+        content = get_report_content("logs/OTLpecustom.txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 36)
+
+        content = "[2010/11/21 05:24:25 | 002,616,320 | ---- | M] (Microsoft Corporation) MD5=40D777B7A95E00593EB1568C68514493 -- C:\Windows\SysWOW64\explorer.exe\n"
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(list(md5_dicts.keys()), ["40D777B7A95E00593EB1568C68514493"])
+        self.assertEqual(md5_dicts["40D777B7A95E00593EB1568C68514493"], [{'file_name': 'explorer.exe', 'file_dir': 'C:\Windows\SysWOW64', 'file_size': '002,616,320'}])
+
+    def test_frst(self):
+        file_type = "FRST"
+        content = get_report_content("logs/FRST.txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 14)
+
+        content = "C:\Windows\system32\drivers\dmvsc.sys 5DB085A8A6600BE6401F2B24EECB5415"
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(list(md5_dicts.keys()), ["5DB085A8A6600BE6401F2B24EECB5415"])
+        self.assertEqual(md5_dicts["5DB085A8A6600BE6401F2B24EECB5415"], [{'file_name': 'dmvsc.sys', 'file_dir': 'C:\Windows\system32\drivers', 'file_size': ''}])
+
+    def test_frst_additional(self):
+        file_type = "FRST - additional"
+        content = get_report_content("logs/FRST_additional.txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 2)
+
+        content = """C:\\_OTM\\MovedFiles\\01312018_101037\\C_Users\\USER\\Desktop\\kiscrack.exe
+[2018-01-31 09:38][2018-01-31 09:38] 002903040 _____ (Microsoft Corporation) 77D770A3ADA662C0BAD69B8DB37C94D3 [Fichier non signé]"""
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(list(md5_dicts.keys()), ["77D770A3ADA662C0BAD69B8DB37C94D3"])
+        self.assertEqual(md5_dicts["77D770A3ADA662C0BAD69B8DB37C94D3"], [{'file_name': 'kiscrack.exe', 'file_dir': 'C:\\_OTM\\MovedFiles\\01312018_101037\\C_Users\\USER\\Desktop', 'file_size': '002903040'}])
+
+    def test_seaf(self):
+        file_type = "SEAF"
+        content = get_report_content("logs/SEAF.txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 2)
+
+        content = """23.
+24. "C:\Windows\hh.exe" [ ARCHIVE | 17 Ko ]
+25. TC: 14/07/2009,02:29:03 | TM: 14/07/2009,03:39:12 | DA: 14/07/2009,02:29:03
+26.
+27. Hash MD5: 3D0B9EA79BF1F828324447D84AA9DCE2
+28."""
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(list(md5_dicts.keys()), ["3D0B9EA79BF1F828324447D84AA9DCE2"])
+        self.assertEqual(md5_dicts["3D0B9EA79BF1F828324447D84AA9DCE2"], [{'file_name': 'hh.exe', 'file_dir': 'C:\Windows', 'file_size': '17 Ko'}])
+
+    def test_raw(self):
+        file_type = "RAW"
+        content = get_report_content("logs/raw.txt")
+        md5_dicts = find_md5_in_file(content, file_type)
+        self.assertEqual(len(md5_dicts), 14)
