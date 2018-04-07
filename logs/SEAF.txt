@@ -1,0 +1,30 @@
+1. ========================= SEAF 1.0.1.0 - C_XX
+2.
+3. Commencé à: 13:42:20 le 13/08/2016
+4.
+5. Valeur(s) recherchée(s):
+6. hh.exe
+7.
+8. Légende: TC => Date de création, TM => Date de modification, DA => Dernier accès
+9.
+10. (!) --- Calcul du Hash "MD5"
+11.
+12. ====== Fichier(s) ======
+13.
+14.
+15. "C:\Windows\fr-FR\hh.exe.mui" [ ARCHIVE | 2 Ko ]
+16. TC: 12/04/2011,11:16:02 | TM: 12/04/2011,11:16:02 | DA: 12/04/2011,11:16:29
+17.
+18. Hash MD5: 2088240614EDC46A259A68DFEC99F978
+19.
+20.
+21. =========================
+22.
+23.
+24. "C:\Windows\hh.exe" [ ARCHIVE | 17 Ko ]
+25. TC: 14/07/2009,02:29:03 | TM: 14/07/2009,03:39:12 | DA: 14/07/2009,02:29:03
+26.
+27. Hash MD5: 3D0B9EA79BF1F828324447D84AA9DCE2
+28.
+29.
+30. =========================
