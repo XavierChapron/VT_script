@@ -161,7 +161,7 @@ def run_vt_analyse(md5s_dict, apikey, language):
         i += 4
     md5s_groups_list.append(md5s_list[i:])
 
-    results = {"unknows": OrderedDict(), "negatives": OrderedDict(), "positives": OrderedDict()}
+    results = {"unknows": OrderedDict(), "negatives": OrderedDict(), "pendings": OrderedDict(), "positives": OrderedDict()}
 
     # For each group, create a request, retrieve VT answer, then analyse the answer
     for md5s_group in md5s_groups_list:
@@ -198,13 +198,17 @@ def run_vt_analyse(md5s_dict, apikey, language):
 
 def analyse_answer(answer, md5s_list, results):
     # Check if VT have found the associate the file
-    if answer.get("response_code", 0) == 0:
-        md5 = answer.get("resource", "error").upper()
-        results["unknows"][md5] = {}
 
-    else:
+    response_code = answer.get("response_code", 0)
+
+    if response_code == -2:
+        md5 = answer.get("resource", "error").upper()
+        url = "https://www.virustotal.com/latest-scan/" + md5
+        results["pendings"][md5] = {'url': url}
+
+    elif response_code == 1:
         # store the answer
-        md5 = answer.get("md5", '').upper()
+        md5 = answer["md5"].upper()
         positives = answer.get("positives", None)
         total = answer.get("total", None)
         url = "https://www.virustotal.com/latest-scan/" + md5
@@ -217,6 +221,10 @@ def analyse_answer(answer, md5s_list, results):
             results["positives"][md5] = result
         else:
             results["negatives"][md5] = result
+
+    else:
+        md5 = answer.get("resource", "error").upper()
+        results["unknows"][md5] = {}
 
 
 def find_md5_in_file(report, file_type):
@@ -475,6 +483,30 @@ def save_results(output_file, input_file, input_type, md5s_dict, results, langua
                     result['file_dir'] += file['file_dir'] + "</br>"
                     result['file_size'] += file['file_size'] + "</br>"
                 f.write('<tr><td>{md5}</td><td>{file_name}</td><td>{file_dir}</td><td>{file_size}</td></tr>\n'.format(**result))
+            f.write('</table>\n')
+
+        if len(results["pendings"]) != 0:
+            f.write("<h4></br>" + get_string(VariousCodes.vt_pendings, language).format(nb=len(results["pendings"])) + "</br></h4>\n")
+            f.write(' <table>\n  <tr>\n    <th>')
+            f.write("MD5")
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.file, language))
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.folder, language))
+            f.write('</th>\n    <th>')
+            f.write(get_string(VariousCodes.size, language))
+            f.write('</th>\n</tr>\n')
+            for md5, result in results["pendings"].items():
+                report_md5 = md5s_dict[md5]
+                result['md5'] = md5
+                result['file_name'] = ""
+                result['file_dir'] = ""
+                result['file_size'] = ""
+                for file in report_md5:
+                    result['file_name'] += file['file_name'] + "</br>"
+                    result['file_dir'] += file['file_dir'] + "</br>"
+                    result['file_size'] += file['file_size'] + "</br>"
+                f.write('<tr><td><a href={url} target="_blank">{md5}</a></td><td>{file_name}</td><td>{file_dir}</td><td>{file_size}</td></tr>\n'.format(**result))
             f.write('</table>\n')
 
         if len(results["negatives"]) != 0:
