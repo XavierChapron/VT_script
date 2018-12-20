@@ -355,10 +355,11 @@ def find_md5_in_raw(report):
     matches = []
 
     for line in report.split("\n"):
-        search_md5 = search(r'[0-9a-fA-F]{32}', line)
+        search_md5 = search(r'( |^)[0-9a-fA-F]{32}( |$)', line)
         if not search_md5:
             continue
         md5 = search_md5.group(0)
+        md5 = md5.strip()
 
         search_file = search(r'.*[\w\-\s]+\.\w+', line)
         file = ''

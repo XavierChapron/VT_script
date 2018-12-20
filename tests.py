@@ -51,9 +51,9 @@ class Get_Report_Lines_Tests(unittest.TestCase):
         self.assertEqual(lines[1], 'Log created at 10:27 on 12/03/2017 by INTEL')
 
         lines = get_report_content("logs/raw.txt").split("\n")
-        self.assertEqual(len(lines), 16)
+        self.assertEqual(len(lines), 17)
         self.assertEqual(lines[0], 'RAW')
-        self.assertEqual(lines[1], '8BED39E3C35D6A489438B8141717A559')
+        self.assertEqual(lines[1], 'A94A8FE5CCB19BA61C4C0873D391E987982FBBD3')
 
     def test_data(self):
         lines = get_report_content("logs/OTLpecustom.txt").split("\n")
@@ -212,3 +212,5 @@ class Find_MD5_In_File_Tests(unittest.TestCase):
         content = get_report_content("logs/raw.txt")
         md5_dicts = find_md5_in_file(content, file_type)
         self.assertEqual(len(md5_dicts), 14)
+        md5s = list(md5_dicts.keys())
+        self.assertTrue(all(len(x) == 32 for x in md5s))
