@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 
+import codecs
+import json
+import sys
+from argparse import ArgumentParser
+from collections import OrderedDict
 from json import loads
+from locale import getdefaultlocale
+from os.path import join, dirname, abspath, basename, expanduser
+from re import search, findall, DOTALL
+from tempfile import gettempdir
+from time import sleep
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
-from urllib.error import HTTPError, URLError
-from time import sleep
-from re import search, findall, DOTALL
-from optparse import OptionParser
-from os.path import join, dirname, abspath, basename, expanduser
-from tempfile import gettempdir
 from webbrowser import open as webopen
-import json
-import codecs
-import sys
+
 from vt_scan_constants import ErrorsCodes, ErrorsStrings, VariousCodes, config_file_name, default_config, VariousStrings
-from locale import getdefaultlocale
-from collections import OrderedDict
 
 VERSION = "1.0.6"
 
@@ -396,7 +397,7 @@ def get_report_content(path_to_file):
             decoder = codecs.getdecoder(codec_decoder[codec])
             break
 
-    if decoder == None:
+    if decoder is None:
         raise ScriptError(ErrorsCodes.input_file_read_error, {'file': path_to_file})
 
     try:
@@ -540,25 +541,26 @@ def save_results(output_file, input_file, input_type, md5s_dict, results, langua
 
 
 def main():
-    parser = OptionParser("usage: %prog -f path_to_file [options]")
-    parser.add_option("-f", "--file",
-                      help="file to use",
-                      action="store", default="input.txt",
-                      dest="path_to_file")
+    parser = ArgumentParser(usage="usage: %(prog)s -f path_to_file [options]")
+    parser.add_argument("-f", "--file",
+                        help="file to use",
+                        action="store",
+                        dest="path_to_file",
+                        required=True)
 
     # Keep -k option for retro compatibility
-    parser.add_option("-k", "--key",
-                      help="Only used for retrocompatibility",
-                      action="store",
-                      dest="dummy")
+    parser.add_argument("-k", "--key",
+                        help="Only used for retrocompatibility",
+                        action="store",
+                        dest="dummy")
 
-    (options, args) = parser.parse_args()
+    args = parser.parse_args()
 
     config = {}
     results = {}
 
     # Get the files paths
-    input_file = options.path_to_file.strip()
+    input_file = args.path_to_file.strip()
 
     # Init output file to "/tmp/errors_vt_scan.html" and it's windows equivalent
     output_file = get_output_file({}, "errors.txt")
