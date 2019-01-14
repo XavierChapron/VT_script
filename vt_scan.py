@@ -62,7 +62,7 @@ class ScriptWarning(Exception):
 
 
 def get_language_from_locale():
-    if getdefaultlocale()[0] == "fr_FR":
+    if getdefaultlocale()[0] in ("fr_FR", "fr_BE", "fr_CH", "fr_LU", "fr_CA"):
         return 'fr'
     else:
         return 'en'
